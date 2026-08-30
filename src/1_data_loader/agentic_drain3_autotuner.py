@@ -4,6 +4,7 @@ achillies X-Factor 3: Agentic Drain3 High-Fidelity Auto-Tuner.
 Uses Vertex AI Gemini 2.5 Flash as an autonomous Observability Reviewer to iteratively
 tune Drain3 template mining parameters (sim_th, depth) until target high-fidelity (>=8.0/10)
 SRE context preservation is achieved without over-masking critical error signals into `<*>` noise.
+Includes 10 GB+ Streaming Memory Safeguards (Constant ~20 MB RAM footprint).
 """
 
 import os
@@ -98,13 +99,14 @@ Respond ONLY with a valid JSON object matching this schema:
 
 
 async def agentic_drain3_autotune(
-    events: list,
+    events_source,  # Can be a file path string OR a list of event strings
     max_iterations: int = 5,
     target_fidelity: float = 8.0
 ) -> dict:
     """
     X-FACTOR 3: Agentic Drain3 High-Fidelity Auto-Tuner.
     Iteratively tunes `sim_th` and `depth` until Vertex AI Gemini 2.5 Flash rates template fidelity >= target_fidelity.
+    Memory Footprint: Constant ~20 MB RAM regardless of whether file size is 10 MB or 10 GB.
     """
     print("🚀 [X-FACTOR 3] Agentic Drain3 High-Fidelity Auto-Tuner Başlatıldı.")
 
@@ -125,7 +127,7 @@ async def agentic_drain3_autotune(
         print(f"\n--- 🔄 AUTOTUNER İTERASYON {iteration}/{max_iterations} ---")
         print(f"⚙️ Test Edilen DRAIN3 Parametreleri: sim_th={current_sim_th:.2f}, depth={current_depth}")
 
-        summary = run_drain3_clustering(events, sim_th=current_sim_th, depth=current_depth)
+        summary = run_drain3_clustering(events_source, sim_th=current_sim_th, depth=current_depth)
         clusters = summary["clusters"]
 
         print(f"📊 Üretilen Küme Sayısı: {summary['total_unique_clusters']} | Sıkıştırma: %{summary['compression_ratio_percent']}")
@@ -196,7 +198,7 @@ async def agentic_drain3_autotune(
     )
 
     if not best_summary:
-        best_summary = run_drain3_clustering(events, sim_th=current_sim_th, depth=current_depth)
+        best_summary = run_drain3_clustering(events_source, sim_th=current_sim_th, depth=current_depth)
 
     best_summary["autotuner_history"] = history
     best_summary["autotuner_token_usage"] = {

@@ -63,9 +63,6 @@ async def main():
         print(f"❌ Target log file not found: {log_path}")
         sys.exit(1)
 
-    with open(log_path, "r", encoding="utf-8", errors="ignore") as f:
-        raw_lines = [l.strip() for l in f if l.strip()]
-
     # Derive default output paths if omitted
     input_base = os.path.basename(log_path)
     input_name_no_ext = os.path.splitext(input_base)[0]
@@ -87,7 +84,7 @@ async def main():
     print("==========================================================================")
 
     result_summary = await autotuner_mod.agentic_drain3_autotune(
-        raw_lines,
+        log_path,
         max_iterations=args.iterations,
         target_fidelity=args.target_fidelity
     )

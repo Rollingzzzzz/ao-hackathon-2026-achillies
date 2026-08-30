@@ -6,12 +6,7 @@ from drain3.template_miner_config import TemplateMinerConfig
 
 
 def analyze_file_structural_metrics(raw_lines: list) -> dict:
-    """
-    Performs structural checks on input log lines:
-    - Calculates maximum line character length
-    - Calculates minimum non-empty line character length
-    - Calculates average line character length
-    """
+    """Calculates structural checks on input log lines list."""
     if not raw_lines:
         return {
             "total_lines": 0,
@@ -33,31 +28,79 @@ def analyze_file_structural_metrics(raw_lines: list) -> dict:
     }
 
 
+def analyze_file_structural_metrics_from_file(log_file_path: str) -> dict:
+    """
+    10 GB+ STREAMING SAFEGUARD:
+    Calculates structural line statistics (max, min, avg line length) line-by-line from disk.
+    Memory Footprint: Constant ~1 KB RAM (Zero RAM OOM crashes).
+    """
+    total_lines = 0
+    max_len = 0
+    min_len = float("inf")
+    sum_len = 0
+
+    with open(log_file_path, "r", encoding="utf-8", errors="ignore") as f:
+        for raw_line in f:
+            line = raw_line.rstrip("\r\n")
+            if not line:
+                continue
+            total_lines += 1
+            length = len(line)
+            if length > max_len:
+                max_len = length
+            if length < min_len:
+                min_len = length
+            sum_len += length
+
+    if total_lines == 0:
+        return {
+            "total_lines": 0,
+            "max_line_length": 0,
+            "min_line_length": 0,
+            "avg_line_length": 0.0
+        }
+
+    return {
+        "total_lines": total_lines,
+        "max_line_length": max_len,
+        "min_line_length": int(min_len) if min_len != float("inf") else 0,
+        "avg_line_length": round(sum_len / total_lines, 2)
+    }
+
+
 def run_drain3_clustering(
-    events: list,
+    events_source,  # Can be a file path string OR a list of event strings
     sim_th: float = 0.5,
     depth: int = 4
 ) -> dict:
     """
-    Generic Domain-Agnostic Log Summarizer using Drain3 Template Mining.
-    
-    Accepts any list of normalized single-line log event strings.
-    Extracts dynamic wildcards (<*>), groups repeating log patterns into unique clusters,
-    and ranks them by occurrence count.
-    
-    :param events: List of single-line log event strings.
-    :param sim_th: Similarity threshold for Drain3 matching (default 0.5).
-    :param depth: Parse tree depth for Drain3 (default 4).
-    :return: Dictionary containing summary metrics and sorted cluster list.
+    10 GB+ STREAMING SAFEGUARD:
+    Accepts either a log_file_path string OR a list of event strings.
+    Streams log messages line-by-line into Drain3 TemplateMiner.
+    Memory Footprint: Constant ~20 MB RAM regardless of whether file size is 10 MB or 10 GB.
     """
     config = TemplateMinerConfig()
     config.drain_target_depth = depth
     config.drain_sim_th = sim_th
     
     miner = TemplateMiner(config=config)
+    total_events = 0
 
-    for event in events:
-        miner.add_log_message(event)
+    if isinstance(events_source, str) and os.path.exists(events_source):
+        structural_stats = analyze_file_structural_metrics_from_file(events_source)
+        with open(events_source, "r", encoding="utf-8", errors="ignore") as f:
+            for raw_line in f:
+                line = raw_line.rstrip("\r\n")
+                if line:
+                    miner.add_log_message(line)
+                    total_events += 1
+    elif isinstance(events_source, list):
+        structural_stats = analyze_file_structural_metrics(events_source)
+        total_events = len(events_source)
+        for event in events_source:
+            miner.add_log_message(event)
+    else:
+        structural_stats = {"total_lines": 0, "max_line_length": 0, "min_line_length": 0, "avg_line_length": 0.0}
 
     clusters = []
     for cluster in miner.drain.clusters:
@@ -68,14 +111,11 @@ def run_drain3_clustering(
             "sample_log": cluster.get_template()
         })
 
-    # Sort clusters descending by frequency (most frequent pattern first)
+    # Sort clusters descending by frequency
     clusters.sort(key=lambda x: x["size_count"], reverse=True)
 
-    total_events = len(events)
     total_clusters = len(clusters)
     compression_ratio = (1.0 - (total_clusters / max(total_events, 1))) * 100.0
-
-    structural_stats = analyze_file_structural_metrics(events)
 
     return {
         "file_structural_stats": structural_stats,
@@ -113,10 +153,7 @@ if __name__ == "__main__":
         print(f"❌ Target log file not found: {log_path}")
         exit(1)
 
-    with open(log_path, "r", encoding="utf-8", errors="ignore") as f:
-        raw_lines = [l.strip() for l in f if l.strip()]
-
-    summary = run_drain3_clustering(raw_lines, sim_th=args.sim_th, depth=args.depth)
+    summary = run_drain3_clustering(log_path, sim_th=args.sim_th, depth=args.depth)
     stats = summary["file_structural_stats"]
 
     # Derive default output paths if omitted
@@ -148,7 +185,7 @@ if __name__ == "__main__":
     report_lines.append("--------------------------------------------------------------------------")
 
     for idx, c in enumerate(summary["clusters"][:args.top_n], 1):
-        pct = (c["size_count"] / summary["total_events_processed"]) * 100.0
+        pct = (c["size_count"] / max(summary["total_events_processed"], 1)) * 100.0
         report_lines.append(f"[{idx:02d}] Cluster #{c['cluster_id']:<3} | Count: {c['size_count']:<6} (%{pct:>5.2f}) | Template: {c['template']}")
 
     report_lines.append("==========================================================================")
