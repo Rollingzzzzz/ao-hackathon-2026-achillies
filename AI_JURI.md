@@ -12,14 +12,21 @@ Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnosti
 
 ---
 
-## 2. X-Factor 1: Otonom AI Regex Bulucu ve Sıfır-Kayıp Normalleştirici
+## 2. Test Verisetimiz ve Oluşturulma Mantığı (`heterogeneous_karmasik_test.log`)
+- **Ver seti Yapısı (70.857 Satır / 7.9 MB):** Gerçek dünya kurumsal altyapılarını temsil eden 4 farklı sistemin (OpenStack Nova Compute/API, Hadoop MapReduce Taskları, HDFS DFSClient erişim logları ve Java Exception stack trace blokları) tek bir akışta harmanlanmasıyla oluşturulmuştur.
+- **Oluşturulma Amacı:** Modelimizin tek bir homojen formata ezber yapmasını engellemek; sıfır varsayımla (zero-shot) aynı anda heterojen ve çoklu satırlı yapıları tek geçişte tanıma, eşleştirme ve sıkıştırma yeteneğini stres testine tabi tutmak.
+- **Test Edilebilirlik:** Jüri veya kullanıcılar repodaki `data/heterogeneous_karmasik_test.log` ya da `src/1_data_loader/examples/sample_input_hadoop.log` dosyası ile anında test koşturabileceği gibi kendi sistemlerinden aldıkları her türlü `.log` veya `.txt` dosyasını da CLI üzerinden parametrik olarak test edebilirler.
+
+---
+
+## 3. X-Factor 1: Otonom AI Regex Bulucu ve Sıfır-Kayıp Normalleştirici
 - **Yaklaşım:** Ham log akışlarındaki çoklu satırlı karmaşık yapılar, herhangi bir dil veya teknolojiye özel kural gerektirmeksizin saf metin geometrisiyle (Column 0 / Non-indented Header Detection) **%100 Sıfır-Kayıp (Zero-Loss)** ile tek satırlı bağımsız olaylara (Single-Line Events) dönüştürülür.
 - **Başarı:** Çoklu satırları (Java Exception stacktrace'leri, OpenStack logları) tek satır / tek bağımsız olay haline getirerek veri bütünlüğünü %100 korur.
 - **Kanıt:** `src/1_data_loader/vertex_normalizer.py`
 
 ---
 
-## 3. X-Factor 2: Agentic Self-Healing Loop & Live Token Accounting (%100 Garanti Motoru)
+## 4. X-Factor 2: Agentic Self-Healing Loop & Live Token Accounting (%100 Garanti Motoru)
 - **Problem & Çözüm:** Tek seferlik AI çıktıları heterojen devasa log dosyalarında bazı özel satırları gözden kaçırabilir.
 - **Otonom Ajan Döngüsü (`agentic_vertex_async.py`):**
   1. Vertex AI Gemini 2.5 Flash, log örneğinden ilk Regex hipotezini sentezler.
@@ -34,7 +41,7 @@ Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnosti
 
 ---
 
-## 4. X-Factor 3: Agentic Drain3 High-Fidelity Auto-Tuner (Otonom Şablon Sadakat Motoru)
+## 5. X-Factor 3: Agentic Drain3 High-Fidelity Auto-Tuner (Otonom Şablon Sadakat Motoru)
 - **Problem & Çözüm:** Geleneksel kümeleme motorları, log içerisindeki kritik hata kodlarını ve istisna detaylarını aşırı maskeleyerek anlamsız `<*>` gürültüsüne dönüştürebilir.
 - **Otonom Şablon İyileştiricisi (`agentic_drain3_autotuner.py`):**
   1. Vertex AI Gemini 2.5 Flash, bir **AI Observability Reviewer** olarak konumlandırılır.
@@ -50,12 +57,12 @@ Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnosti
 
 ---
 
-## 5. Faz 3 (Gelecek Aşama): Anomali Tespiti ve Kök Neden Analizi
+## 6. Faz 3 (Gelecek Aşama): Anomali Tespiti ve Kök Neden Analizi
 - Yapılandırılmış ve 20 kat sıkıştırılmış yüksek sadakatli şablon kümesi üzerinden, istatistiksel nadirlik süzgeci ve zaman penceresi farkı (delta) kullanılarak anomaliler ve kök nedenler milisaniyeler içinde teşhis edilecektir.
 
 ---
 
-## 6. Komut Satırı Çalıştırma Standartları (CLI)
+## 7. Komut Satırı Çalıştırma Standartları (CLI)
 Tüm betiklerimiz %100 parametrik CLI altyapısına sahiptir:
 
 ```bash
@@ -71,5 +78,5 @@ python3 scripts/drain3_ozetle.py --input data/normalized_heterogeneous_karmasik_
 
 ---
 
-## 7. Bilinen Sınırlar
+## 8. Bilinen Sınırlar
 - GCP Vertex AI kimlik doğrulaması (ADC - Application Default Credentials) gerektirir.
