@@ -13,7 +13,7 @@ Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnosti
 ---
 
 ## 2. Test Verisetimiz ve Oluşturulma Mantığı (`heterogeneous_karmasik_test.log`)
-- **Ver seti Yapısı (70.857 Satır / 7.9 MB):** Gerçek dünya kurumsal altyapılarını temsil eden 4 farklı sistemin (OpenStack Nova Compute/API, Hadoop MapReduce Taskları, HDFS DFSClient erişim logları ve Java Exception stack trace blokları) tek bir akışta harmanlanmasıyla oluşturulmuştur.
+- **Veri Seti Yapısı (70.857 Satır / 7.9 MB):** Gerçek dünya kurumsal altyapılarını temsil eden 4 farklı sistemin (OpenStack Nova Compute/API, Hadoop MapReduce Taskları, HDFS DFSClient erişim logları ve Java Exception stack trace blokları) tek bir akışta harmanlanmasıyla oluşturulmuştur.
 - **Oluşturulma Amacı:** Modelimizin tek bir homojen formata ezber yapmasını engellemek; sıfır varsayımla (zero-shot) aynı anda heterojen ve çoklu satırlı yapıları tek geçişte tanıma, eşleştirme ve sıkıştırma yeteneğini stres testine tabi tutmak.
 - **Test Edilebilirlik:** Jüri veya kullanıcılar repodaki `data/heterogeneous_karmasik_test.log` ya da `src/1_data_loader/examples/sample_input_hadoop.log` dosyası ile anında test koşturabileceği gibi kendi sistemlerinden aldıkları her türlü `.log` veya `.txt` dosyasını da CLI üzerinden parametrik olarak test edebilirler.
 
@@ -42,16 +42,17 @@ Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnosti
 ---
 
 ## 5. X-Factor 3: Agentic Drain3 High-Fidelity Auto-Tuner (Otonom Şablon Sadakat Motoru)
-- **Problem & Çözüm:** Geleneksel kümeleme motorları, log içerisindeki kritik hata kodlarını ve istisna detaylarını aşırı maskeleyerek anlamsız `<*>` gürültüsüne dönüştürebilir.
-- **Otonom Şablon İyileştiricisi (`agentic_drain3_autotuner.py`):**
-  1. Vertex AI Gemini 2.5 Flash, bir **AI Observability Reviewer** olarak konumlandırılır.
-  2. Üretilen şablonları SRE analizi kriterlerine göre otonom puanlar (Fidelity Score: 0.0 - 10.0).
-  3. Aşırı maskeleme saptandığında benzerlik eşiğini (`sim_th`) ve ağaç derinliğini (`depth`) otonom ayarlar.
-  4. Kritik hata bağlamını %100 koruyarak log hacmini **20 kat (%95.07)** sıkıştırır.
-  5. Üretilen tüm benzersiz şablonlar (%100) `templates_<girdi_adi>.txt` dosyasına ihraç edilir.
-- **Canlı Metrikler (`heterogeneous_karmasik_test.log`):**
-  * **Kümeleme Başarısı:** 19.004 olay ➔ 937 Yüksek Sadakatli Şablon (%95.07 Sıkıştırma)
-  * **AI Fidelity Skoru:** **9.0 / 10.0** (3 İterasyonda, `sim_th=0.70`, `depth=4`)
+- **Sadakat (Fidelity) Puanlama Mekanizması Nasıl Çalışır?**
+  Auto-Tuner motorumuz, her iterasyonda üretilen şablon kümelerini Vertex AI Gemini 2.5 Flash'a (**AI Observability Reviewer**) göndererek 3 aşamalı **Sadakat Analizi** yaptırır:
+  1. **Bağlam Koruma Puanı (`fidelity_score`: 0.0 - 10.0):** Şablonun HTTP yanıt kodlarını (`status: 200`), istisna sınıflarını (`java.net.NoRouteToHostException`), servis isimlerini ve hata parametrelerini koruyup korumadığı değerlendirilir.
+  2. **Aşırı Maskeleme Tespiti (`is_over_masked`: bool):** Kritik hata veya yapısal tanımlayıcıların anlamsız `<*>` jokeriyle kapatılıp kapatılmadığı denetlenir.
+  3. **Yönlendirici Aksiyon Komutu (`recommendation`):** Şablon aşırı maskelenmişse benzerlik eşiği (`sim_th`) kademeli artırılır (Örn: `0.50` ➔ `0.60` ➔ `0.70`). Karmaşık yapıların ayrışması için ağaç derinliği (`depth`) genişletilir.
+- **Canlı İterasyon İlerlemesi (`heterogeneous_karmasik_test.log`):**
+  * **1. Tur (`sim_th=0.50`, `depth=4`):** Skor `6.5 / 10.0`, `is_over_masked=True` ➔ AI Kararı: *"HTTP yanıt kodları ve hata parametreleri `<*>` ile kapatılmış, sim_th artırılmalı."*
+  * **2. Tur (`sim_th=0.60`, `depth=4`):** Skor `7.8 / 10.0`, `is_over_masked=True` ➔ AI Kararı: *"Ağ adresleri genelleşmiş, sim_th artırılmalı."*
+  * **3. Tur (`sim_th=0.70`, `depth=4`):** Skor **`9.0 / 10.0`**, `is_over_masked=False` ➔ **HEDEF YÜKSEK SADAKAT YAKALANDI!** (Tüm istisna sınıfları ve statü kodları korundu, sadece değişken milisaniye/sayılar maskelendi).
+- **Canlı Metrikler:**
+  * **Kümeleme Başarısı:** 19.004 olay ➔ 937 Yüksek Sadakatli Şablon (%95.07 Sıkıştırma / 20 Kat Hızlı)
   * **API Maliyeti & Token:** 7.113 Token (**$0.000642 USD**)
 - **Kanıt:** `src/1_data_loader/agentic_drain3_autotuner.py`, `scripts/agentic_drain3_autotuner.py`, `src/1_data_loader/drain3_ozetle.py`
 
@@ -72,7 +73,7 @@ python3 scripts/agentic_vertex_async.py --input data/heterogeneous_karmasik_test
 # 2. X-Factor 3: Agentic Drain3 High-Fidelity Auto-Tuner CLI Testi:
 python3 scripts/agentic_drain3_autotuner.py --input data/normalized_heterogeneous_karmasik_test.log
 
-# 3. Jenerik Drain3 Özetleyici CLI Çalıştırma:
+# 3. Jenerik Drain3 Şablon Madencisi & Yapısal Metrik Raporlayıcısı:
 python3 scripts/drain3_ozetle.py --input data/normalized_heterogeneous_karmasik_test.log
 ```
 
