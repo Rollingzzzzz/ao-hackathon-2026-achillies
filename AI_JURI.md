@@ -8,14 +8,20 @@ Bu devasa log akışları üzerinden anomali tespiti ve kök neden analizi (Root
 2. **Yüksek Context Maliyeti ve Gürültü:** Milyonlarca satırlık gürültülü veriyi doğrudan dil modellerine (LLM) beslemek yüksek maliyet, yavaşlık ve odaklanma kaybı (Attention Degradation) yaratır.
 3. **Bilgi Kaybı (Over-Masking):** Geleneksel sıkıştırma yöntemlerinin sabit parametrelerle kritik hata kodlarını ve istisna sınıflarını aşırı maskeleyerek anlamsız `<*>` gürültüsüne dönüştürmesi.
 
-Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnostic)** ve **sıfır ön bilgi (zero-shot)** ilkesiyle çözen, Python determinizmini Vertex AI Gemini 2.5 Flash'ın akıl yürütme gücüyle birleştiren 3 fazlı otonom bir mimaridir.
+Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnostic)** ve **sıfır ön bilgi (zero-shot)** ilkesiyle çözen, Python determinizmini Vertex AI Gemini 2.5 Flash'ın akıl yürütme gücüyle birleştiren otonom bir mimaridir.
 
 ---
 
-## 2. Test Verisetimiz ve Oluşturulma Mantığı (`heterogeneous_karmasik_test.log`)
-- **Veri Seti Yapısı (70.857 Satır / 7.9 MB):** Gerçek dünya kurumsal altyapılarını temsil eden 4 farklı sistemin (OpenStack Nova Compute/API, Hadoop MapReduce Taskları, HDFS DFSClient erişim logları ve Java Exception stack trace blokları) tek bir akışta harmanlanmasıyla oluşturulmuştur.
-- **Oluşturulma Amacı:** Modelimizin tek bir homojen formata ezber yapmasını engellemek; sıfır varsayımla (zero-shot) aynı anda heterojen ve çoklu satırlı yapıları tek geçişte tanıma, eşleştirme ve sıkıştırma yeteneğini stres testine tabi tutmak.
-- **Test Edilebilirlik:** Jüri veya kullanıcılar repodaki `data/heterogeneous_karmasik_test.log` ya da `src/1_data_loader/examples/sample_input_hadoop.log` dosyası ile anında test koşturabileceği gibi kendi sistemlerinden aldıkları her türlü `.log` veya `.txt` dosyasını da CLI üzerinden parametrik olarak test edebilirler.
+## 2. Test Verisetimizin Sentezlenme Hikayesi ve Yaşam Döngüsü Kanıtı
+Jürimizin sistemimizi hiçbir harici bağımlılık gerekmeksizin anında doğrulayabilmesi için repomuzun `src/1_data_loader/examples/` klasöründe tam bir **Veri İşleme Yaşam Döngüsü Kanıtı (Pipeline Lifecycle Proof)** sunulmuştur:
+
+- **Sentezlenme Mantığı (`heterogeneous_karmasik_test.log` - 70.857 Satır / 7.9 MB):**
+  Modelimizin tek bir homojen formata (sadece Syslog veya sadece Nginx) ezber yapmasını engellemek amacıyla; gerçek dünya kurumsal altyapılarında sıklıkla karşılaşılan **4 farklı dağıtık sistemin ham log akışları (OpenStack Nova Compute/API, Hadoop MapReduce Taskları, HDFS DFSClient erişim logları ve Java Exception stack trace blokları)** harmanlanarak 70.857 satırlık karmaşık bir stres test veriseti oluşturulmuştur.
+
+- **Tam Yaşam Döngüsü Kanıtı (Lifecycle Proof):**
+  1. **Ham Metin (`heterogeneous_karmasik_test.log`):** `70.857 Satır` ➔
+  2. **X-Factor 2 Tekli Satır (`normalized_heterogeneous_karmasik_test.log`):** `17.280 Bağımsız Olay` (%100 Sıfır-Kayıp) ➔
+  3. **X-Factor 3 Şablon Listesi (`templates_heterogeneous_karmasik_test.txt`):** `937 Yüksek Sadakatli Şablon` (**%95.07 Sıkıştırma / 20 Kat Hızlı**, 9.0/10.0 AI Fidelity Score).
 
 ---
 
@@ -42,17 +48,16 @@ Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnosti
 ---
 
 ## 5. X-Factor 3: Agentic Drain3 High-Fidelity Auto-Tuner (Otonom Şablon Sadakat Motoru)
-- **Sadakat (Fidelity) Puanlama Mekanizması Nasıl Çalışır?**
-  Auto-Tuner motorumuz, her iterasyonda üretilen şablon kümelerini Vertex AI Gemini 2.5 Flash'a (**AI Observability Reviewer**) göndererek 3 aşamalı **Sadakat Analizi** yaptırır:
-  1. **Bağlam Koruma Puanı (`fidelity_score`: 0.0 - 10.0):** Şablonun HTTP yanıt kodlarını (`status: 200`), istisna sınıflarını (`java.net.NoRouteToHostException`), servis isimlerini ve hata parametrelerini koruyup korumadığı değerlendirilir.
-  2. **Aşırı Maskeleme Tespiti (`is_over_masked`: bool):** Kritik hata veya yapısal tanımlayıcıların anlamsız `<*>` jokeriyle kapatılıp kapatılmadığı denetlenir.
-  3. **Yönlendirici Aksiyon Komutu (`recommendation`):** Şablon aşırı maskelenmişse benzerlik eşiği (`sim_th`) kademeli artırılır (Örn: `0.50` ➔ `0.60` ➔ `0.70`). Karmaşık yapıların ayrışması için ağaç derinliği (`depth`) genişletilir.
-- **Canlı İterasyon İlerlemesi (`heterogeneous_karmasik_test.log`):**
-  * **1. Tur (`sim_th=0.50`, `depth=4`):** Skor `6.5 / 10.0`, `is_over_masked=True` ➔ AI Kararı: *"HTTP yanıt kodları ve hata parametreleri `<*>` ile kapatılmış, sim_th artırılmalı."*
-  * **2. Tur (`sim_th=0.60`, `depth=4`):** Skor `7.8 / 10.0`, `is_over_masked=True` ➔ AI Kararı: *"Ağ adresleri genelleşmiş, sim_th artırılmalı."*
-  * **3. Tur (`sim_th=0.70`, `depth=4`):** Skor **`9.0 / 10.0`**, `is_over_masked=False` ➔ **HEDEF YÜKSEK SADAKAT YAKALANDI!** (Tüm istisna sınıfları ve statü kodları korundu, sadece değişken milisaniye/sayılar maskelendi).
-- **Canlı Metrikler:**
-  * **Kümeleme Başarısı:** 19.004 olay ➔ 937 Yüksek Sadakatli Şablon (%95.07 Sıkıştırma / 20 Kat Hızlı)
+- **Problem & Çözüm:** Geleneksel kümeleme motorları, log içerisindeki kritik hata kodlarını ve istisna detaylarını aşırı maskeleyerek anlamsız `<*>` gürültüsüne dönüştürebilir.
+- **Otonom Şablon İyileştiricisi (`agentic_drain3_autotuner.py`):**
+  1. Vertex AI Gemini 2.5 Flash, bir **AI Observability Reviewer** olarak konumlandırılır.
+  2. Üretilen şablonları SRE analizi kriterlerine göre otonom puanlar (Fidelity Score: 0.0 - 10.0).
+  3. Aşırı maskeleme saptandığında benzerlik eşiğini (`sim_th`) ve ağaç derinliğini (`depth`) otonom ayarlar.
+  4. Kritik hata bağlamını %100 koruyarak log hacmini **20 kat (%95.07)** sıkıştırır.
+  5. Üretilen tüm benzersiz şablonlar (%100) `templates_<girdi_adi>.txt` dosyasına ihraç edilir.
+- **Canlı Metrikler (`heterogeneous_karmasik_test.log`):**
+  * **Kümeleme Başarısı:** 19.004 olay ➔ 937 Yüksek Sadakatli Şablon (%95.07 Sıkıştırma)
+  * **AI Fidelity Skoru:** **9.0 / 10.0** (3 İterasyonda, `sim_th=0.70`, `depth=4`)
   * **API Maliyeti & Token:** 7.113 Token (**$0.000642 USD**)
 - **Kanıt:** `src/1_data_loader/agentic_drain3_autotuner.py`, `scripts/agentic_drain3_autotuner.py`, `src/1_data_loader/drain3_ozetle.py`
 
@@ -64,17 +69,17 @@ Sistemimiz, bu zorlukları **tamamen etki alanından bağımsız (domain-agnosti
 ---
 
 ## 7. Komut Satırı Çalıştırma Standartları (CLI)
-Tüm betiklerimiz %100 parametrik CLI altyapısına sahiptir:
+Jürimizin repodaki örnek verisetimiz üzerinden sıfır harici yüklemeyle anında test edebileceği komutlar:
 
 ```bash
-# 1. X-Factor 2: Agentic Self-Healing Loop & Parametrik CLI Testi:
-python3 scripts/agentic_vertex_async.py --input data/heterogeneous_karmasik_test.log
+# 1. Faz 1 & X-Factor 2 Testi (Sıfır-Kayıp Çoklu Satır Normalleştirici):
+python3 scripts/agentic_vertex_async.py --input src/1_data_loader/examples/heterogeneous_karmasik_test.log
 
-# 2. X-Factor 3: Agentic Drain3 High-Fidelity Auto-Tuner CLI Testi:
-python3 scripts/agentic_drain3_autotuner.py --input data/normalized_heterogeneous_karmasik_test.log
+# 2. Faz 2 & X-Factor 3 Testi (Agentic Drain3 High-Fidelity Auto-Tuner):
+python3 scripts/agentic_drain3_autotuner.py --input src/1_data_loader/examples/normalized_heterogeneous_karmasik_test.log
 
-# 3. Jenerik Drain3 Şablon Madencisi & Yapısal Metrik Raporlayıcısı:
-python3 scripts/drain3_ozetle.py --input data/normalized_heterogeneous_karmasik_test.log
+# 3. Jenerik Drain3 Şablon Madencisi Testi:
+python3 scripts/drain3_ozetle.py --input src/1_data_loader/examples/normalized_heterogeneous_karmasik_test.log
 ```
 
 ---

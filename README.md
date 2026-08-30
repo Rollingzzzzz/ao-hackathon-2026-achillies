@@ -17,37 +17,29 @@ SRE ve operasyon ekiplerinin devasa (milyonlarca satırlık) heterojen altyapıl
 
 ---
 
-## 🧪 Test Verisetimiz ve Koşturma Komutları
+## 🧪 Test Verisetimiz ve Koşturma Rehberi
 
-### 1. Kurulum:
-```bash
-git clone https://github.com/Rollingzzzzz/ao-hackathon-2026-achillies.git
-cd ao-hackathon-2026-achillies
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 2. Test Koşturma Komutları:
+Repomuzun `src/1_data_loader/examples/` klasöründe hazır bulunan **70.857 satırlık karmaşık stres verisetimiz (`heterogeneous_karmasik_test.log`)** ile anında test koşturabilirsiniz:
 
 ```bash
 # Adım 1: X-Factor 2 - Agentic Self-Healing Regex & Çoklu Satır Normalleştirme:
-python3 scripts/agentic_vertex_async.py --input data/heterogeneous_karmasik_test.log
+python3 scripts/agentic_vertex_async.py --input src/1_data_loader/examples/heterogeneous_karmasik_test.log
 
 # Adım 2: X-Factor 3 - Agentic Drain3 High-Fidelity Auto-Tuner (Şablon Sadakat Motoru):
-python3 scripts/agentic_drain3_autotuner.py --input data/normalized_heterogeneous_karmasik_test.log
+python3 scripts/agentic_drain3_autotuner.py --input src/1_data_loader/examples/normalized_heterogeneous_karmasik_test.log
 
 # Adım 3: Jenerik Drain3 Şablon Madencisi & Yapısal Metrik Raporlayıcısı:
-python3 scripts/drain3_ozetle.py --input data/normalized_heterogeneous_karmasik_test.log
+python3 scripts/drain3_ozetle.py --input src/1_data_loader/examples/normalized_heterogeneous_karmasik_test.log
 ```
 
 ---
 
-## 📄 Üretilen Çıktı Dosyaları
-- `data/normalized_<girdi_adi>.log`: %100 tekli satır olaylarına indirgenmiş ham loglar.
-- `data/templates_<girdi_adi>.txt`: %100 benzersiz yüksek sadakatli şablon listesi.
-- `data/output_autotuner_<girdi_adi>.txt`: Yürütme, token tüketimi, sadakat skoru ve API maliyet raporu.
-- `data/summary_autotuner_<girdi_adi>.json`: Tüm şablonların ve metriklerin JSON özeti.
+## 📄 Üretilen Çıktı Dosyaları ve Yaşam Döngüsü Kanıtı (`src/1_data_loader/examples/`)
+- `heterogeneous_karmasik_test.log`: 70.857 satırlık ham karmaşık log verisi.
+- `normalized_heterogeneous_karmasik_test.log`: 17.280 tekli satır olayı (%100 Sıfır-Kayıp).
+- `templates_heterogeneous_karmasik_test.txt`: 937 adet %100 benzersiz yüksek sadakatli şablon listesi (%95.07 Sıkıştırma).
+- `output_autotuner_<girdi_adi>.txt`: Yürütme, token tüketimi, sadakat skoru ve API maliyet raporu.
+- `summary_autotuner_<girdi_adi>.json`: Tüm şablonların ve metriklerin JSON özeti.
 
 ---
 
