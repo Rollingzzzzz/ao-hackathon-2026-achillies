@@ -1,0 +1,20 @@
+.env
+__pycache__/
+*.pyc
+venv/
+.pytest_cache/
+.DS_Store
+
+# Results
+vertex_results.txt
+openrouter_results.txt
+qwen_results.txt
+output_*.txt
+summary_*.json
+templates_*.txt
+
+# Ignore raw data logs and directories
+data/*.tar.gz
+data/*.log
+data/application_*
+data/

@@ -1,0 +1,43 @@
+======================================================================
+📌 VERTEX AI GEMINI 2.5 FLASH - TÜM BÜYÜK SRE DOSYALARI TEST TABLOSU
+======================================================================
+Start Time: 2026-08-30 01:38:42
+
+----------------------------------------------------------------------
+🔍 OpenStack Normal 2 (En Büyük Log)
+  └─ Dosya: openstack_normal2.log | Dilim Satırı: #68538
+----------------------------------------------------------------------
+• Gemini 2.5 Flash Regex   : `^nova-(api|compute)\.log\.1\.\d{4}-\d{2}-\d{2}_\d{2}:\d{2}:\d{2}\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2}\.\d{3}\s+\d+\s+(INFO|DEBUG|WARNING|ERROR|CRITICAL)`
+• Çoklu Satır Tespiti      : True
+• Test Edilen Satır        : 1000
+• Birleştirilen Olay       : 997
+• Yakalanan Stacktrace     : 3
+• Sıfır-Kayıp Eşitliği     : PASSED ZERO-LOSS
+• Açıklama                 : The regex identifies new log entries by matching the highly structured prefix: the log file identifier (e.g., 'nova-api.log.1.YYYY-MM-DD_HH:MM:SS'), followed by the log entry's timestamp (YYYY-MM-DD HH:MM:SS.ms), process ID, and log level. Continuation lines, such as stack traces, typically begin with whitespace or other characters that do not conform to this specific pattern, ensuring they are not matched as new entries.
+
+----------------------------------------------------------------------
+🔍 OpenStack Abnormal (Arızalı / Anomali Logu)
+  └─ Dosya: openstack_abnormal.log | Dilim Satırı: #9201
+----------------------------------------------------------------------
+• Gemini 2.5 Flash Regex   : `^nova-(compute|api|scheduler)\.log\.\d{4}-\d{2}-\d{2}_\d{2}:\d{2}:\d{2} \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}`
+• Çoklu Satır Tespiti      : True
+• Test Edilen Satır        : 1000
+• Birleştirilen Olay       : 1000
+• Yakalanan Stacktrace     : 0
+• Sıfır-Kayıp Eşitliği     : PASSED ZERO-LOSS
+• Açıklama                 : The regex identifies lines starting with 'nova-' followed by a service name (compute, api, or scheduler), a log file timestamp, and then the event timestamp with milliseconds. This highly structured prefix is unique to new log entries. Any line not matching this specific pattern at its start would be considered a continuation line, even though none are present in this specific sample.
+
+----------------------------------------------------------------------
+🔍 Hadoop Container (Java Stacktrace Logu)
+  └─ Dosya: container_1445144423722_0020_01_000001.log | Dilim Satırı: #853
+----------------------------------------------------------------------
+• Gemini 2.5 Flash Regex   : `^[^\t]`
+• Çoklu Satır Tespiti      : True
+• Test Edilen Satır        : 1000
+• Birleştirilen Olay       : 105
+• Yakalanan Stacktrace     : 53
+• Sıfır-Kayıp Eşitliği     : PASSED ZERO-LOSS
+• Açıklama                 : The regex identifies lines that do not start with a tab character (\t) as the beginning of a new log entry. All continuation lines, including stack trace elements ('at ...'), nested exceptions ('Caused by: ...'), and '... more' indicators, are consistently indented with a leading tab in the provided sample. Therefore, any line not starting with a tab marks a new logical event.
+
+======================================================================
+Tüm Büyük Dosyaların Testi Tamamlandı (2026-08-30 01:39:29)

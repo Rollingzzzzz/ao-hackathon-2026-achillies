@@ -1,0 +1,47 @@
+{
+  "takim": {
+    "ad": "achillies",
+    "uyeler": [
+      "Aziz Utku Özdemir",
+      "Aziz1 Özdemir",
+      "Aziz2 Özdemir",
+      "Aziz3 Özdemir"
+    ],
+    "iletisim": "azizutkuozdemir@gmail.com"
+  },
+  "proje": {
+    "ad": "achillies-sre-ai",
+    "ozet": "AI orkestrasyonu ile SRE olaylarında kök neden analizi ve otomatik aksiyon üretimi",
+    "deploy_url": null
+  },
+  "calistirma": {
+    "komut": "python3 src/main.py",
+    "on_kosullar": ["Python 3.11+"],
+    "veri_yolu": "./data"
+  },
+  "ai_kullanimi": {
+    "platform": "SAKA",
+    "modeller": [
+      {
+        "ad": "SAKA LLM Gateway",
+        "surum": "2026-v1",
+        "kullanim": "kodlama | analiz | aciklama"
+      }
+    ],
+    "mcp_sunuculari": [],
+    "apiler": ["SAKA API"],
+    "insan_ai_is_bolumu": "Mimari kararlar ve kural setleri insanda; log analizi, özetleme ve XAI kök neden üretimi AI modelinde."
+  },
+  "cozum": {
+    "yaklasim": "Multi-LLM orkestrasyonu ve açıklanabilir SRE analizi",
+    "x_factor": "Otomatik kök neden tespiti ile birlikte üretilen dinamik iyileştirme playbook'u",
+    "olctugumuz_metrikler": {}
+  },
+  "sunum": {
+    "demo_akisi": [
+      "1. Sentetik SRE log paketinin yüklenmesi",
+      "2. AI Jüri / SAKA kök neden analizi çıktısı",
+      "3. Otomatik çözüm önerisi ve XAI raporu"
+    ]
+  }
+}

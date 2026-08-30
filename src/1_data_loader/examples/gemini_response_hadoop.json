@@ -1,0 +1,5 @@
+{
+  "event_header_regex": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}|^(?!Caused by: )[\\w.]+: ",
+  "is_multiline_detected": true,
+  "explanation": "The regex identifies new log entries by two distinct patterns: either a line starting with a timestamp in the format 'YYYY-MM-DD HH:MM:SS,ms' (e.g., '2015-10-18 18:05:28,570'), OR a line starting with a Java-style class name followed by a colon (e.g., 'java.net.NoRouteToHostException:'), provided it is NOT preceded by 'Caused by:'. This ensures that actual exception starts are captured as new entries, while stack trace lines (starting with '\\tat ', 'Caused by: ', or '... \\d+ more') are correctly treated as continuations."
+}

@@ -1,0 +1,51 @@
+[01] nova-api.log.1.2017-05-17_12:02:19 2017-05-16 <*> <*> INFO nova.osapi_compute.wsgi.server <*> <*> <*> - - -] <*> <*> <*> HTTP/1.1" status: <*> len: <*> time: <*>
+[02] nova-api.log.1.2017-05-17_12:02:19 2017-05-17 <*> <*> INFO nova.osapi_compute.wsgi.server <*> <*> <*> - - -] <*> <*> <*> HTTP/1.1" status: <*> len: <*> time: <*>
+[03] <*> <*> <*> 2931 <*> nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] <*> base <*> /var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742
+[04] <*> <*> <*> 2931 INFO nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] image 0673dd71-34c5-4fbb-86c4-40623fbe45b4 at (/var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742): in use: on this node 1 local, 0 on other nodes sharing this instance storage
+[05] <*> <*> <*> <*> INFO nova.metadata.wsgi.server <*> - - - - -] <*> "GET <*> HTTP/1.1" status: <*> len: <*> time: <*>
+[06] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO <*> [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] <*> <*> <*> <*> <*>
+[07] nova-api.log.1.2017-05-17_12:02:19 <*> <*> <*> INFO nova.metadata.wsgi.server [-] <*> "GET <*> HTTP/1.1" status: <*> len: <*> time: <*>
+[08] nova-compute.log.1.2017-05-17_12:02:35 2017-05-16 <*> 2931 INFO nova.compute.claims <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> <*> <*> <*> <*> <*> <*> <*>
+[09] nova-compute.log.2017-05-17_12:02:35 2017-05-17 <*> 2931 INFO <*> [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] <*> <*> <*> <*> <*>
+[10] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO <*> <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> <*> <*>
+[11] nova-compute.log.1.2017-05-17_12:02:35 2017-05-16 <*> 2931 INFO <*> <*> - - - - -] <*> <*> <*> <*> <*> <*>
+[12] nova-compute.log.1.2017-05-17_12:02:35 2017-05-17 <*> 2931 INFO nova.compute.claims <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> <*> <*> <*> <*> <*> <*> <*>
+[13] nova-compute.log.1.2017-05-17_12:02:35 2017-05-17 <*> 2931 INFO <*> <*> - - - - -] <*> <*> <*> <*> <*> <*>
+[14] <*> <*> <*> 2931 INFO nova.virt.libvirt.driver [-] [instance: <*> Instance <*> successfully.
+[15] <*> <*> <*> 2931 INFO nova.compute.manager <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> Took <*> seconds to <*> the instance on the hypervisor.
+[16] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO nova.virt.libvirt.driver <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> <*> <*> <*> <*>
+[17] <*> <*> <*> 2931 INFO nova.compute.manager [req-3ea4052c-895d-4b64-9e2d-04d64c4d94ab - - - - -] [instance: <*> During sync_power_state the instance has a pending task (spawning). Skip.
+[18] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO nova.compute.resource_tracker [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] <*> <*> <*> <*> <*> <*> <*> <*>
+[19] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO nova.compute.manager [-] [instance: <*> VM Stopped (Lifecycle Event)
+[20] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO nova.compute.manager <*> <*> 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> Took <*> seconds to deallocate network for instance.
+[21] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO nova.compute.claims <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> Attempting claim: memory 2048 MB, disk 20 GB, vcpus 1 CPU
+[22] <*> <*> <*> 25750 INFO nova.api.openstack.compute.server_external_events <*> f7b8d1f1d4d44643b07fa10ca7d021fb e9746973ac574c6b8a9e8857f56a7608 - - -] Creating event <*> for instance <*>
+[23] <*> <*> <*> 2931 INFO nova.compute.manager <*> 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] [instance: <*> Took <*> seconds to build instance.
+[24] nova-api.log.1.2017-05-17_12:02:19 <*> <*> 25746 INFO nova.api.openstack.wsgi <*> f7b8d1f1d4d44643b07fa10ca7d021fb e9746973ac574c6b8a9e8857f56a7608 - - -] HTTP exception thrown: No instances found for any event
+[25] <*> <*> <*> 2931 INFO nova.compute.resource_tracker [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] Final resource view: name=cp-1.slowvm1.tcloud-pg0.utah.cloudlab.us phys_ram=64172MB <*> phys_disk=15GB <*> total_vcpus=16 <*> pci_stats=[]
+[26] nova-compute.log.2017-05-17_12:02:35 2017-05-17 <*> 2931 INFO nova.compute.resource_tracker [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] <*> <*> <*> <*> <*> <*> <*> <*>
+[27] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO nova.virt.libvirt.imagecache [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] Base or swap file too young to remove: /var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742
+[28] <*> <*> <*> 25998 INFO nova.scheduler.host_manager <*> - - - - -] Successfully synced instances from host 'cp-1.slowvm1.tcloud-pg0.utah.cloudlab.us'.
+[29] nova-scheduler.log.1.2017-05-17_12:02:19 <*> <*> 25998 INFO nova.scheduler.host_manager <*> - - - - -] The instance sync for host 'cp-1.slowvm1.tcloud-pg0.utah.cloudlab.us' did not match. Re-created its InstanceList.
+[30] nova-api.log.2017-05-17_12:02:19 2017-05-17 <*> <*> INFO nova.osapi_compute.wsgi.server <*> <*> e9746973ac574c6b8a9e8857f56a7608 - - -] <*> <*> <*> HTTP/1.1" status: 200 len: <*> time: <*>
+[31] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task File <*> line <*> in <*>
+[32] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 INFO nova.compute.manager [-] [instance: <*> During sync_power_state the instance has a pending task <*> Skip.
+[33] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task <*> <*>
+[34] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 WARNING nova.compute.manager [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] While synchronizing instance power states, found 1 instances in the database and 0 instances on the hypervisor.
+[35] <*> <*> <*> 2931 INFO nova.compute.manager [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] Running instance usage audit for host cp-1.slowvm1.tcloud-pg0.utah.cloudlab.us from <*> <*> to <*> <*> <*> instances.
+[36] nova-api.log.2017-05-17_12:02:19 2017-05-17 <*> <*> INFO nova.metadata.wsgi.server [-] 10.11.28.201,10.11.10.1 "GET <*> HTTP/1.1" status: 200 len: <*> time: <*>
+[37] nova-compute.log.1.2017-05-17_12:02:35 2017-05-16 <*> 2931 ERROR oslo_service.periodic_task <*> <*> <*>
+[38] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 WARNING nova.virt.libvirt.driver [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] couldn't obtain the vcpu count from domain id: <*> exception: Requested operation is not valid: cpu affinity is not supported
+[39] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task [req-addc1839-2ed5-4778-b57e-5854eb7b8b09 - - - - -] Error during ComputeManager._run_image_cache_manager_pass
+[40] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task Traceback (most recent call last):
+[41] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task disk_path)
+[42] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task backing_file = images.qemu_img_info(path, format).backing_file
+[43] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task InvalidDiskInfo: Disk info file is invalid: qemu-img failed to execute on <*> : Unexpected error while running command.
+[44] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task Command: /usr/bin/python -m oslo_concurrency.prlimit --as=1073741824 --cpu=2 -- env LC_ALL=C LANG=C qemu-img info <*>
+[45] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task Stderr: u"qemu-img: Could not open <*> Could not open <*> No such file or directory\n"
+[46] nova-compute.log.1.2017-05-17_12:02:35 <*> <*> 2931 ERROR oslo_service.periodic_task
+[47] nova-compute.log.1.2017-05-17_12:02:35 2017-05-17 <*> 2931 ERROR oslo_service.periodic_task <*> <*> <*>
+[48] nova-compute.log.2017-05-17_12:02:35 2017-05-17 <*> 2931 INFO nova.compute.manager [req-3ea4052c-895d-4b64-9e2d-04d64c4d94ab - - - - -] [instance: 96c58299-fc8f-4be0-942e-8bcf09431769] VM Resumed (Lifecycle Event)
+[49] nova-api.log.1.2017-05-17_12:02:19 2017-05-17 06:25:03.044 25749 ERROR keystonemiddleware.auth_token [req-abcdb287-429c-40a5-8e79-d490d4fb7410 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] Bad response code while validating token: 503
+[50] nova-api.log.1.2017-05-17_12:02:19 2017-05-17 06:25:03.045 25749 WARNING keystonemiddleware.auth_token [req-abcdb287-429c-40a5-8e79-d490d4fb7410 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] Identity response: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+[51] nova-api.log.1.2017-05-17_12:02:19 2017-05-17 06:25:03.046 25749 CRITICAL keystonemiddleware.auth_token [req-abcdb287-429c-40a5-8e79-d490d4fb7410 113d3a99c3da401fbd62cc2caa5b96d2 54fadb412c4e40cdbaed9335e4c35a9e - - -] Unable to validate token: Failed to fetch token data from identity server
