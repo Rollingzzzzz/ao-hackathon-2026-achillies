@@ -32,7 +32,7 @@ _Zorunlu beyan: Kullanılan her araç ve model sürümü burada listelenecektir.
 
 | Araç | Sürüm | Kullanım Alanı |
 |------|-------|----------------|
-| SAKA (saka.turkcell.com.tr) | TODO | TODO |
+| ZCode (AI kod asistanı ajanı) | GLM-5.3 | AI destekli geliştirme: kod yazımı, veri analizi, hata ayıklama |
 
 ## 7. MCP Sunucu Listesi
 

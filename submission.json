@@ -20,8 +20,8 @@
     "veri_yolu": "./data"
   },
   "ai_kullanimi": {
-    "platform": "SAKA",
-    "modeller": [],
+    "platform": "ZCode",
+    "modeller": ["GLM-5.3"],
     "mcp_sunuculari": [],
     "apiler": [],
     "insan_ai_is_bolumu": "TODO: Senaryo açıldığında doldurulacak"

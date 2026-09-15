@@ -5,7 +5,7 @@ Bu dosya, bu repoda çalışan AI kod asistanlarına temel bağlam ve çalışma
 ## Bağlam
 
 - Tek günlük hackathon: senaryo ve veri paketi 16 Eylül 2026, 14:30'da açılır; teslim 17:30'da kesinleşir.
-- Birincil AI ortamı SAKA'dır; kullanılan diğer tüm araçlar ve model sürümleri README'de beyan edilir.
+- AI destekli geliştirme ZCode ajanı ile yapılır (model: GLM-5.3); SAKA kullanılmaz. Kullanılan tüm araçlar ve model sürümleri README bölüm 6'da beyan edilir.
 - Hackathon verisi sentetiktir; hiçbir platforma gerçek müşteri veya üretim verisi yüklenmez.
 
 ## Kurallar
