@@ -43,6 +43,7 @@ These rules apply to EVERY job/function that processes files of unknown or large
 ## File Language
 
 - CONVENTIONS.md and every agent-facing project document (including `memory.md`) MUST be written in **English only**. No Turkish content is allowed in these files. Proper names keep their official spelling.
+- All agent-facing project documents MUST contain professional, project-related content only: facts, decisions, findings and engineering context. No informal conversation, no personal remarks.
 
 ## Git Branching Workflow
 
@@ -59,4 +60,5 @@ These rules apply to EVERY job/function that processes files of unknown or large
   - the user gives a command, decision, or preference, or
   - a critical development occurs (milestone, blocker, state change, important result).
 - Entries MUST be dated and APPEND-only: never delete or rewrite older entries.
+- Content scope: entries MUST be professional and strictly project-related — critical information, hints, findings, decisions, requirements, how and where a problem was solved, and current progress state, so that any future session can continue faster. Entries MUST NOT contain informal conversation, brainstorming chatter, personal opinions, or remarks about other teams or individuals.
 - Anything recorded in `memory.md` is authoritative project context. The agent MUST read `memory.md` at session start, and MUST NOT claim to be unaware of, or to have forgotten, anything recorded there.

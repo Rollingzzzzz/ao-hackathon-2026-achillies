@@ -1,12 +1,18 @@
 # Project Memory — achillies / AO Hackathon 2026
 
-Append-only log of user commands, decisions, and critical developments. Newest entries at the bottom. Anything recorded here is authoritative: the agent must not claim to be unaware of it.
+Professional, project-related log. Purpose: let any future session continue immediately with full context and accelerate project progress.
+
+**Belongs here:** critical information, hints, findings, decisions, requirements, how and where a problem was solved, current progress and branch state.
+
+**Never here:** informal conversation, brainstorming chatter, personal opinions, remarks about other teams or individuals.
+
+Entries are dated and append-only. Anything recorded here is authoritative: the agent must not claim to be unaware of it.
 
 ---
 
 ## 2026-09-15
 
-- Repository was reset to a clean zero-contestant skeleton. The mandatory structure from the official announcement is in place and verified (public repo, branch `main`). Local repo: `D:\projeler\ao-hackathon-2026-achillies`.
+- Repository was reset to a clean starting skeleton (fresh single-commit history). The mandatory structure from the official announcement is in place and verified (public repo, branch `main`). Local repo: `D:\projeler\ao-hackathon-2026-achillies`.
 - Team (in `submission.json`): Aziz Utku ÖZDEMİR (captain + participant), Bülent Topçu (participant), Sefa Korkmaz (participant). Contact: azizutkuozdemir@gmail.com. No GitHub collaborators will be added.
 - Language decision: all code will be **Python 3.11** (per the official announcement's "Python 3.11+" requirement).
 - `CONVENTIONS.md` is the binding engineering contract for hackathon-day coding; it is written in English only.
@@ -29,5 +35,5 @@ Append-only log of user commands, decisions, and critical developments. Newest e
 - No deployment required: a locally working product is enough, but it must run live on stage.
 - No setup support on event day: environment, SAKA access and git auth must be tested BEFORE the event.
 - SAKA usage advice from the email: spend the first ~15 minutes on approach selection; use the model for data exploration (schema → hypotheses) — finding the meaningful signal is worth more than coding; build module by module, run and verify each module; a documented model comparison is a strong presentation narrative.
-- Git workflow decision (user): feature-branch workflow — for every work item (or every stage of a big task split by the user), open a branch first, commit there, run and verify, and merge into `main` ONLY at the moment the user confirms it works. `main` must always stay in a verified, working state. Recorded in `CONVENTIONS.md` as `Git Branching Workflow`.
-- Security decision (user): no API keys or credentials ever pushed to git; no Turkcell-related sensitive info (customer data, internal details) ever pushed; mandatory sensitivity check of the staged diff before EVERY commit. Recorded in `CONVENTIONS.md` as `Secrets and Sensitive Data`.
+- Working agreement: feature-branch workflow — for every work item (or every stage of a big task), open a branch first, commit there, run and verify, and merge into `main` ONLY when it is confirmed to work. `main` must always stay in a verified, working state. Recorded in `CONVENTIONS.md` as `Git Branching Workflow`.
+- Working agreement: security — no API keys or credentials are ever pushed to git; no Turkcell-related sensitive info (customer data, internal details) is ever pushed; a sensitivity check of the staged diff is mandatory before EVERY commit. Recorded in `CONVENTIONS.md` as `Secrets and Sensitive Data`.
