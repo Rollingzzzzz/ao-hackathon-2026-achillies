@@ -29,3 +29,4 @@ Append-only log of user commands, decisions, and critical developments. Newest e
 - No deployment required: a locally working product is enough, but it must run live on stage.
 - No setup support on event day: environment, SAKA access and git auth must be tested BEFORE the event.
 - SAKA usage advice from the email: spend the first ~15 minutes on approach selection; use the model for data exploration (schema → hypotheses) — finding the meaningful signal is worth more than coding; build module by module, run and verify each module; a documented model comparison is a strong presentation narrative.
+- Git workflow decision (user): feature-branch workflow — for every work item (or every stage of a big task split by the user), open a branch first, commit there, run and verify, and merge into `main` ONLY at the moment the user confirms it works. `main` must always stay in a verified, working state. Recorded in `CONVENTIONS.md` as `Git Branching Workflow`.

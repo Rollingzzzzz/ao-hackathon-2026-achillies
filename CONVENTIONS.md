@@ -38,6 +38,14 @@ These rules apply to EVERY job/function that processes files of unknown or large
 
 - CONVENTIONS.md and every agent-facing project document (including `memory.md`) MUST be written in **English only**. No Turkish content is allowed in these files. Proper names keep their official spelling.
 
+## Git Branching Workflow
+
+- NEVER commit directly to `main` during development.
+- For every work item, open a branch FIRST, then commit to that branch.
+- A big task (e.g. "TASK BIG") is split into stages; each stage gets its own branch (part 1 → branch, part 2 → branch, ...).
+- Per-branch cycle: open branch → implement → run it → verify it works → the user says "this works" → ONLY THEN merge the branch into `main`.
+- A branch is merged into `main` exclusively after explicit user confirmation. `main` must always stay in a verified, working state.
+
 ## Project Memory (memory.md)
 
 - The project root MUST contain a `memory.md` file.
