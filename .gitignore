@@ -1,0 +1,17 @@
+# Gizli yapılandırma
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# OS / editör
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

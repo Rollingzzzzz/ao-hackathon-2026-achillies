@@ -1,0 +1,37 @@
+{
+  "takim": {
+    "ad": "achillies",
+    "uyeler": [
+      "Aziz Utku ÖZDEMİR (Takım Kaptanı)",
+      "Aziz Utku Özdemir (Katılımcı)",
+      "Bülent Topçu (Katılımcı)",
+      "Sefa Korkmaz (Katılımcı)"
+    ],
+    "iletisim": "azizutkuozdemir@gmail.com"
+  },
+  "proje": {
+    "ad": "TODO",
+    "ozet": "TODO: Senaryo açıldığında doldurulacak",
+    "deploy_url": null
+  },
+  "calistirma": {
+    "komut": "TODO",
+    "on_kosullar": ["Python 3.11+"],
+    "veri_yolu": "./data"
+  },
+  "ai_kullanimi": {
+    "platform": "SAKA",
+    "modeller": [],
+    "mcp_sunuculari": [],
+    "apiler": [],
+    "insan_ai_is_bolumu": "TODO: Senaryo açıldığında doldurulacak"
+  },
+  "cozum": {
+    "yaklasim": "TODO",
+    "x_factor": "TODO",
+    "olctugumuz_metrikler": {}
+  },
+  "sunum": {
+    "demo_akisi": []
+  }
+}
