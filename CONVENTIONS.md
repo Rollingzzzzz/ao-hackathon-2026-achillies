@@ -2,6 +2,12 @@
 
 **Purpose of this file:** Avoid losing hackathon-day time on design debates and guarantee that the code we write is robust. Every binding engineering decision is recorded here. During development, this file is applied as written; rules here are not re-negotiated mid-session.
 
+## Dependency Freeze (Reproducible Environment)
+
+- The project MUST run in a dedicated Python 3.11 virtual environment, isolated from system-wide packages.
+- At every verified working state — and MANDATORY for the final working prototype before the hard deadline — the exact installed package versions MUST be recorded from that environment into `requirements.txt` (root of the repo) via `python -m pip freeze > requirements.txt`.
+- The freeze file MUST be committed and pushed to GitHub, so the exact same environment can be recreated on any other machine (e.g., Selahattin's test computer) with `python -m pip install -r requirements.txt` and the prototype is guaranteed to run there.
+
 ## Language and Runtime
 
 - All code MUST use Python **3.11** (team decision, based on the "Python 3.11+" requirement in the official announcement).
@@ -33,6 +39,21 @@ These rules apply to EVERY job/function that processes files of unknown or large
 - Everything a script produces MUST be traceable back to that script by name.
 
 > Note: `scripts/` is an addition of ours on top of the mandatory skeleton from the announcement; it does not replace any required folder.
+
+## Script Development and Verification Loop
+
+- For every script (every problem-solving piece) developed, the agent (ZCode / GLM-5.3) first verifies it autonomously: reviews the code for internal consistency, runs its own trial executions, and inspects the produced outputs.
+- Whenever the agent runs a script on its own during development (any self-trial), it MUST run it with `--debug` enabled, and MUST save the debug output (results, analytics, run statistics, timings) under that script's dedicated folder (`scripts/<script-name>/`).
+- After each iteration, the agent MUST hand the exact run/test commands to the user in the chat, so the human can execute the script personally and observe its behavior directly, with their own eyes.
+- After the work is committed on its branch, the agent MUST post in the chat the exact commands for running that branch's script(s) with FULL paths (absolute paths usable as-is from any terminal), so the human can personally run them and verify with their own eyes that the script works in that branch.
+- The final consistency/acceptance check of every script development is ALWAYS performed by the human. A script counts as verified only after explicit user confirmation (the same confirmation that gates merging into `main`).
+
+## Per-Script README (Context Recovery)
+
+- Every script we develop MUST have its own README file, located in the script's dedicated folder: `scripts/<script-name>/README.md`.
+- The README MUST contain summary-level information about the script: purpose (what problem it solves), inputs and outputs (file paths, formats), CLI parameters, an example run command (full path), key decisions and findings, and current status.
+- The README MUST be kept up to date as the script evolves; it is updated together with the script, not after the fact.
+- Rationale: chat context is finite — after a compaction (context limit reached), past details are lost. The per-script README is the durable recall point: to remember anything about a script's history, read its README first.
 
 ## Secrets and Sensitive Data
 
