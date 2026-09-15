@@ -34,6 +34,12 @@ These rules apply to EVERY job/function that processes files of unknown or large
 
 > Note: `scripts/` is an addition of ours on top of the mandatory skeleton from the announcement; it does not replace any required folder.
 
+## Secrets and Sensitive Data
+
+- NEVER commit or push API keys, tokens, passwords, credentials, or any real value belonging in `.env`. Only `.env.example` with EMPTY placeholder values may be committed.
+- NEVER commit or push any Turkcell-related sensitive information: customer data, internal system details, internal credentials, or any non-synthetic platform content.
+- Before EVERY commit, this check is MANDATORY: inspect `git status` and the staged diff (`git diff --staged`) and confirm nothing sensitive is included. If anything sensitive is found, it MUST be removed before the commit is made. A commit MUST NOT be created while this check is skipped.
+
 ## File Language
 
 - CONVENTIONS.md and every agent-facing project document (including `memory.md`) MUST be written in **English only**. No Turkish content is allowed in these files. Proper names keep their official spelling.
