@@ -1,6 +1,9 @@
 # Gizli yapılandırma
 .env
 
+# Hackathon veri paketi — asla repoya girmez
+data/
+
 # Python
 __pycache__/
 *.py[cod]

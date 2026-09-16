@@ -10,7 +10,15 @@ Entries are dated and append-only. Anything recorded here is authoritative: the 
 
 ---
 
-## 2026-09-15
+## 2026-09-16 (event day)
+
+- Scenario opened at 14:30: **S-A1 "Alarm Fırtınası" (Alert Storm Correlator)**. Window: 2026-09-10 01:30–03:30, 3,000 alarms, 27 services, 56 hosts, 32 dependency records.
+- Data package (small, ~1.1 MB total — NOT the feared 2 GB): extracted at `data/package/katilimci_paketi/` (gitignored; never commit). Files: `alarms.json` (3,000 records; JSON array), `alarms.csv` (same data, tags expanded), `service_dependencies.csv` (kaynak_servis depends on hedef_servis; senkron/asenkron; kritiklik), `host_inventory.csv` (host→service, dc1/dc2, rack-A/B/C, is_kritikligi), `VERI_SOZLUGU.md` (26 alarm type codes), `SENARYO_BRIFINGI.md`.
+- Task: reduce the alarm flood to event cards (≤15; "as many as an on-call engineer can look at"). Each card requires: root-cause hypothesis + rationale (+counter-hypotheses = X-Factor), affected services, alarm count, time range, first action with owner + status. Optional: action lifecycle tracking (open→close) in demo. All 3,000 alarms must be processed; noise must be eliminated WITH an audit view showing why each eliminated alarm was dropped.
+- Key data hints from the briefing: multiple independent real events (count undisclosed — deriving it IS part of the scenario); large background-noise fraction; some events burst-like, some slow-burn (slow-burn harder); alarm types are SHARED across events — type alone cannot discriminate; evaluation = last commit at 17:30 sharp (later commits ignored); repo stays public; veri paketi repoya konmaz.
+- Scoring: reduction ratio, root-cause hit rate (against hidden ground truth opened at evaluation), wrong-merge penalty, noise-elimination precision. Justified wrong hypothesis > unjustified correct one — XAI rationale is the product.
+- Environment: branch `feat/sa1-alarm-storm` opened as first action per plan; venv `.venv` created (Python 3.12.10 — 3.11 not installed, 3.12 satisfies "3.11+"; pandas 3.0.5 installed). data/ added to `.gitignore`.
+
 
 - Repository was reset to a clean starting skeleton (fresh single-commit history). The mandatory structure from the official announcement is in place and verified (public repo, branch `main`). Local repo: `D:\projeler\ao-hackathon-2026-achillies`.
 - Team (in `submission.json`): Aziz Utku ÖZDEMİR (captain + participant), Bülent Topçu (participant), Sefa Korkmaz (participant). Contact: azizutkuozdemir@gmail.com. No GitHub collaborators will be added.
