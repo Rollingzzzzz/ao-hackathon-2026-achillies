@@ -1,0 +1,268 @@
+# S-A1 Hypothesis Probes
+_generated 2026-09-16T14:37:10_
+
+## Infra failure types (disk_full, db_write_fail, gc_pressure, oom_risk, conn_refused, network_down, pkt_loss, ext_*) by service x time
+
+| service | type | n | first | last | first 12 minutes |
+|---|---|---|---|---|---|
+| batch-scheduler | batch_overlap | 4 | 03:05 | 03:06 | 03:05, 03:06, 03:06, 03:06 |
+| billing-service | db_write_fail | 20 | 02:08 | 02:27 | 02:08, 02:11, 02:11, 02:12, 02:13, 02:13, 02:13, 02:14, 02:15, 02:17, 02:18, 02:19 |
+| billing-db | db_write_fail | 7 | 02:05 | 02:08 | 02:05, 02:05, 02:06, 02:07, 02:07, 02:08, 02:08 |
+| invoice-batch | db_write_fail | 7 | 02:07 | 02:24 | 02:07, 02:08, 02:10, 02:18, 02:21, 02:21, 02:24 |
+| billing-db | disk_full | 17 | 02:05 | 02:09 | 02:05, 02:05, 02:05, 02:05, 02:06, 02:06, 02:06, 02:07, 02:07, 02:07, 02:07, 02:08 |
+| payment-provider-gw | ext_slow | 13 | 02:40 | 02:43 | 02:40, 02:40, 02:40, 02:40, 02:41, 02:41, 02:41, 02:42, 02:42, 02:42, 02:42, 02:42 |
+| payment-provider-gw | ext_unreach | 11 | 02:40 | 02:43 | 02:40, 02:40, 02:41, 02:41, 02:41, 02:41, 02:42, 02:42, 02:42, 02:43, 02:43 |
+| session-service | gc_pressure | 18 | 02:11 | 02:34 | 02:11, 02:11, 02:11, 02:15, 02:15, 02:15, 02:20, 02:20, 02:20, 02:24, 02:25, 02:25 |
+| api-gateway | network_down | 2 | 01:42 | 01:43 | 01:42, 01:43 |
+| auth-service | network_down | 2 | 01:42 | 01:43 | 01:42, 01:43 |
+| message-queue | network_down | 2 | 01:44 | 01:44 | 01:44, 01:44 |
+| order-service | network_down | 2 | 01:42 | 01:43 | 01:42, 01:43 |
+| charging-service | network_down | 1 | 01:43 | 01:43 | 01:43 |
+| dns-resolver | network_down | 1 | 01:45 | 01:45 | 01:45 |
+| subscriber-db | network_down | 1 | 01:44 | 01:44 | 01:44 |
+| subscriber-service | network_down | 1 | 01:43 | 01:43 | 01:43 |
+| session-service | oom_risk | 12 | 02:38 | 02:52 | 02:38, 02:38, 02:38, 02:42, 02:43, 02:43, 02:47, 02:47, 02:47, 02:51, 02:51, 02:52 |
+| dns-resolver | pkt_loss | 4 | 01:42 | 01:44 | 01:42, 01:43, 01:44, 01:44 |
+| message-queue | pkt_loss | 4 | 01:42 | 01:45 | 01:42, 01:43, 01:44, 01:45 |
+| order-service | pkt_loss | 3 | 01:42 | 01:44 | 01:42, 01:43, 01:44 |
+| subscriber-db | pkt_loss | 3 | 01:42 | 01:45 | 01:42, 01:44, 01:45 |
+| charging-service | pkt_loss | 2 | 01:43 | 01:43 | 01:43, 01:43 |
+| report-batch | pkt_loss | 2 | 01:43 | 01:43 | 01:43, 01:43 |
+| subscriber-service | pkt_loss | 2 | 01:42 | 01:43 | 01:42, 01:43 |
+| api-gateway | pkt_loss | 1 | 01:43 | 01:43 | 01:43 |
+| auth-service | pkt_loss | 1 | 01:43 | 01:43 | 01:43 |
+
+## Network alarms (network_down, network_flap, pkt_loss) by dc/rack x 5min (only cells with n>=3)
+
+| 5min | dc | rack | type | n |
+|---|---|---|---|---|
+| 01:35 | dc1 | rack-C | network_flap | 4 |
+| 01:35 | dc2 | rack-A | network_flap | 3 |
+| 01:40 | dc1 | rack-A | network_flap | 22 |
+| 01:40 | dc1 | rack-A | pkt_loss | 20 |
+| 01:40 | dc1 | rack-A | network_down | 11 |
+| 01:50 | dc1 | rack-A | network_flap | 4 |
+| 01:55 | dc1 | rack-B | network_flap | 3 |
+| 02:00 | dc1 | rack-A | network_flap | 4 |
+| 02:00 | dc2 | rack-A | network_flap | 4 |
+| 02:00 | dc2 | rack-B | network_flap | 4 |
+| 02:00 | dc1 | rack-C | network_flap | 3 |
+| 02:10 | dc1 | rack-B | network_flap | 3 |
+| 02:10 | dc2 | rack-A | network_flap | 3 |
+| 02:10 | dc2 | rack-B | network_flap | 3 |
+| 02:15 | dc1 | rack-C | network_flap | 4 |
+| 02:15 | dc1 | rack-A | network_flap | 3 |
+| 02:15 | dc2 | rack-B | network_flap | 3 |
+| 02:30 | dc2 | rack-A | network_flap | 3 |
+| 02:40 | dc1 | rack-A | network_flap | 4 |
+| 02:40 | dc1 | rack-C | network_flap | 3 |
+| 02:55 | dc1 | rack-A | network_flap | 3 |
+| 03:00 | dc2 | rack-C | network_flap | 3 |
+| 03:10 | dc1 | rack-B | network_flap | 3 |
+| 03:15 | dc1 | rack-C | network_flap | 4 |
+
+## Network alarms total per (dc, rack)
+
+| dc | rack | n |
+|---|---|---|
+| dc1|rack-A |  | 95 |
+| dc1|rack-B |  | 25 |
+| dc1|rack-C |  | 37 |
+| dc2|rack-A |  | 31 |
+| dc2|rack-B |  | 26 |
+| dc2|rack-C |  | 22 |
+
+## Network alarms per (dc,rack): 01:40-01:55 vs rest
+
+| dc/rack | 01:40-01:55 | rest |
+|---|---|---|
+| dc1/rack-A | 62 | 33 |
+| dc1/rack-B | 5 | 20 |
+| dc1/rack-C | 4 | 33 |
+| dc2/rack-A | 0 | 31 |
+| dc2/rack-B | 1 | 25 |
+| dc2/rack-C | 1 | 21 |
+
+## Blame targets: timeout / conn_refused / ext_* messages name a target service
+
+| blamed target | alarm_type | n | first | last |
+|---|---|---|---|---|
+| payment-provider-gw | timeout | 79 | 02:41 | 03:00 |
+| billing-service | timeout | 43 | 02:10 | 02:26 |
+| session-service | timeout | 40 | 02:30 | 03:03 |
+| api-gateway | timeout | 17 | 01:45 | 01:54 |
+| subscriber-service | timeout | 17 | 01:44 | 01:53 |
+| dns-resolver | timeout | 15 | 01:44 | 01:53 |
+| subscriber-db | timeout | 14 | 01:45 | 01:52 |
+| auth-service | timeout | 13 | 01:44 | 01:51 |
+| message-queue | timeout | 13 | 01:44 | 01:53 |
+| payment-provider-gw | ext_slow | 13 | 02:40 | 02:43 |
+| charging-service | timeout | 12 | 01:43 | 01:51 |
+| payment-provider-gw | ext_unreach | 11 | 02:40 | 02:43 |
+| dns-resolver | conn_refused | 7 | 01:44 | 01:52 |
+| order-service | timeout | 7 | 01:45 | 01:50 |
+| auth-service | conn_refused | 5 | 01:43 | 01:49 |
+| subscriber-service | conn_refused | 5 | 01:43 | 01:47 |
+| order-service | conn_refused | 4 | 01:43 | 01:50 |
+| api-gateway | conn_refused | 2 | 01:48 | 01:50 |
+| message-queue | conn_refused | 2 | 01:43 | 01:43 |
+| charging-service | conn_refused | 1 | 01:44 | 01:44 |
+| report-batch | conn_refused | 1 | 01:49 | 01:49 |
+| report-batch | timeout | 1 | 01:45 | 01:45 |
+| subscriber-db | conn_refused | 1 | 01:48 | 01:48 |
+
+## Blame totals per 10-min slice (top 3 targets per slice)
+
+| slice | blame alarms | top targets |
+|---|---|---|
+| 01:40 | 103 | dns-resolver(17), subscriber-service(16), auth-service(16) |
+| 01:50 | 34 | api-gateway(10), subscriber-service(6), dns-resolver(5) |
+| 02:10 | 29 | billing-service(29) |
+| 02:20 | 14 | billing-service(14) |
+| 02:30 | 15 | session-service(15) |
+| 02:40 | 77 | payment-provider-gw(64), session-service(13) |
+| 02:50 | 47 | payment-provider-gw(38), session-service(9) |
+| 03:00 | 4 | session-service(3), payment-provider-gw(1) |
+
+## billing-db and billing-service/invoice-batch infra timeline (disk_full, disk_warn, db_write_fail, db_conn_pool)
+
+| service | type | n | first | last | per-10min |
+|---|---|---|---|---|---|
+| billing-db | db_write_fail | 7 | 02:05 | 02:08 | {'02:00': 7} |
+| billing-db | disk_full | 17 | 02:05 | 02:09 | {'02:00': 17} |
+| billing-db | disk_warn | 14 | 01:43 | 03:28 | {'01:40': 1, '01:50': 2, '02:00': 3, '02:10': 1, '02:20': 2, '02:30': 1, '02:40': 1, '03:10': 1, '03:20': 2} |
+| billing-service | db_conn_pool | 21 | 02:07 | 02:25 | {'02:00': 4, '02:10': 11, '02:20': 6} |
+| billing-service | db_write_fail | 20 | 02:08 | 02:27 | {'02:00': 1, '02:10': 12, '02:20': 7} |
+| billing-service | disk_warn | 10 | 01:36 | 03:26 | {'01:30': 2, '02:00': 1, '02:40': 1, '02:50': 3, '03:00': 1, '03:20': 2} |
+| invoice-batch | db_conn_pool | 3 | 02:08 | 02:22 | {'02:00': 1, '02:10': 1, '02:20': 1} |
+| invoice-batch | db_write_fail | 7 | 02:07 | 02:24 | {'02:00': 2, '02:10': 2, '02:20': 3} |
+| invoice-batch | disk_warn | 4 | 01:34 | 02:33 | {'01:30': 1, '01:40': 1, '02:10': 1, '02:30': 1} |
+
+## subscriber-db / batch services timeline (subscriber-db, batch-scheduler, reconciliation-batch, report-batch; all types)
+
+| service | type | n | per-10min |
+|---|---|---|---|
+| batch-scheduler | cert_expiry | 5 | {'01:50': 1, '02:00': 1, '02:40': 1, '02:50': 1, '03:10': 1} |
+| batch-scheduler | batch_overlap | 4 | {'03:00': 4} |
+| batch-scheduler | network_flap | 4 | {'01:30': 2, '02:10': 1, '02:20': 1} |
+| batch-scheduler | backup_warn | 3 | {'01:30': 1, '01:50': 1, '02:00': 1} |
+| batch-scheduler | latency_high | 3 | {'01:30': 1, '03:00': 1, '03:20': 1} |
+| batch-scheduler | mem_high | 3 | {'03:10': 1, '03:20': 2} |
+| batch-scheduler | ntp_drift | 3 | {'01:30': 1, '02:10': 1, '03:10': 1} |
+| batch-scheduler | cpu_high | 2 | {'02:30': 1, '03:20': 1} |
+| batch-scheduler | log_rotate | 2 | {'02:10': 1, '02:50': 1} |
+| batch-scheduler | disk_warn | 1 | {'02:00': 1} |
+| reconciliation-batch | cpu_high | 9 | {'01:30': 1, '02:00': 1, '02:30': 2, '03:10': 4, '03:20': 1} |
+| reconciliation-batch | batch_slow | 7 | {'03:00': 2, '03:10': 4, '03:20': 1} |
+| reconciliation-batch | db_conn_pool | 6 | {'03:00': 1, '03:10': 2, '03:20': 3} |
+| reconciliation-batch | mem_high | 5 | {'01:40': 1, '02:20': 2, '03:10': 2} |
+| reconciliation-batch | backup_warn | 4 | {'01:30': 2, '01:40': 1, '02:50': 1} |
+| reconciliation-batch | disk_warn | 4 | {'02:00': 1, '02:30': 1, '02:40': 1, '03:10': 1} |
+| reconciliation-batch | latency_high | 4 | {'01:50': 1, '02:20': 2, '03:00': 1} |
+| reconciliation-batch | thread_pool | 4 | {'01:40': 4} |
+| reconciliation-batch | cert_expiry | 3 | {'01:40': 1, '02:10': 1, '02:50': 1} |
+| reconciliation-batch | ntp_drift | 3 | {'02:00': 1, '02:50': 1, '03:00': 1} |
+| reconciliation-batch | http_5xx | 2 | {'01:40': 2} |
+| reconciliation-batch | log_rotate | 1 | {'02:00': 1} |
+| reconciliation-batch | network_flap | 1 | {'03:00': 1} |
+| report-batch | latency_high | 11 | {'01:40': 5, '01:50': 3, '02:20': 1, '02:30': 1, '03:20': 1} |
+| report-batch | cpu_high | 10 | {'01:50': 1, '02:00': 1, '02:20': 1, '03:10': 5, '03:20': 2} |
+| report-batch | network_flap | 9 | {'01:40': 5, '02:00': 1, '02:10': 1, '02:40': 2} |
+| report-batch | http_5xx | 7 | {'01:40': 4, '01:50': 3} |
+| report-batch | db_conn_pool | 6 | {'03:00': 3, '03:10': 1, '03:20': 2} |
+| report-batch | batch_slow | 5 | {'03:10': 3, '03:20': 2} |
+| report-batch | log_rotate | 5 | {'02:00': 2, '02:20': 1, '03:00': 1, '03:10': 1} |
+| report-batch | cert_expiry | 4 | {'01:40': 1, '02:00': 1, '02:50': 1, '03:10': 1} |
+| report-batch | ntp_drift | 4 | {'01:40': 1, '02:10': 1, '02:50': 1, '03:10': 1} |
+| report-batch | timeout | 4 | {'01:40': 4} |
+| report-batch | conn_refused | 3 | {'01:40': 3} |
+| report-batch | backup_warn | 2 | {'02:30': 2} |
+| report-batch | disk_warn | 2 | {'01:30': 1, '03:00': 1} |
+| report-batch | mem_high | 2 | {'02:20': 1, '02:40': 1} |
+| report-batch | pkt_loss | 2 | {'01:40': 2} |
+| report-batch | thread_pool | 2 | {'01:40': 1, '01:50': 1} |
+| subscriber-db | latency_high | 25 | {'01:40': 5, '01:50': 2, '02:00': 1, '02:10': 1, '02:20': 1, '02:40': 1, '02:50': 1, '03:10': 11, '03:20': 2} |
+| subscriber-db | cpu_high | 22 | {'01:30': 1, '01:40': 1, '02:20': 1, '02:30': 1, '02:40': 1, '03:00': 3, '03:10': 4, '03:20': 10} |
+| subscriber-db | db_conn_pool | 19 | {'03:00': 1, '03:10': 10, '03:20': 8} |
+| subscriber-db | network_flap | 18 | {'01:30': 3, '01:40': 3, '01:50': 2, '02:00': 2, '02:10': 3, '02:30': 2, '02:40': 1, '03:10': 1, '03:20': 1} |
+| subscriber-db | ntp_drift | 18 | {'01:40': 2, '01:50': 1, '02:00': 1, '02:10': 2, '02:20': 2, '02:30': 2, '02:40': 3, '02:50': 2, '03:00': 1, '03:10': 1, '03:20': 1} |
+| subscriber-db | disk_warn | 16 | {'01:30': 1, '01:40': 1, '01:50': 1, '02:00': 1, '02:10': 1, '02:20': 1, '02:30': 1, '02:40': 2, '02:50': 1, '03:00': 1, '03:10': 2, '03:20': 3} |
+| subscriber-db | cert_expiry | 13 | {'01:30': 2, '02:00': 3, '02:10': 2, '02:40': 3, '03:00': 1, '03:20': 2} |
+| subscriber-db | log_rotate | 12 | {'01:40': 1, '01:50': 2, '02:00': 2, '02:20': 1, '02:30': 1, '02:50': 2, '03:00': 2, '03:20': 1} |
+| subscriber-db | mem_high | 8 | {'01:30': 1, '01:40': 2, '01:50': 1, '02:00': 1, '02:30': 2, '03:20': 1} |
+| subscriber-db | http_5xx | 7 | {'01:40': 5, '01:50': 2} |
+| subscriber-db | backup_warn | 5 | {'01:40': 2, '02:20': 1, '02:50': 1, '03:10': 1} |
+| subscriber-db | conn_refused | 3 | {'01:40': 3} |
+| subscriber-db | pkt_loss | 3 | {'01:40': 3} |
+| subscriber-db | timeout | 2 | {'01:50': 2} |
+| subscriber-db | network_down | 1 | {'01:40': 1} |
+
+## session-service early window (01:30-01:45) types
+
+| type | n | first | last |
+|---|---|---|---|
+| cert_expiry | 3 | 01:35 | 01:44 |
+| disk_warn | 1 | 01:31 | 01:31 |
+| latency_high | 4 | 01:35 | 01:42 |
+| log_rotate | 2 | 01:38 | 01:41 |
+| mem_high | 11 | 01:30 | 01:44 |
+| network_flap | 3 | 01:30 | 01:35 |
+| ntp_drift | 1 | 01:36 | 01:36 |
+
+## Severity-5 alarms per 10-min slice x top services
+
+| slice | sev5 n | top services |
+|---|---|---|
+| 01:40 | 58 | auth-service(8), message-queue(8), dns-resolver(8) |
+| 01:50 | 4 | subscriber-db(2), report-batch(1), api-gateway(1) |
+| 02:00 | 28 | billing-db(24), billing-service(2), invoice-batch(2) |
+| 02:10 | 16 | billing-service(12), invoice-batch(4) |
+| 02:20 | 10 | billing-service(6), invoice-batch(4) |
+| 02:40 | 81 | payment-provider-gw(24), payment-service(24), mobile-bff(15) |
+| 02:50 | 47 | payment-service(17), mobile-bff(15), order-service(12) |
+| 03:00 | 4 | payment-service(3), order-service(1) |
+
+## Most anomalous (service, type) cells: max per-minute count vs overall per-minute mean
+
+| service | type | n | max/min | peak | peak/mean |
+|---|---|---|---|---|---|
+| api-gateway | latency_high | 27 | 6 | 01:46 | 26.7 |
+| api-gateway | timeout | 20 | 6 | 01:48 | 36.0 |
+| mobile-bff | thread_pool | 19 | 6 | 01:48 | 37.9 |
+| subscriber-service | latency_high | 40 | 6 | 01:49 | 18.0 |
+| mobile-bff | txn_fail | 32 | 5 | 02:52 | 18.8 |
+| payment-provider-gw | ext_slow | 13 | 5 | 02:42 | 46.2 |
+| payment-service | timeout | 47 | 5 | 02:43 | 12.8 |
+| subscriber-service | http_5xx | 19 | 5 | 01:46 | 31.6 |
+| billing-db | disk_full | 17 | 4 | 02:05 | 28.2 |
+| charging-service | timeout | 31 | 4 | 02:17 | 15.5 |
+| mobile-bff | timeout | 56 | 4 | 02:45 | 8.6 |
+| order-service | timeout | 42 | 4 | 01:47 | 11.4 |
+| order-service | txn_fail | 39 | 4 | 02:48 | 12.3 |
+| payment-provider-gw | ext_unreach | 11 | 4 | 02:41 | 43.6 |
+| payment-service | txn_fail | 42 | 4 | 02:45 | 11.4 |
+| session-service | mem_high | 37 | 4 | 01:53 | 13.0 |
+| api-gateway | http_5xx | 15 | 3 | 01:47 | 24.0 |
+| api-gateway | thread_pool | 12 | 3 | 01:47 | 30.0 |
+| auth-service | latency_high | 28 | 3 | 02:42 | 12.9 |
+| auth-service | timeout | 17 | 3 | 02:36 | 21.2 |
+| billing-service | db_write_fail | 20 | 3 | 02:13 | 18.0 |
+| billing-service | http_5xx | 27 | 3 | 02:17 | 13.3 |
+| billing-service | latency_high | 17 | 3 | 01:47 | 21.2 |
+| charging-service | http_5xx | 13 | 3 | 01:45 | 27.7 |
+| charging-service | latency_high | 36 | 3 | 02:21 | 10.0 |
+| charging-service | thread_pool | 7 | 3 | 01:48 | 51.4 |
+| dns-resolver | timeout | 5 | 3 | 01:46 | 72.0 |
+| mobile-bff | http_5xx | 40 | 3 | 02:44 | 9.0 |
+| mobile-bff | latency_high | 43 | 3 | 01:45 | 8.4 |
+| order-service | http_5xx | 22 | 3 | 01:46 | 16.4 |
+| payment-service | http_5xx | 24 | 3 | 02:51 | 15.0 |
+| payment-service | latency_high | 29 | 3 | 02:13 | 12.4 |
+| session-service | gc_pressure | 18 | 3 | 02:11 | 20.0 |
+| session-service | oom_risk | 12 | 3 | 02:38 | 30.0 |
+| subscriber-db | db_conn_pool | 19 | 3 | 03:24 | 18.9 |
+| subscriber-service | thread_pool | 13 | 3 | 01:46 | 27.7 |
+| subscriber-service | timeout | 17 | 3 | 01:45 | 21.2 |
+| api-gateway | disk_warn | 12 | 2 | 01:47 | 20.0 |
+| api-gateway | network_flap | 7 | 2 | 01:53 | 34.3 |
+| api-gateway | ntp_drift | 15 | 2 | 02:15 | 16.0 |

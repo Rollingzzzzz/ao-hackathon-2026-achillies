@@ -1,0 +1,4 @@
+elapsed=2.44s
+cfg=EngineConfig(slice_minutes=5, min_cell=3, k_cell=8.0, min_seed_size=5, max_seed_dist=3, attach_dist=2, attach_margin_min=2, attach_passes=3, require_core_attach=True, core_min_sev=4, min_event_alarms=10, max_events=15, rack_net_concentration=0.6, min_rack_net_markers=8, sustained_slices=4, sustained_span_min=30)
+totals={'total_alarms': 3000, 'event_alarms': 1301, 'event_count': 5, 'noise_alarms': 1699, 'anomalous_alarms': 1065, 'reduction': '3000 alarm -> 5 kart'}
+noise_reasons={'no_time_overlap': 18, 'below_anomaly_threshold': 1675, 'no_topology_link': 95, 'not_core_evidence': 19}

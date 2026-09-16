@@ -10,13 +10,13 @@
     "iletisim": "azizutkuozdemir@gmail.com"
   },
   "proje": {
-    "ad": "TODO",
-    "ozet": "TODO: Senaryo açıldığında doldurulacak",
+    "ad": "AlarmStorm — Alarm Fırtınası Korelasyon Motoru",
+    "ozet": "3.000 alarmlık iki saatlik seli, zaman-topoloji-nedensellik korelasyonu ile 5 olay kartına indirgeyen (1:600) ve her kararını kanıt maddeleriyle açıklayan XAI nöbetçi konsolu. Her kartta kök neden hipotezi, karşı olasılıklar, etkilenen servisler, zaman aralığı ve sahip+durum bilgili ilk aksiyon; kartlara yalnız nedensel kanıt taşıyan alarmlar bağlanır (çekirdek-kanıt kapısı), kalan 1.699 alarm gerekçesiyle denetlenebilir. Opsiyonel aksiyon yaşam döngüsü canlı demo sunucusunda çalışır.",
     "deploy_url": null
   },
   "calistirma": {
-    "komut": "TODO",
-    "on_kosullar": ["Python 3.11+"],
+    "komut": "pip install -r requirements.txt && python run.py --debug && python serve.py  # -> http://localhost:8787",
+    "on_kosullar": ["Python 3.11+ (gelistirmede 3.12.10)", "veri paketi data/package/katilimci_paketi/ altinda (repoya girmez)"],
     "veri_yolu": "./data"
   },
   "ai_kullanimi": {
@@ -24,14 +24,33 @@
     "modeller": ["GLM-5.3"],
     "mcp_sunuculari": [],
     "apiler": [],
-    "insan_ai_is_bolumu": "TODO: Senaryo açıldığında doldurulacak"
+    "insan_ai_is_bolumu": "AI (ZCode/GLM-5.3): veri keşfi, hipotez üretimi, korelasyon algoritması tasarımı, kod, hata ayıklama, görsel doğrulama. İnsan: senaryo çerçevesi, tüm kabul/onay kararları, sunum (insan sunar). İstem kayıtları: prompts/ · iş akışı kanıtı: AI_JURI.md, memory.md, git log"
   },
   "cozum": {
-    "yaklasim": "TODO",
-    "x_factor": "TODO",
-    "olctugumuz_metrikler": {}
+    "yaklasim": "Beş aşamalı deterministik boru hattı: (1) tip-bazlı taban çizgisine göre anomali hücreleri, (2) union-find tohum kümeleme (aynı servis / blame kenarı / bağımlılık / rack yerelliği), (3) çekirdek-kanıt kapılı attach (blame > servis > graf mesafesi; bir alarm yalnız nedensel kanıtla — blame hedefi, anomali, sert hata işareti veya kritik seviye — kartlara bağlanır; pencere de yalnız çekirdek kanıtla büyür, 3 süpürme), (4) kök neden skorlaması (blame + kök-tipli markerlar + grafın açıklama gücü + erkenlik + DB katmanı indirimi + rack terfisi), (5) gerekçeli gürültü denetimi. Alarm tipleri olaylar arasında paylaşıldığı için tipler değil, yoğunlaşma+nedensellik kümelenir.",
+    "x_factor": "Mesajlardan çıkarılan blame kenarlarıyla denetlenebilir nedensellik + her kartta karşı-olasılıklar ve ölçülmüş eleme gerekçeleri; zaman içinde çakışan bağımsız olayların (bellek sızıntısı ↔ ödeme sağlayıcı) bilinçli ayrılması; hiçbir alarmın açıklamasız elenmediği denetim görünümü.",
+    "olctugumuz_metrikler": {
+      "toplam_alarm": 3000,
+      "olay_karti": 5,
+      "indirgeme_orani": "1:600",
+      "olaya_baglanan_alarm": 1301,
+      "gurultu_elenen_alarm": 1699,
+      "olaylar": [
+        {"id": "EVT-01", "kok": "session-service (bellek sızıntısı)", "alarm": 234, "oruntu": "yavas gelisen"},
+        {"id": "EVT-02", "kok": "dc1/rack-A (rack uzeri ag)", "alarm": 459, "oruntu": "ani patlama"},
+        {"id": "EVT-03", "kok": "billing-db (disk/tablespace)", "alarm": 276, "oruntu": "ani patlama"},
+        {"id": "EVT-04", "kok": "payment-provider-gw (dis saglayici)", "alarm": 168, "oruntu": "ani patlama"},
+        {"id": "EVT-05", "kok": "subscriber-db (baglanti havuzu)", "alarm": 164, "oruntu": "ani patlama"}
+      ]
+    }
   },
   "sunum": {
-    "demo_akisi": []
+    "demo_akisi": [
+      "python run.py --debug — boru hattinin canlı uretimi (konsol ciktisinda 5 kart)",
+      "python serve.py -> http://localhost:8787 — dashboard: 3000 -> 5, global zaman cizelgesi",
+      "Kart incelemesi: kok neden hipotezi + kanit maddeleri + karsi olasiliklar (XAI)",
+      "Aksiyon canli: 'Isleme Al'/'Kapat' — durum degisimi + gecmis kalici (opsiyonel gereksinim)",
+      "Gurultu denetim gorunumu: 1.699 alarmin gerekce dagilimi (cekirdek-kanit kapisi, anomali esigi, topoloji) ve alarm bazinda liste"
+    ]
   }
 }

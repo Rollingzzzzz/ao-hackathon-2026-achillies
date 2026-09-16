@@ -1,0 +1,783 @@
+{
+ "proxy": {
+  "max_sev5_id": 1104,
+  "sev5_total": 248,
+  "sev_confined": true,
+  "best_split": {
+   "split": 1206,
+   "left_span_min": 13.6,
+   "right_span_min": 104.9,
+   "score": 91.3
+  },
+  "plateau": [
+   1192,
+   1244
+  ],
+  "split": 1238,
+  "split_stable": true,
+  "uniq_services_after_boundary": 14,
+  "boundary_rows": [
+   {
+    "alarm_id": "ALM-01237",
+    "ts": "2026-09-10T03:26:46",
+    "service": "subscriber-service",
+    "alarm_type": "db_conn_pool",
+    "severity": 4
+   },
+   {
+    "alarm_id": "ALM-01238",
+    "ts": "2026-09-10T03:27:01",
+    "service": "subscriber-service",
+    "alarm_type": "db_conn_pool",
+    "severity": 4
+   },
+   {
+    "alarm_id": "ALM-01239",
+    "ts": "2026-09-10T02:19:03",
+    "service": "payment-provider-gw",
+    "alarm_type": "network_flap",
+    "severity": 2
+   }
+  ],
+  "scan_top": [
+   {
+    "split": 1206,
+    "left_span_min": 13.6,
+    "right_span_min": 104.9,
+    "score": 91.3
+   },
+   {
+    "split": 1205,
+    "left_span_min": 13.7,
+    "right_span_min": 104.9,
+    "score": 91.2
+   },
+   {
+    "split": 1202,
+    "left_span_min": 14.3,
+    "right_span_min": 104.9,
+    "score": 90.6
+   },
+   {
+    "split": 1203,
+    "left_span_min": 14.3,
+    "right_span_min": 104.9,
+    "score": 90.6
+   },
+   {
+    "split": 1204,
+    "left_span_min": 14.3,
+    "right_span_min": 104.9,
+    "score": 90.6
+   },
+   {
+    "split": 1201,
+    "left_span_min": 14.3,
+    "right_span_min": 104.1,
+    "score": 89.8
+   },
+   {
+    "split": 1207,
+    "left_span_min": 14.2,
+    "right_span_min": 104.1,
+    "score": 89.8
+   },
+   {
+    "split": 1236,
+    "left_span_min": 14.0,
+    "right_span_min": 103.5,
+    "score": 89.5
+   }
+  ],
+  "verdict": "PROXY_SUPPORTED"
+ },
+ "delivery": {
+  "split": 1238,
+  "cards": [
+   {
+    "id": "EVT-01",
+    "root": "session-service",
+    "alarms": 234,
+    "event_band": 185,
+    "noise_band": 49,
+    "noise_share": 0.209
+   },
+   {
+    "id": "EVT-02",
+    "root": "dc1/rack-A",
+    "alarms": 459,
+    "event_band": 433,
+    "noise_band": 26,
+    "noise_share": 0.057
+   },
+   {
+    "id": "EVT-03",
+    "root": "billing-db",
+    "alarms": 276,
+    "event_band": 255,
+    "noise_band": 21,
+    "noise_share": 0.076
+   },
+   {
+    "id": "EVT-04",
+    "root": "payment-provider-gw",
+    "alarms": 168,
+    "event_band": 165,
+    "noise_band": 3,
+    "noise_share": 0.018
+   },
+   {
+    "id": "EVT-05",
+    "root": "subscriber-db",
+    "alarms": 164,
+    "event_band": 126,
+    "noise_band": 38,
+    "noise_share": 0.232
+   }
+  ],
+  "totals": {
+   "noise_band_total": 1762,
+   "attached": 1301,
+   "attached_noise_band": 137,
+   "eliminated": 1699,
+   "eliminated_true_noise": 1625,
+   "eliminated_real_events": 74,
+   "noise_recall": 0.922,
+   "noise_precision": 0.956
+  },
+  "real_alarms_eliminated": [
+   {
+    "alarm_id": "ALM-00135",
+    "service": "dns-resolver",
+    "alarm_type": "http_5xx",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:43:08",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00137",
+    "service": "dns-resolver",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:44:34",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00316",
+    "service": "notification-service",
+    "alarm_type": "http_5xx",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:45:46",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00328",
+    "service": "order-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:45:55",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00199",
+    "service": "web-bff",
+    "alarm_type": "http_5xx",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:46:59",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00427",
+    "service": "charging-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:47:27",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00156",
+    "service": "report-batch",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:47:32",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00319",
+    "service": "notification-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:47:58",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00208",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:48:20",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00397",
+    "service": "reconciliation-batch",
+    "alarm_type": "http_5xx",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:48:21",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00406",
+    "service": "report-batch",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:49:04",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00210",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:49:41",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00437",
+    "service": "charging-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:49:55",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00254",
+    "service": "billing-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:50:09",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00305",
+    "service": "subscriber-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:50:17",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00400",
+    "service": "reconciliation-batch",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:50:33",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00323",
+    "service": "notification-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:50:52",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00408",
+    "service": "report-batch",
+    "alarm_type": "thread_pool",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:50:52",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00212",
+    "service": "web-bff",
+    "alarm_type": "thread_pool",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:50:53",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00342",
+    "service": "order-service",
+    "alarm_type": "http_5xx",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:51:55",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00264",
+    "service": "billing-service",
+    "alarm_type": "http_5xx",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:52:07",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00315",
+    "service": "subscriber-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:52:16",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00393",
+    "service": "subscriber-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:52:34",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00325",
+    "service": "notification-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:52:50",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00343",
+    "service": "order-service",
+    "alarm_type": "thread_pool",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:53:11",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00423",
+    "service": "charging-service",
+    "alarm_type": "thread_pool",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:53:25",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00411",
+    "service": "report-batch",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:53:52",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00173",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:53:53",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00327",
+    "service": "notification-service",
+    "alarm_type": "thread_pool",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:54:11",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00457",
+    "service": "order-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T01:54:24",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00638",
+    "service": "order-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:12:43",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00632",
+    "service": "payment-service",
+    "alarm_type": "txn_fail",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:22:33",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00698",
+    "service": "charging-service",
+    "alarm_type": "txn_fail",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:23:18",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00718",
+    "service": "charging-service",
+    "alarm_type": "txn_fail",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:24:55",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00605",
+    "service": "payment-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:25:09",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00830",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:30:00",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00812",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:30:04",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00785",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:30:05",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00821",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:30:15",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00805",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:30:41",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00793",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:30:49",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00774",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:33:01",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00831",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:33:15",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00794",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:33:51",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00832",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:36:58",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00814",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:36:59",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00788",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:39:11",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00796",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:39:16",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00815",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:39:35",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00841",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:39:45",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00808",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:39:58",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00824",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:39:59",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00797",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:42:12",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00789",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:42:24",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00834",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:42:40",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00777",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:42:42",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00835",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:45:10",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00810",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:45:29",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00827",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:48:01",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00800",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:51:31",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00819",
+    "service": "mobile-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:51:46",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00845",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:51:50",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00846",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:54:09",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00847",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:57:02",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00802",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T02:57:37",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00783",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:00:29",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00784",
+    "service": "auth-service",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:03:22",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-00849",
+    "service": "web-bff",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:03:30",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-01178",
+    "service": "subscriber-db",
+    "alarm_type": "cpu_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:11:10",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-01132",
+    "service": "report-batch",
+    "alarm_type": "cpu_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:11:45",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-01166",
+    "service": "subscriber-db",
+    "alarm_type": "cpu_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:16:42",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-01122",
+    "service": "reconciliation-batch",
+    "alarm_type": "cpu_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:19:18",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-01169",
+    "service": "subscriber-db",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:20:39",
+    "noise_reason": "below_anomaly_threshold"
+   },
+   {
+    "alarm_id": "ALM-01171",
+    "service": "subscriber-db",
+    "alarm_type": "latency_high",
+    "severity": 3,
+    "timestamp": "2026-09-10T03:22:23",
+    "noise_reason": "below_anomaly_threshold"
+   }
+  ],
+  "sev5_not_in_cards": []
+ },
+ "evt05": {
+  "window": [
+   "2026-09-10 03:04:41",
+   "2026-09-10 03:30:19"
+  ],
+  "subscriber_db_by_type": {
+   "db_conn_pool": {
+    "n": 19,
+    "first": "03:09:19",
+    "last": "03:27:14"
+   },
+   "latency_high": {
+    "n": 13,
+    "first": "03:10:22",
+    "last": "03:22:23"
+   },
+   "cpu_high": {
+    "n": 17,
+    "first": "03:06:10",
+    "last": "03:28:28"
+   },
+   "disk_warn": {
+    "n": 6,
+    "first": "03:04:43",
+    "last": "03:29:19"
+   }
+  },
+  "batch_scheduler_by_type": {
+   "batch_overlap": {
+    "n": 4,
+    "first": "03:05:28",
+    "last": "03:06:50"
+   }
+  },
+  "subscriber_db_first": "03:04:43",
+  "batch_first": "03:05:28",
+  "blame_subscriber_db_from": {},
+  "blame_subscriber_db_total": 0
+ }
+}
