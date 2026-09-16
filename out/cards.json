@@ -6,14 +6,12 @@
     "root_kind_label": "bellek",
     "severity": 5,
     "pattern": "yavaş gelişen",
-    "start": "01:31:33",
-    "end": "02:56:51",
-    "alarm_count": 611,
+    "start": "01:33:35",
+    "end": "03:05:08",
+    "alarm_count": 234,
     "affected_services": [
       "api-gateway",
       "auth-service",
-      "cache-cluster",
-      "kyc-provider-gw",
       "mobile-bff",
       "order-service",
       "session-service",
@@ -23,60 +21,63 @@
     "affected_top": [
       [
         "mobile-bff",
-        150
+        88
       ],
       [
         "session-service",
-        105
+        60
       ],
       [
         "order-service",
-        79
-      ],
-      [
-        "auth-service",
-        68
-      ],
-      [
-        "api-gateway",
-        54
-      ],
-      [
-        "subscriber-service",
-        53
-      ],
-      [
-        "web-bff",
-        51
-      ],
-      [
-        "cache-cluster",
         34
       ],
       [
-        "kyc-provider-gw",
-        17
+        "auth-service",
+        26
+      ],
+      [
+        "web-bff",
+        11
+      ],
+      [
+        "api-gateway",
+        9
+      ],
+      [
+        "subscriber-service",
+        6
       ]
     ],
     "root_cause": {
       "hypothesis": "Kök neden büyük olasılıkla session-service üzerinde yavaş ilerleyen bellek tükenmesi. Bellek uyarıları olay penceresinin başından beri birikiyor; GC baskısı ve OOM riski ilerledikçe servise çağıran tarafın zaman aşımları arttı.",
       "evidence": [
-        "36 timeout/conn_refused alarmı mesajında doğrudan 'session-service' hedefini işaretliyor.",
+        "40 timeout/conn_refused alarmı mesajında doğrudan 'session-service' hedefini işaretliyor.",
         "Üzerinde 57 sert hata işaretçisi (disk_full, db_write_fail, gc/oom, ext_* gibi) var — kök neden adayları arasında en yüksek ağırlıklı sinyal yoğunluğu.",
-        "Etkilenen 9 servisten 4 tanesi bağımlılık grafiğinde 'session-service' bozulduğunda etkilenir konumda — tek kök, tabloyu açıklıyor.",
+        "Etkilenen 7 servisten 4 tanesi bağımlılık grafiğinde 'session-service' bozulduğunda etkilenir konumda — tek kök, tabloyu açıklıyor.",
         "9 adet kritik (sev5) alarm doğrudan bu kaynağa bağlı.",
         "İlk sert sinyal saat 01:35:11'te görüldü; olay yavaş gelişen örüntüsünde."
       ],
-      "counter_hypotheses": []
+      "counter_hypotheses": [
+        {
+          "name": "mobile-bff",
+          "score": 44.0,
+          "why_rejected": "doğrudan suçlayan (timeout/refused) alarm sayısı daha düşük (0 < 40)"
+        },
+        {
+          "name": "order-service",
+          "score": 18.0,
+          "why_rejected": "doğrudan suçlayan (timeout/refused) alarm sayısı daha düşük (0 < 40)"
+        }
+      ]
     },
     "first_action": {
       "owner": "Oturum Servisi Sahibi",
       "action": "session-service için heap dump al ve servisi yeniden başlat; bellek sızıntısı şüphesiyle son sürüm değişikliklerini incele.",
       "status": "açık",
-      "opened_at": "2026-09-16T15:04:48",
+      "opened_at": "2026-09-16T16:41:51",
       "history": [
         {
-          "at": "2026-09-16T15:04:48",
+          "at": "2026-09-16T16:41:51",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -84,355 +85,287 @@
       ]
     },
     "type_counts": {
-      "latency_high": 100,
-      "mem_high": 63,
-      "txn_fail": 55,
-      "ntp_drift": 54,
-      "cert_expiry": 51,
-      "network_flap": 42,
-      "backup_warn": 38,
-      "log_rotate": 38,
-      "http_5xx": 37,
-      "cpu_high": 36,
-      "timeout": 36,
-      "disk_warn": 31,
+      "txn_fail": 51,
+      "http_5xx": 42,
+      "timeout": 40,
+      "mem_high": 25,
       "gc_pressure": 18,
-      "oom_risk": 12
+      "oom_risk": 12,
+      "ntp_drift": 9,
+      "network_flap": 9,
+      "latency_high": 7,
+      "log_rotate": 6,
+      "cpu_high": 5,
+      "backup_warn": 5,
+      "cert_expiry": 4,
+      "disk_warn": 1
     },
     "top_hosts": {
-      "ao-005-mobile": 55,
-      "ao-004-mobile": 52,
-      "ao-027-order": 45,
-      "ao-006-mobile": 43,
-      "ao-014-session": 38,
-      "ao-028-order": 34,
-      "ao-013-session": 34,
-      "ao-012-session": 33
+      "ao-005-mobile": 33,
+      "ao-004-mobile": 29,
+      "ao-006-mobile": 26,
+      "ao-014-session": 21,
+      "ao-012-session": 20,
+      "ao-013-session": 19,
+      "ao-028-order": 17,
+      "ao-027-order": 17
     },
     "top_racks": {
-      "dc2/rack-B": 128,
-      "dc2/rack-C": 110,
-      "dc1/rack-A": 105,
-      "dc1/rack-B": 99,
-      "dc1/rack-C": 93,
-      "dc2/rack-A": 76
+      "dc2/rack-B": 56,
+      "dc2/rack-A": 46,
+      "dc1/rack-C": 43,
+      "dc2/rack-C": 32,
+      "dc1/rack-A": 31,
+      "dc1/rack-B": 26
     },
     "timeline": [
       [
-        "01:31",
-        5
-      ],
-      [
-        "01:32",
-        3
-      ],
-      [
         "01:33",
-        5
-      ],
-      [
-        "01:34",
-        3
+        1
       ],
       [
         "01:35",
-        14
+        3
       ],
       [
         "01:36",
-        9
+        1
       ],
       [
         "01:37",
-        5
-      ],
-      [
-        "01:38",
-        5
+        1
       ],
       [
         "01:39",
-        4
+        1
       ],
       [
         "01:40",
-        4
-      ],
-      [
-        "01:41",
         2
       ],
       [
-        "01:42",
+        "01:41",
         1
       ],
       [
         "01:44",
-        5
-      ],
-      [
-        "01:55",
-        1
-      ],
-      [
-        "01:57",
-        9
-      ],
-      [
-        "01:58",
-        6
-      ],
-      [
-        "01:59",
-        4
-      ],
-      [
-        "02:00",
-        10
-      ],
-      [
-        "02:01",
-        5
-      ],
-      [
-        "02:02",
-        10
-      ],
-      [
-        "02:03",
         3
       ],
       [
-        "02:04",
-        6
-      ],
-      [
-        "02:05",
-        5
-      ],
-      [
-        "02:06",
+        "01:57",
         4
       ],
       [
-        "02:07",
-        10
-      ],
-      [
-        "02:08",
-        7
-      ],
-      [
-        "02:09",
-        6
-      ],
-      [
-        "02:10",
-        2
-      ],
-      [
-        "02:11",
-        12
-      ],
-      [
-        "02:12",
-        7
-      ],
-      [
-        "02:13",
-        11
-      ],
-      [
-        "02:14",
-        5
-      ],
-      [
-        "02:15",
-        13
-      ],
-      [
-        "02:16",
-        9
-      ],
-      [
-        "02:17",
-        7
-      ],
-      [
-        "02:18",
-        9
-      ],
-      [
-        "02:19",
-        8
-      ],
-      [
-        "02:20",
-        8
-      ],
-      [
-        "02:21",
+        "01:58",
         1
       ],
       [
-        "02:22",
-        7
+        "02:00",
+        2
       ],
       [
-        "02:23",
+        "02:02",
+        3
+      ],
+      [
+        "02:03",
+        2
+      ],
+      [
+        "02:05",
+        1
+      ],
+      [
+        "02:06",
+        1
+      ],
+      [
+        "02:07",
+        3
+      ],
+      [
+        "02:08",
+        1
+      ],
+      [
+        "02:10",
+        1
+      ],
+      [
+        "02:11",
+        4
+      ],
+      [
+        "02:13",
+        1
+      ],
+      [
+        "02:14",
+        1
+      ],
+      [
+        "02:15",
+        4
+      ],
+      [
+        "02:20",
         5
       ],
       [
+        "02:22",
+        1
+      ],
+      [
         "02:24",
-        7
+        1
       ],
       [
         "02:25",
-        11
+        4
       ],
       [
         "02:26",
-        9
-      ],
-      [
-        "02:27",
-        4
-      ],
-      [
-        "02:28",
-        4
+        2
       ],
       [
         "02:29",
-        7
+        4
       ],
       [
         "02:30",
-        12
+        2
       ],
       [
         "02:31",
-        6
+        1
       ],
       [
         "02:32",
-        6
+        2
       ],
       [
         "02:33",
-        17
+        9
       ],
       [
         "02:34",
-        10
+        5
       ],
       [
         "02:35",
-        4
+        1
       ],
       [
         "02:36",
-        12
-      ],
-      [
-        "02:37",
-        4
+        6
       ],
       [
         "02:38",
-        14
+        3
       ],
       [
         "02:39",
-        13
-      ],
-      [
-        "02:40",
-        4
+        2
       ],
       [
         "02:41",
-        9
+        3
       ],
       [
         "02:42",
-        19
+        8
       ],
       [
         "02:43",
-        14
-      ],
-      [
-        "02:44",
-        15
-      ],
-      [
-        "02:45",
-        22
-      ],
-      [
-        "02:46",
-        8
-      ],
-      [
-        "02:47",
-        12
-      ],
-      [
-        "02:48",
-        22
-      ],
-      [
-        "02:49",
-        13
-      ],
-      [
-        "02:50",
-        8
-      ],
-      [
-        "02:51",
-        16
-      ],
-      [
-        "02:52",
-        13
-      ],
-      [
-        "02:53",
-        10
-      ],
-      [
-        "02:54",
-        15
-      ],
-      [
-        "02:55",
         9
       ],
       [
+        "02:44",
+        8
+      ],
+      [
+        "02:45",
+        14
+      ],
+      [
+        "02:46",
+        6
+      ],
+      [
+        "02:47",
+        8
+      ],
+      [
+        "02:48",
+        15
+      ],
+      [
+        "02:49",
+        6
+      ],
+      [
+        "02:50",
+        5
+      ],
+      [
+        "02:51",
+        9
+      ],
+      [
+        "02:52",
+        8
+      ],
+      [
+        "02:53",
+        6
+      ],
+      [
+        "02:54",
+        11
+      ],
+      [
+        "02:55",
+        3
+      ],
+      [
         "02:56",
-        7
+        4
+      ],
+      [
+        "02:57",
+        3
+      ],
+      [
+        "02:58",
+        3
+      ],
+      [
+        "02:59",
+        3
+      ],
+      [
+        "03:00",
+        5
+      ],
+      [
+        "03:02",
+        1
+      ],
+      [
+        "03:03",
+        3
+      ],
+      [
+        "03:04",
+        2
+      ],
+      [
+        "03:05",
+        1
       ]
     ],
     "alarm_ids": [
-      "ALM-00638",
-      "ALM-00639",
-      "ALM-00640",
-      "ALM-00641",
-      "ALM-00642",
-      "ALM-00643",
-      "ALM-00645",
-      "ALM-00650",
-      "ALM-00651",
-      "ALM-00652",
-      "ALM-00655",
-      "ALM-00656",
       "ALM-00658",
-      "ALM-00660",
-      "ALM-00661",
-      "ALM-00662",
-      "ALM-00663",
       "ALM-00719",
       "ALM-00720",
       "ALM-00721",
@@ -482,74 +415,49 @@
       "ALM-00771",
       "ALM-00772",
       "ALM-00773",
-      "ALM-00774",
       "ALM-00775",
       "ALM-00776",
-      "ALM-00777",
       "ALM-00778",
       "ALM-00779",
       "ALM-00780",
       "ALM-00781",
-      "ALM-00785",
+      "ALM-00782",
       "ALM-00786",
       "ALM-00787",
-      "ALM-00788",
-      "ALM-00789",
       "ALM-00790",
       "ALM-00791",
       "ALM-00792",
-      "ALM-00793",
-      "ALM-00794",
       "ALM-00795",
-      "ALM-00796",
-      "ALM-00797",
       "ALM-00798",
       "ALM-00799",
-      "ALM-00800",
       "ALM-00801",
-      "ALM-00805",
+      "ALM-00803",
+      "ALM-00804",
       "ALM-00806",
       "ALM-00807",
-      "ALM-00808",
       "ALM-00809",
-      "ALM-00810",
       "ALM-00811",
-      "ALM-00812",
       "ALM-00813",
-      "ALM-00814",
-      "ALM-00815",
       "ALM-00816",
       "ALM-00817",
       "ALM-00818",
-      "ALM-00819",
       "ALM-00820",
-      "ALM-00821",
       "ALM-00822",
       "ALM-00823",
-      "ALM-00824",
       "ALM-00825",
       "ALM-00826",
-      "ALM-00827",
       "ALM-00828",
       "ALM-00829",
-      "ALM-00830",
-      "ALM-00831",
-      "ALM-00832",
       "ALM-00833",
-      "ALM-00834",
-      "ALM-00835",
       "ALM-00836",
       "ALM-00837",
       "ALM-00838",
       "ALM-00839",
       "ALM-00840",
-      "ALM-00841",
       "ALM-00842",
       "ALM-00843",
       "ALM-00844",
-      "ALM-00845",
-      "ALM-00846",
-      "ALM-00961",
+      "ALM-00848",
       "ALM-00964",
       "ALM-00965",
       "ALM-00966",
@@ -575,6 +483,11 @@
       "ALM-01001",
       "ALM-01006",
       "ALM-01007",
+      "ALM-01008",
+      "ALM-01010",
+      "ALM-01015",
+      "ALM-01017",
+      "ALM-01018",
       "ALM-01020",
       "ALM-01021",
       "ALM-01022",
@@ -594,6 +507,8 @@
       "ALM-01042",
       "ALM-01043",
       "ALM-01044",
+      "ALM-01048",
+      "ALM-01050",
       "ALM-01051",
       "ALM-01052",
       "ALM-01054",
@@ -614,6 +529,10 @@
       "ALM-01073",
       "ALM-01074",
       "ALM-01075",
+      "ALM-01077",
+      "ALM-01079",
+      "ALM-01080",
+      "ALM-01081",
       "ALM-01082",
       "ALM-01084",
       "ALM-01085",
@@ -633,399 +552,52 @@
       "ALM-01105",
       "ALM-01248",
       "ALM-01251",
-      "ALM-01256",
-      "ALM-01262",
-      "ALM-01263",
-      "ALM-01275",
-      "ALM-01284",
-      "ALM-01288",
-      "ALM-01291",
-      "ALM-01294",
-      "ALM-01296",
-      "ALM-01299",
       "ALM-01301",
-      "ALM-01303",
-      "ALM-01306",
-      "ALM-01307",
-      "ALM-01310",
-      "ALM-01313",
-      "ALM-01314",
-      "ALM-01315",
-      "ALM-01321",
-      "ALM-01324",
-      "ALM-01329",
-      "ALM-01333",
-      "ALM-01334",
-      "ALM-01336",
-      "ALM-01339",
       "ALM-01344",
-      "ALM-01350",
-      "ALM-01352",
-      "ALM-01367",
-      "ALM-01371",
-      "ALM-01372",
-      "ALM-01373",
-      "ALM-01375",
-      "ALM-01379",
-      "ALM-01380",
-      "ALM-01381",
-      "ALM-01384",
-      "ALM-01389",
-      "ALM-01399",
-      "ALM-01404",
-      "ALM-01408",
-      "ALM-01414",
       "ALM-01415",
       "ALM-01420",
-      "ALM-01425",
-      "ALM-01437",
-      "ALM-01438",
-      "ALM-01452",
-      "ALM-01463",
-      "ALM-01475",
-      "ALM-01485",
-      "ALM-01486",
-      "ALM-01487",
-      "ALM-01488",
-      "ALM-01489",
-      "ALM-01491",
-      "ALM-01523",
-      "ALM-01527",
-      "ALM-01532",
+      "ALM-01546",
       "ALM-01557",
-      "ALM-01560",
-      "ALM-01561",
-      "ALM-01569",
-      "ALM-01571",
-      "ALM-01572",
-      "ALM-01576",
-      "ALM-01578",
-      "ALM-01584",
-      "ALM-01590",
-      "ALM-01595",
-      "ALM-01596",
-      "ALM-01597",
-      "ALM-01598",
-      "ALM-01599",
-      "ALM-01600",
-      "ALM-01604",
-      "ALM-01616",
-      "ALM-01617",
-      "ALM-01618",
-      "ALM-01620",
-      "ALM-01624",
-      "ALM-01629",
-      "ALM-01632",
-      "ALM-01637",
+      "ALM-01608",
       "ALM-01645",
-      "ALM-01648",
-      "ALM-01670",
-      "ALM-01672",
-      "ALM-01674",
-      "ALM-01677",
-      "ALM-01678",
       "ALM-01682",
-      "ALM-01684",
-      "ALM-01686",
-      "ALM-01687",
-      "ALM-01690",
-      "ALM-01697",
-      "ALM-01704",
-      "ALM-01707",
-      "ALM-01711",
-      "ALM-01718",
-      "ALM-01729",
-      "ALM-01735",
-      "ALM-01739",
       "ALM-01744",
-      "ALM-01746",
       "ALM-01748",
-      "ALM-01749",
-      "ALM-01753",
-      "ALM-01758",
-      "ALM-01762",
-      "ALM-01763",
-      "ALM-01765",
-      "ALM-01774",
-      "ALM-01786",
-      "ALM-01792",
-      "ALM-01798",
-      "ALM-01801",
-      "ALM-01809",
-      "ALM-01810",
       "ALM-01811",
-      "ALM-01814",
-      "ALM-01815",
-      "ALM-01830",
       "ALM-01831",
-      "ALM-01832",
-      "ALM-01833",
-      "ALM-01846",
+      "ALM-01834",
       "ALM-01848",
+      "ALM-01858",
       "ALM-01864",
-      "ALM-01865",
-      "ALM-01871",
-      "ALM-01873",
-      "ALM-01874",
-      "ALM-01878",
-      "ALM-01890",
-      "ALM-01893",
-      "ALM-01897",
-      "ALM-01899",
-      "ALM-01900",
-      "ALM-01902",
-      "ALM-01904",
-      "ALM-01906",
-      "ALM-01908",
-      "ALM-01909",
       "ALM-01911",
-      "ALM-01914",
-      "ALM-01917",
-      "ALM-01923",
-      "ALM-01927",
-      "ALM-01930",
-      "ALM-01932",
-      "ALM-01935",
-      "ALM-01936",
-      "ALM-01937",
-      "ALM-01938",
-      "ALM-01946",
-      "ALM-01951",
-      "ALM-01953",
-      "ALM-01954",
-      "ALM-01956",
       "ALM-01958",
-      "ALM-01965",
-      "ALM-01966",
-      "ALM-01973",
-      "ALM-01976",
-      "ALM-01977",
       "ALM-01984",
-      "ALM-01986",
-      "ALM-01987",
-      "ALM-01988",
-      "ALM-01995",
-      "ALM-01998",
-      "ALM-01999",
-      "ALM-02004",
-      "ALM-02006",
-      "ALM-02007",
-      "ALM-02026",
-      "ALM-02032",
-      "ALM-02033",
       "ALM-02034",
-      "ALM-02037",
-      "ALM-02040",
-      "ALM-02041",
-      "ALM-02047",
-      "ALM-02048",
-      "ALM-02054",
-      "ALM-02064",
-      "ALM-02065",
-      "ALM-02074",
-      "ALM-02085",
-      "ALM-02087",
       "ALM-02093",
-      "ALM-02107",
-      "ALM-02109",
-      "ALM-02110",
-      "ALM-02111",
-      "ALM-02118",
-      "ALM-02120",
-      "ALM-02121",
-      "ALM-02130",
-      "ALM-02132",
+      "ALM-02106",
       "ALM-02134",
-      "ALM-02136",
-      "ALM-02143",
-      "ALM-02149",
-      "ALM-02152",
-      "ALM-02154",
-      "ALM-02158",
-      "ALM-02170",
-      "ALM-02175",
-      "ALM-02176",
-      "ALM-02177",
-      "ALM-02181",
-      "ALM-02194",
-      "ALM-02195",
-      "ALM-02198",
-      "ALM-02210",
-      "ALM-02221",
-      "ALM-02228",
-      "ALM-02232",
-      "ALM-02242",
       "ALM-02244",
-      "ALM-02246",
-      "ALM-02249",
-      "ALM-02250",
-      "ALM-02258",
-      "ALM-02260",
-      "ALM-02265",
-      "ALM-02270",
-      "ALM-02271",
-      "ALM-02281",
-      "ALM-02283",
+      "ALM-02267",
       "ALM-02288",
-      "ALM-02294",
-      "ALM-02295",
       "ALM-02299",
-      "ALM-02301",
-      "ALM-02302",
-      "ALM-02304",
       "ALM-02305",
-      "ALM-02307",
-      "ALM-02311",
-      "ALM-02316",
-      "ALM-02317",
       "ALM-02319",
-      "ALM-02323",
-      "ALM-02325",
-      "ALM-02329",
-      "ALM-02332",
-      "ALM-02335",
-      "ALM-02339",
-      "ALM-02341",
-      "ALM-02342",
-      "ALM-02344",
-      "ALM-02348",
-      "ALM-02350",
+      "ALM-02346",
       "ALM-02356",
-      "ALM-02360",
-      "ALM-02362",
-      "ALM-02367",
-      "ALM-02370",
-      "ALM-02373",
-      "ALM-02379",
-      "ALM-02383",
       "ALM-02390",
-      "ALM-02393",
-      "ALM-02399",
-      "ALM-02401",
-      "ALM-02411",
-      "ALM-02416",
       "ALM-02420",
-      "ALM-02421",
-      "ALM-02422",
-      "ALM-02426",
-      "ALM-02428",
-      "ALM-02430",
-      "ALM-02431",
-      "ALM-02440",
-      "ALM-02446",
-      "ALM-02447",
-      "ALM-02451",
       "ALM-02457",
-      "ALM-02466",
-      "ALM-02467",
-      "ALM-02476",
-      "ALM-02480",
-      "ALM-02481",
-      "ALM-02491",
-      "ALM-02492",
-      "ALM-02495",
-      "ALM-02507",
-      "ALM-02509",
-      "ALM-02511",
-      "ALM-02513",
-      "ALM-02518",
-      "ALM-02523",
-      "ALM-02529",
       "ALM-02530",
-      "ALM-02531",
-      "ALM-02535",
-      "ALM-02547",
-      "ALM-02551",
-      "ALM-02552",
-      "ALM-02560",
-      "ALM-02561",
-      "ALM-02566",
-      "ALM-02573",
-      "ALM-02574",
-      "ALM-02583",
+      "ALM-02546",
       "ALM-02586",
-      "ALM-02590",
-      "ALM-02595",
-      "ALM-02599",
-      "ALM-02606",
-      "ALM-02611",
-      "ALM-02615",
-      "ALM-02618",
-      "ALM-02621",
       "ALM-02652",
-      "ALM-02654",
-      "ALM-02660",
-      "ALM-02661",
-      "ALM-02662",
-      "ALM-02663",
-      "ALM-02664",
-      "ALM-02665",
-      "ALM-02667",
-      "ALM-02672",
-      "ALM-02675",
-      "ALM-02677",
-      "ALM-02681",
-      "ALM-02686",
-      "ALM-02700",
-      "ALM-02707",
-      "ALM-02709",
-      "ALM-02712",
-      "ALM-02713",
-      "ALM-02723",
-      "ALM-02732",
-      "ALM-02733",
-      "ALM-02736",
+      "ALM-02690",
       "ALM-02737",
-      "ALM-02739",
-      "ALM-02741",
-      "ALM-02744",
-      "ALM-02751",
-      "ALM-02754",
       "ALM-02756",
-      "ALM-02767",
-      "ALM-02772",
-      "ALM-02775",
-      "ALM-02784",
-      "ALM-02789",
-      "ALM-02803",
-      "ALM-02817",
-      "ALM-02818",
-      "ALM-02830",
-      "ALM-02833",
-      "ALM-02834",
-      "ALM-02837",
-      "ALM-02848",
-      "ALM-02855",
-      "ALM-02857",
-      "ALM-02865",
-      "ALM-02869",
-      "ALM-02871",
-      "ALM-02872",
-      "ALM-02877",
-      "ALM-02883",
-      "ALM-02889",
-      "ALM-02898",
-      "ALM-02912",
-      "ALM-02916",
-      "ALM-02919",
-      "ALM-02922",
-      "ALM-02931",
-      "ALM-02933",
-      "ALM-02936",
       "ALM-02938",
-      "ALM-02939",
-      "ALM-02941",
-      "ALM-02942",
-      "ALM-02945",
-      "ALM-02950",
       "ALM-02953",
-      "ALM-02961",
       "ALM-02962",
-      "ALM-02965",
-      "ALM-02981",
       "ALM-02985",
-      "ALM-02986",
-      "ALM-02988",
       "ALM-02991"
     ],
     "seed_alarm_ids": [
@@ -1096,29 +668,23 @@
     "root_kind_label": "rack ağı",
     "severity": 5,
     "pattern": "ani patlama",
-    "start": "01:38:32",
-    "end": "02:00:43",
-    "alarm_count": 718,
+    "start": "01:41:40",
+    "end": "01:55:26",
+    "alarm_count": 459,
     "affected_services": [
       "api-gateway",
       "auth-service",
-      "batch-scheduler",
-      "billing-db",
       "billing-service",
       "cache-cluster",
       "catalog-service",
       "charging-service",
       "dns-resolver",
       "invoice-batch",
-      "kyc-provider-gw",
-      "load-balancer",
       "message-queue",
       "mobile-bff",
       "notification-service",
-      "object-store",
       "order-service",
       "payment-provider-gw",
-      "payment-service",
       "reconciliation-batch",
       "report-batch",
       "session-service",
@@ -1128,62 +694,62 @@
     ],
     "affected_top": [
       [
-        "subscriber-service",
-        82
-      ],
-      [
         "api-gateway",
-        81
+        69
       ],
       [
-        "mobile-bff",
+        "subscriber-service",
         67
       ],
       [
-        "charging-service",
-        60
+        "mobile-bff",
+        56
       ],
       [
         "order-service",
-        57
+        47
       ],
       [
-        "subscriber-db",
-        44
-      ],
-      [
-        "billing-service",
+        "charging-service",
         43
       ],
       [
-        "dns-resolver",
-        34
+        "billing-service",
+        28
       ],
       [
         "report-batch",
-        34
+        27
       ],
       [
-        "web-bff",
-        27
+        "dns-resolver",
+        25
+      ],
+      [
+        "subscriber-db",
+        23
+      ],
+      [
+        "auth-service",
+        16
       ]
     ],
     "root_cause": {
       "hypothesis": "Kök neden büyük olasılıkla dc1/rack-A rack'inin ağ altyapısı (top-of-rack switch/uplink). Ağ kesintisi rack içindeki tüm servisleri aynı anda vurdu; bağımlı servislerde görülen timeout/5xx/delay alarmları bu kesintinin türev etkisi.",
       "evidence": [
-        "Olay penceresinde 79 ağ alarmından 63 tanesi dc1/rack-A rack'inden geldi; diğer tüm racklerden toplam 16 ağ alarmı düştü.",
-        "Etkilenen 25 servisten 9 tanesi bağımlılık grafiğinde 'dc1/rack-A' bozulduğunda etkilenir konumda — tek kök, tabloyu açıklıyor.",
+        "Olay penceresinde 61 ağ alarmından 58 tanesi dc1/rack-A rack'inden geldi; diğer tüm racklerden toplam 3 ağ alarmı düştü.",
+        "Etkilenen 19 servisten 9 tanesi bağımlılık grafiğinde 'dc1/rack-A' bozulduğunda etkilenir konumda — tek kök, tabloyu açıklıyor.",
         "İlk sert sinyal saat 01:42:13'te görüldü; olay ani patlama örüntüsünde."
       ],
       "counter_hypotheses": [
         {
           "name": "dns-resolver",
-          "score": 47.8,
+          "score": 47.0,
           "why_rejected": "üzerindeki sert hata sinyali daha az (7 < 31)"
         },
         {
           "name": "auth-service",
-          "score": 38.9,
+          "score": 39.1,
           "why_rejected": "üzerindeki sert hata sinyali daha az (7 < 31)"
         }
       ]
@@ -1192,10 +758,10 @@
       "owner": "Ağ Operasyon (NOC)",
       "action": "dc1/rack-A top-of-rack switch'i ve uplink portlarını kontrol et; rack içindeki hostların arayüz durumlarını doğrula, gerekirse trafiği yedek rack/DC'ye kaydır.",
       "status": "açık",
-      "opened_at": "2026-09-16T15:04:48",
+      "opened_at": "2026-09-16T16:41:51",
       "history": [
         {
-          "at": "2026-09-16T15:04:48",
+          "at": "2026-09-16T16:41:51",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -1203,132 +769,99 @@
       ]
     },
     "type_counts": {
-      "latency_high": 117,
       "timeout": 109,
-      "http_5xx": 100,
-      "thread_pool": 79,
-      "network_flap": 45,
-      "mem_high": 37,
-      "log_rotate": 32,
-      "cpu_high": 29,
-      "disk_warn": 29,
+      "http_5xx": 94,
+      "thread_pool": 74,
+      "latency_high": 69,
       "conn_refused": 28,
-      "ntp_drift": 27,
-      "cert_expiry": 27,
-      "backup_warn": 25,
+      "network_flap": 27,
       "pkt_loss": 22,
-      "network_down": 12
+      "network_down": 12,
+      "mem_high": 8,
+      "ntp_drift": 5,
+      "log_rotate": 4,
+      "disk_warn": 4,
+      "cert_expiry": 2,
+      "backup_warn": 1
     },
     "top_hosts": {
-      "ao-015-subscriber": 40,
-      "ao-003-api": 39,
-      "ao-051-report": 34,
-      "ao-027-order": 32,
-      "ao-021-charging": 30,
-      "ao-045-dns": 29,
-      "ao-033-subscriber": 27,
-      "ao-028-order": 25
+      "ao-015-subscriber": 35,
+      "ao-003-api": 35,
+      "ao-027-order": 28,
+      "ao-021-charging": 27,
+      "ao-051-report": 27,
+      "ao-045-dns": 23,
+      "ao-033-subscriber": 23,
+      "ao-002-api": 20
     },
     "top_racks": {
-      "dc1/rack-A": 269,
-      "dc2/rack-B": 108,
-      "dc2/rack-C": 100,
-      "dc1/rack-C": 83,
-      "dc2/rack-A": 82,
-      "dc1/rack-B": 76
+      "dc1/rack-A": 229,
+      "dc2/rack-B": 60,
+      "dc1/rack-C": 49,
+      "dc2/rack-C": 48,
+      "dc2/rack-A": 37,
+      "dc1/rack-B": 36
     },
     "timeline": [
       [
-        "01:38",
-        8
-      ],
-      [
-        "01:39",
-        9
-      ],
-      [
-        "01:40",
-        8
-      ],
-      [
         "01:41",
-        9
+        1
       ],
       [
         "01:42",
-        30
+        23
       ],
       [
         "01:43",
-        47
+        33
       ],
       [
         "01:44",
-        35
+        27
       ],
       [
         "01:45",
-        79
+        62
       ],
       [
         "01:46",
-        66
+        55
       ],
       [
         "01:47",
-        69
+        50
       ],
       [
         "01:48",
-        68
+        55
       ],
       [
         "01:49",
-        70
+        56
       ],
       [
         "01:50",
-        48
+        32
       ],
       [
         "01:51",
-        37
+        25
       ],
       [
         "01:52",
-        31
+        19
       ],
       [
         "01:53",
-        36
+        14
       ],
       [
         "01:54",
-        22
+        5
       ],
       [
         "01:55",
-        8
-      ],
-      [
-        "01:56",
-        9
-      ],
-      [
-        "01:57",
-        10
-      ],
-      [
-        "01:58",
-        9
-      ],
-      [
-        "01:59",
-        5
-      ],
-      [
-        "02:00",
-        5
+        2
       ]
     ],
     "alarm_ids": [
@@ -1466,9 +999,7 @@
       "ALM-00132",
       "ALM-00133",
       "ALM-00134",
-      "ALM-00135",
       "ALM-00136",
-      "ALM-00137",
       "ALM-00138",
       "ALM-00139",
       "ALM-00140",
@@ -1487,7 +1018,6 @@
       "ALM-00153",
       "ALM-00154",
       "ALM-00155",
-      "ALM-00156",
       "ALM-00157",
       "ALM-00158",
       "ALM-00159",
@@ -1504,7 +1034,6 @@
       "ALM-00170",
       "ALM-00171",
       "ALM-00172",
-      "ALM-00173",
       "ALM-00174",
       "ALM-00175",
       "ALM-00176",
@@ -1530,7 +1059,6 @@
       "ALM-00196",
       "ALM-00197",
       "ALM-00198",
-      "ALM-00199",
       "ALM-00200",
       "ALM-00201",
       "ALM-00202",
@@ -1539,11 +1067,8 @@
       "ALM-00205",
       "ALM-00206",
       "ALM-00207",
-      "ALM-00208",
       "ALM-00209",
-      "ALM-00210",
       "ALM-00211",
-      "ALM-00212",
       "ALM-00213",
       "ALM-00214",
       "ALM-00215",
@@ -1585,7 +1110,6 @@
       "ALM-00251",
       "ALM-00252",
       "ALM-00253",
-      "ALM-00254",
       "ALM-00255",
       "ALM-00256",
       "ALM-00257",
@@ -1595,7 +1119,6 @@
       "ALM-00261",
       "ALM-00262",
       "ALM-00263",
-      "ALM-00264",
       "ALM-00265",
       "ALM-00266",
       "ALM-00267",
@@ -1636,7 +1159,6 @@
       "ALM-00302",
       "ALM-00303",
       "ALM-00304",
-      "ALM-00305",
       "ALM-00306",
       "ALM-00307",
       "ALM-00308",
@@ -1646,20 +1168,13 @@
       "ALM-00312",
       "ALM-00313",
       "ALM-00314",
-      "ALM-00315",
-      "ALM-00316",
       "ALM-00317",
       "ALM-00318",
-      "ALM-00319",
       "ALM-00320",
       "ALM-00321",
       "ALM-00322",
-      "ALM-00323",
       "ALM-00324",
-      "ALM-00325",
       "ALM-00326",
-      "ALM-00327",
-      "ALM-00328",
       "ALM-00329",
       "ALM-00330",
       "ALM-00331",
@@ -1673,8 +1188,6 @@
       "ALM-00339",
       "ALM-00340",
       "ALM-00341",
-      "ALM-00342",
-      "ALM-00343",
       "ALM-00344",
       "ALM-00345",
       "ALM-00346",
@@ -1724,25 +1237,19 @@
       "ALM-00390",
       "ALM-00391",
       "ALM-00392",
-      "ALM-00393",
       "ALM-00394",
       "ALM-00395",
       "ALM-00396",
-      "ALM-00397",
       "ALM-00398",
       "ALM-00399",
-      "ALM-00400",
       "ALM-00401",
       "ALM-00402",
       "ALM-00403",
       "ALM-00404",
       "ALM-00405",
-      "ALM-00406",
       "ALM-00407",
-      "ALM-00408",
       "ALM-00409",
       "ALM-00410",
-      "ALM-00411",
       "ALM-00412",
       "ALM-00413",
       "ALM-00414",
@@ -1754,11 +1261,9 @@
       "ALM-00420",
       "ALM-00421",
       "ALM-00422",
-      "ALM-00423",
       "ALM-00424",
       "ALM-00425",
       "ALM-00426",
-      "ALM-00427",
       "ALM-00428",
       "ALM-00429",
       "ALM-00430",
@@ -1768,7 +1273,6 @@
       "ALM-00434",
       "ALM-00435",
       "ALM-00436",
-      "ALM-00437",
       "ALM-00438",
       "ALM-00439",
       "ALM-00440",
@@ -1788,268 +1292,38 @@
       "ALM-00454",
       "ALM-00455",
       "ALM-00456",
-      "ALM-00457",
       "ALM-00722",
       "ALM-00723",
       "ALM-00740",
       "ALM-00741",
       "ALM-00758",
       "ALM-00759",
-      "ALM-01240",
-      "ALM-01241",
-      "ALM-01244",
-      "ALM-01246",
       "ALM-01250",
-      "ALM-01257",
-      "ALM-01259",
-      "ALM-01274",
-      "ALM-01279",
-      "ALM-01286",
-      "ALM-01287",
-      "ALM-01289",
-      "ALM-01300",
-      "ALM-01304",
-      "ALM-01309",
       "ALM-01320",
       "ALM-01332",
-      "ALM-01340",
-      "ALM-01346",
       "ALM-01351",
-      "ALM-01356",
-      "ALM-01357",
-      "ALM-01360",
-      "ALM-01366",
-      "ALM-01368",
-      "ALM-01369",
-      "ALM-01386",
-      "ALM-01390",
       "ALM-01411",
-      "ALM-01416",
-      "ALM-01417",
-      "ALM-01423",
-      "ALM-01427",
-      "ALM-01428",
-      "ALM-01429",
-      "ALM-01430",
-      "ALM-01431",
-      "ALM-01432",
-      "ALM-01439",
-      "ALM-01440",
-      "ALM-01441",
-      "ALM-01450",
-      "ALM-01471",
       "ALM-01472",
-      "ALM-01481",
-      "ALM-01502",
-      "ALM-01503",
-      "ALM-01524",
-      "ALM-01526",
       "ALM-01538",
-      "ALM-01553",
-      "ALM-01563",
-      "ALM-01565",
-      "ALM-01568",
-      "ALM-01570",
-      "ALM-01575",
-      "ALM-01609",
-      "ALM-01611",
-      "ALM-01626",
-      "ALM-01627",
-      "ALM-01630",
-      "ALM-01649",
-      "ALM-01654",
       "ALM-01655",
-      "ALM-01657",
-      "ALM-01673",
-      "ALM-01679",
-      "ALM-01680",
-      "ALM-01689",
-      "ALM-01699",
       "ALM-01708",
-      "ALM-01709",
-      "ALM-01713",
       "ALM-01714",
       "ALM-01720",
-      "ALM-01726",
-      "ALM-01727",
-      "ALM-01732",
-      "ALM-01736",
-      "ALM-01737",
-      "ALM-01740",
-      "ALM-01747",
-      "ALM-01766",
       "ALM-01767",
-      "ALM-01773",
       "ALM-01787",
-      "ALM-01797",
-      "ALM-01803",
-      "ALM-01813",
-      "ALM-01816",
-      "ALM-01819",
-      "ALM-01839",
-      "ALM-01840",
-      "ALM-01844",
-      "ALM-01847",
-      "ALM-01867",
-      "ALM-01876",
-      "ALM-01879",
-      "ALM-01884",
-      "ALM-01885",
-      "ALM-01887",
       "ALM-01892",
-      "ALM-01894",
-      "ALM-01905",
-      "ALM-01924",
-      "ALM-01940",
-      "ALM-01960",
-      "ALM-01963",
-      "ALM-01964",
-      "ALM-01968",
-      "ALM-01981",
-      "ALM-01982",
-      "ALM-01983",
-      "ALM-01985",
-      "ALM-02000",
-      "ALM-02016",
-      "ALM-02031",
-      "ALM-02046",
-      "ALM-02052",
-      "ALM-02057",
-      "ALM-02058",
-      "ALM-02067",
-      "ALM-02073",
-      "ALM-02081",
-      "ALM-02094",
-      "ALM-02096",
-      "ALM-02117",
-      "ALM-02125",
-      "ALM-02141",
-      "ALM-02160",
-      "ALM-02171",
       "ALM-02179",
-      "ALM-02182",
       "ALM-02187",
-      "ALM-02189",
-      "ALM-02199",
-      "ALM-02225",
-      "ALM-02231",
-      "ALM-02241",
       "ALM-02251",
-      "ALM-02253",
-      "ALM-02261",
-      "ALM-02266",
-      "ALM-02267",
-      "ALM-02273",
-      "ALM-02274",
-      "ALM-02282",
-      "ALM-02285",
       "ALM-02289",
-      "ALM-02290",
-      "ALM-02296",
-      "ALM-02298",
-      "ALM-02322",
-      "ALM-02326",
-      "ALM-02328",
-      "ALM-02334",
-      "ALM-02351",
-      "ALM-02363",
-      "ALM-02365",
       "ALM-02371",
-      "ALM-02372",
-      "ALM-02375",
-      "ALM-02384",
-      "ALM-02396",
       "ALM-02427",
-      "ALM-02434",
-      "ALM-02441",
-      "ALM-02443",
-      "ALM-02452",
-      "ALM-02458",
-      "ALM-02462",
-      "ALM-02499",
       "ALM-02504",
-      "ALM-02506",
-      "ALM-02514",
-      "ALM-02528",
-      "ALM-02534",
-      "ALM-02539",
-      "ALM-02541",
-      "ALM-02542",
-      "ALM-02550",
-      "ALM-02553",
-      "ALM-02558",
-      "ALM-02568",
-      "ALM-02587",
-      "ALM-02596",
-      "ALM-02603",
-      "ALM-02604",
-      "ALM-02616",
-      "ALM-02625",
-      "ALM-02629",
-      "ALM-02638",
-      "ALM-02639",
-      "ALM-02642",
-      "ALM-02648",
-      "ALM-02651",
-      "ALM-02653",
-      "ALM-02676",
-      "ALM-02692",
-      "ALM-02693",
-      "ALM-02694",
-      "ALM-02699",
-      "ALM-02704",
-      "ALM-02706",
-      "ALM-02720",
-      "ALM-02729",
-      "ALM-02738",
-      "ALM-02753",
-      "ALM-02758",
-      "ALM-02763",
-      "ALM-02765",
-      "ALM-02769",
-      "ALM-02773",
-      "ALM-02776",
-      "ALM-02785",
-      "ALM-02791",
-      "ALM-02796",
       "ALM-02799",
-      "ALM-02801",
-      "ALM-02802",
-      "ALM-02804",
-      "ALM-02805",
-      "ALM-02807",
-      "ALM-02812",
-      "ALM-02813",
-      "ALM-02814",
-      "ALM-02822",
-      "ALM-02825",
-      "ALM-02831",
-      "ALM-02838",
-      "ALM-02844",
-      "ALM-02851",
-      "ALM-02862",
-      "ALM-02867",
       "ALM-02873",
-      "ALM-02878",
-      "ALM-02884",
       "ALM-02902",
-      "ALM-02913",
-      "ALM-02915",
-      "ALM-02917",
-      "ALM-02924",
-      "ALM-02928",
       "ALM-02929",
-      "ALM-02930",
-      "ALM-02934",
-      "ALM-02940",
-      "ALM-02943",
-      "ALM-02952",
-      "ALM-02964",
-      "ALM-02967",
-      "ALM-02971",
-      "ALM-02984",
-      "ALM-02994",
-      "ALM-02998"
+      "ALM-02967"
     ],
     "seed_alarm_ids": [
       "ALM-00003",
@@ -2100,9 +1374,9 @@
     "root_kind_label": "depolama",
     "severity": 5,
     "pattern": "ani patlama",
-    "start": "02:01:38",
-    "end": "02:31:11",
-    "alarm_count": 400,
+    "start": "02:02:30",
+    "end": "02:28:17",
+    "alarm_count": 276,
     "affected_services": [
       "batch-scheduler",
       "billing-db",
@@ -2112,50 +1386,49 @@
       "order-service",
       "payment-provider-gw",
       "payment-service",
-      "reconciliation-batch",
       "report-batch",
       "subscriber-service"
     ],
     "affected_top": [
       [
         "billing-service",
-        96
+        84
       ],
       [
         "charging-service",
-        86
+        55
       ],
       [
         "payment-service",
-        65
-      ],
-      [
-        "billing-db",
-        53
-      ],
-      [
-        "invoice-batch",
-        36
-      ],
-      [
-        "payment-provider-gw",
-        21
+        47
       ],
       [
         "order-service",
-        16
+        30
+      ],
+      [
+        "invoice-batch",
+        26
+      ],
+      [
+        "billing-db",
+        25
+      ],
+      [
+        "payment-provider-gw",
+        4
+      ],
+      [
+        "subscriber-service",
+        2
       ],
       [
         "report-batch",
-        11
-      ],
-      [
-        "reconciliation-batch",
-        8
+        2
       ],
       [
         "batch-scheduler",
-        5
+        1
       ]
     ],
     "root_cause": {
@@ -2163,7 +1436,7 @@
       "evidence": [
         "22 timeout/conn_refused alarmı mesajında doğrudan 'billing-db' hedefini işaretliyor.",
         "Üzerinde 24 sert hata işaretçisi (disk_full, db_write_fail, gc/oom, ext_* gibi) var — kök neden adayları arasında en yüksek ağırlıklı sinyal yoğunluğu.",
-        "Etkilenen 11 servisten 4 tanesi bağımlılık grafiğinde 'billing-db' bozulduğunda etkilenir konumda — tek kök, tabloyu açıklıyor.",
+        "Etkilenen 10 servisten 4 tanesi bağımlılık grafiğinde 'billing-db' bozulduğunda etkilenir konumda — tek kök, tabloyu açıklıyor.",
         "24 adet kritik (sev5) alarm doğrudan bu kaynağa bağlı.",
         "İlk sert sinyal saat 02:05:06'te görüldü; olay ani patlama örüntüsünde."
       ],
@@ -2175,7 +1448,7 @@
         },
         {
           "name": "invoice-batch",
-          "score": 0.7,
+          "score": 0.6,
           "why_rejected": "doğrudan suçlayan (timeout/refused) alarm sayısı daha düşük (0 < 22)"
         }
       ]
@@ -2184,10 +1457,10 @@
       "owner": "DBA Ekibi",
       "action": "billing-db üzerinde tablespace/disk genişletme başlat ve acil yer açma (arşiv/temp temizliği) uygula; yazma başarısızlıklarının tıkandığı kuyruğu izle.",
       "status": "açık",
-      "opened_at": "2026-09-16T15:04:48",
+      "opened_at": "2026-09-16T16:41:51",
       "history": [
         {
-          "at": "2026-09-16T15:04:48",
+          "at": "2026-09-16T16:41:51",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -2195,88 +1468,82 @@
       ]
     },
     "type_counts": {
-      "latency_high": 56,
-      "txn_fail": 51,
+      "txn_fail": 57,
+      "latency_high": 53,
       "timeout": 43,
       "db_write_fail": 34,
       "http_5xx": 31,
-      "network_flap": 26,
       "db_conn_pool": 24,
-      "disk_warn": 23,
-      "cpu_high": 22,
-      "mem_high": 19,
-      "log_rotate": 17,
       "disk_full": 17,
-      "backup_warn": 15,
-      "cert_expiry": 13,
-      "ntp_drift": 9
+      "network_flap": 6,
+      "log_rotate": 4,
+      "cert_expiry": 3,
+      "ntp_drift": 2,
+      "disk_warn": 1,
+      "cpu_high": 1
     },
     "top_hosts": {
-      "ao-049-invoice": 36,
-      "ao-020-billing": 36,
-      "ao-018-billing": 36,
-      "ao-021-charging": 33,
-      "ao-022-charging": 30,
-      "ao-026-payment": 26,
-      "ao-019-billing": 24,
-      "ao-023-charging": 23
+      "ao-020-billing": 31,
+      "ao-018-billing": 30,
+      "ao-049-invoice": 26,
+      "ao-019-billing": 23,
+      "ao-021-charging": 21,
+      "ao-022-charging": 18,
+      "ao-024-payment": 18,
+      "ao-026-payment": 17
     },
     "top_racks": {
-      "dc2/rack-A": 87,
-      "dc1/rack-B": 76,
-      "dc2/rack-C": 70,
-      "dc2/rack-B": 63,
-      "dc1/rack-A": 53,
-      "dc1/rack-C": 51
+      "dc1/rack-B": 61,
+      "dc2/rack-A": 58,
+      "dc2/rack-C": 48,
+      "dc2/rack-B": 41,
+      "dc1/rack-A": 41,
+      "dc1/rack-C": 27
     },
     "timeline": [
       [
-        "02:01",
-        3
-      ],
-      [
         "02:02",
-        7
+        1
       ],
       [
         "02:03",
-        4
+        1
       ],
       [
         "02:04",
-        8
+        2
       ],
       [
         "02:05",
-        12
+        6
       ],
       [
         "02:06",
-        13
+        5
       ],
       [
         "02:07",
-        14
+        11
       ],
       [
         "02:08",
-        16
+        11
       ],
       [
         "02:09",
-        21
+        10
       ],
       [
         "02:10",
-        21
+        15
       ],
       [
         "02:11",
-        21
+        17
       ],
       [
         "02:12",
-        15
+        13
       ],
       [
         "02:13",
@@ -2284,7 +1551,7 @@
       ],
       [
         "02:14",
-        21
+        16
       ],
       [
         "02:15",
@@ -2292,7 +1559,7 @@
       ],
       [
         "02:16",
-        15
+        13
       ],
       [
         "02:17",
@@ -2300,23 +1567,23 @@
       ],
       [
         "02:18",
-        21
+        17
       ],
       [
         "02:19",
-        17
+        14
       ],
       [
         "02:20",
-        17
+        12
       ],
       [
         "02:21",
-        19
+        15
       ],
       [
         "02:22",
-        18
+        12
       ],
       [
         "02:23",
@@ -2324,34 +1591,22 @@
       ],
       [
         "02:24",
-        12
+        6
       ],
       [
         "02:25",
-        10
+        7
       ],
       [
         "02:26",
-        9
-      ],
-      [
-        "02:27",
-        10
-      ],
-      [
-        "02:28",
         5
       ],
       [
-        "02:29",
-        3
+        "02:27",
+        2
       ],
       [
-        "02:30",
-        3
-      ],
-      [
-        "02:31",
+        "02:28",
         2
       ]
     ],
@@ -2503,7 +1758,6 @@
       "ALM-00602",
       "ALM-00603",
       "ALM-00604",
-      "ALM-00605",
       "ALM-00606",
       "ALM-00607",
       "ALM-00608",
@@ -2530,21 +1784,35 @@
       "ALM-00629",
       "ALM-00630",
       "ALM-00631",
-      "ALM-00632",
       "ALM-00633",
       "ALM-00634",
       "ALM-00635",
       "ALM-00636",
       "ALM-00637",
+      "ALM-00639",
+      "ALM-00640",
+      "ALM-00641",
+      "ALM-00642",
+      "ALM-00643",
       "ALM-00644",
+      "ALM-00645",
       "ALM-00646",
       "ALM-00647",
       "ALM-00648",
       "ALM-00649",
+      "ALM-00650",
+      "ALM-00651",
+      "ALM-00652",
       "ALM-00653",
       "ALM-00654",
+      "ALM-00655",
+      "ALM-00656",
       "ALM-00657",
       "ALM-00659",
+      "ALM-00660",
+      "ALM-00661",
+      "ALM-00662",
+      "ALM-00663",
       "ALM-00664",
       "ALM-00665",
       "ALM-00666",
@@ -2579,7 +1847,6 @@
       "ALM-00695",
       "ALM-00696",
       "ALM-00697",
-      "ALM-00698",
       "ALM-00699",
       "ALM-00700",
       "ALM-00701",
@@ -2599,162 +1866,26 @@
       "ALM-00715",
       "ALM-00716",
       "ALM-00717",
-      "ALM-00718",
-      "ALM-01239",
-      "ALM-01242",
-      "ALM-01249",
-      "ALM-01268",
-      "ALM-01297",
-      "ALM-01298",
-      "ALM-01308",
-      "ALM-01312",
-      "ALM-01342",
-      "ALM-01370",
-      "ALM-01378",
-      "ALM-01396",
+      "ALM-01373",
       "ALM-01422",
-      "ALM-01445",
-      "ALM-01446",
-      "ALM-01464",
-      "ALM-01466",
+      "ALM-01463",
       "ALM-01469",
-      "ALM-01474",
-      "ALM-01476",
-      "ALM-01480",
-      "ALM-01494",
-      "ALM-01512",
       "ALM-01513",
-      "ALM-01514",
-      "ALM-01519",
-      "ALM-01521",
-      "ALM-01542",
-      "ALM-01551",
-      "ALM-01562",
-      "ALM-01605",
-      "ALM-01641",
-      "ALM-01651",
-      "ALM-01653",
-      "ALM-01656",
-      "ALM-01692",
       "ALM-01694",
-      "ALM-01700",
       "ALM-01710",
-      "ALM-01715",
-      "ALM-01755",
-      "ALM-01761",
-      "ALM-01770",
-      "ALM-01772",
-      "ALM-01776",
-      "ALM-01777",
-      "ALM-01796",
-      "ALM-01800",
-      "ALM-01802",
-      "ALM-01807",
-      "ALM-01808",
-      "ALM-01812",
-      "ALM-01817",
-      "ALM-01826",
-      "ALM-01838",
       "ALM-01843",
-      "ALM-01845",
-      "ALM-01888",
-      "ALM-01889",
-      "ALM-01895",
-      "ALM-01919",
-      "ALM-01945",
-      "ALM-01952",
-      "ALM-01971",
-      "ALM-01989",
-      "ALM-02021",
-      "ALM-02077",
-      "ALM-02080",
+      "ALM-01904",
       "ALM-02099",
-      "ALM-02114",
-      "ALM-02119",
       "ALM-02122",
-      "ALM-02124",
-      "ALM-02137",
       "ALM-02146",
-      "ALM-02150",
       "ALM-02153",
-      "ALM-02161",
-      "ALM-02183",
       "ALM-02184",
-      "ALM-02185",
-      "ALM-02186",
-      "ALM-02191",
-      "ALM-02219",
-      "ALM-02224",
-      "ALM-02226",
-      "ALM-02237",
-      "ALM-02245",
-      "ALM-02247",
-      "ALM-02248",
       "ALM-02254",
-      "ALM-02257",
-      "ALM-02262",
       "ALM-02308",
-      "ALM-02312",
-      "ALM-02327",
-      "ALM-02340",
-      "ALM-02345",
-      "ALM-02347",
-      "ALM-02352",
-      "ALM-02355",
-      "ALM-02361",
-      "ALM-02364",
-      "ALM-02369",
-      "ALM-02391",
       "ALM-02398",
-      "ALM-02406",
-      "ALM-02424",
-      "ALM-02436",
-      "ALM-02438",
-      "ALM-02439",
-      "ALM-02456",
-      "ALM-02459",
-      "ALM-02482",
       "ALM-02485",
-      "ALM-02505",
-      "ALM-02516",
-      "ALM-02524",
-      "ALM-02526",
-      "ALM-02532",
-      "ALM-02575",
       "ALM-02584",
-      "ALM-02591",
-      "ALM-02597",
-      "ALM-02600",
-      "ALM-02608",
-      "ALM-02610",
-      "ALM-02622",
-      "ALM-02623",
-      "ALM-02627",
-      "ALM-02631",
-      "ALM-02641",
       "ALM-02649",
-      "ALM-02666",
-      "ALM-02678",
-      "ALM-02696",
-      "ALM-02703",
-      "ALM-02724",
-      "ALM-02727",
-      "ALM-02730",
-      "ALM-02748",
-      "ALM-02792",
-      "ALM-02816",
-      "ALM-02826",
-      "ALM-02842",
-      "ALM-02870",
-      "ALM-02875",
-      "ALM-02880",
-      "ALM-02882",
-      "ALM-02886",
-      "ALM-02921",
-      "ALM-02948",
-      "ALM-02974",
-      "ALM-02987",
-      "ALM-02997",
       "ALM-03000"
     ],
     "seed_alarm_ids": [
@@ -2834,9 +1965,9 @@
     "root_kind_label": "dış sağlayıcı",
     "severity": 5,
     "pattern": "ani patlama",
-    "start": "02:37:03",
-    "end": "03:03:31",
-    "alarm_count": 245,
+    "start": "02:38:31",
+    "end": "03:01:16",
+    "alarm_count": 168,
     "affected_services": [
       "billing-service",
       "mobile-bff",
@@ -2847,23 +1978,23 @@
     "affected_top": [
       [
         "payment-service",
-        112
-      ],
-      [
-        "payment-provider-gw",
-        48
+        88
       ],
       [
         "order-service",
-        36
+        28
       ],
       [
         "mobile-bff",
         26
       ],
       [
+        "payment-provider-gw",
+        25
+      ],
+      [
         "billing-service",
-        23
+        1
       ]
     ],
     "root_cause": {
@@ -2875,16 +2006,27 @@
         "24 adet kritik (sev5) alarm doğrudan bu kaynağa bağlı.",
         "İlk sert sinyal saat 02:40:28'te görüldü; olay ani patlama örüntüsünde."
       ],
-      "counter_hypotheses": []
+      "counter_hypotheses": [
+        {
+          "name": "payment-service",
+          "score": 46.0,
+          "why_rejected": "doğrudan suçlayan (timeout/refused) alarm sayısı daha düşük (0 < 127)"
+        },
+        {
+          "name": "order-service",
+          "score": 15.0,
+          "why_rejected": "doğrudan suçlayan (timeout/refused) alarm sayısı daha düşük (0 < 127)"
+        }
+      ]
     },
     "first_action": {
       "owner": "Ödeme Platformu Nöbetçisi",
       "action": "payment-provider-gw için sağlayıcı durum sayfasını ve SLA bildirim kanalını kontrol et; payment-service üzerinde devre kesici (circuit breaker) / fallback politikasını gözden geçir.",
       "status": "açık",
-      "opened_at": "2026-09-16T15:04:48",
+      "opened_at": "2026-09-16T16:41:51",
       "history": [
         {
-          "at": "2026-09-16T15:04:48",
+          "at": "2026-09-16T16:41:51",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -2893,86 +2035,72 @@
     },
     "type_counts": {
       "timeout": 79,
-      "txn_fail": 39,
-      "http_5xx": 27,
-      "cert_expiry": 17,
+      "txn_fail": 37,
+      "http_5xx": 25,
       "ext_slow": 13,
-      "ntp_drift": 12,
-      "backup_warn": 11,
       "ext_unreach": 11,
-      "disk_warn": 7,
-      "log_rotate": 7,
-      "latency_high": 6,
-      "mem_high": 6,
-      "cpu_high": 6,
-      "network_flap": 4
+      "log_rotate": 1,
+      "latency_high": 1,
+      "cpu_high": 1
     },
     "top_hosts": {
-      "ao-024-payment": 45,
-      "ao-025-payment": 35,
-      "ao-026-payment": 32,
-      "ao-028-order": 25,
-      "ao-054-payment": 18,
-      "ao-053-payment": 17,
-      "ao-052-payment": 13,
-      "ao-027-order": 11
+      "ao-024-payment": 35,
+      "ao-025-payment": 28,
+      "ao-026-payment": 25,
+      "ao-028-order": 17,
+      "ao-004-mobile": 11,
+      "ao-027-order": 11,
+      "ao-053-payment": 10,
+      "ao-054-payment": 8
     },
     "top_racks": {
-      "dc2/rack-A": 81,
-      "dc2/rack-B": 49,
-      "dc1/rack-B": 42,
-      "dc2/rack-C": 38,
-      "dc1/rack-C": 24,
+      "dc2/rack-A": 52,
+      "dc2/rack-B": 35,
+      "dc1/rack-B": 28,
+      "dc2/rack-C": 25,
+      "dc1/rack-C": 17,
       "dc1/rack-A": 11
     },
     "timeline": [
-      [
-        "02:37",
-        6
-      ],
       [
         "02:38",
         1
       ],
       [
-        "02:39",
-        2
-      ],
-      [
         "02:40",
-        8
+        6
       ],
       [
         "02:41",
-        17
-      ],
-      [
-        "02:42",
-        18
-      ],
-      [
-        "02:43",
         15
       ],
       [
-        "02:44",
-        10
+        "02:42",
+        16
       ],
       [
-        "02:45",
-        11
-      ],
-      [
-        "02:46",
+        "02:43",
         12
       ],
       [
+        "02:44",
+        7
+      ],
+      [
+        "02:45",
+        8
+      ],
+      [
+        "02:46",
+        7
+      ],
+      [
         "02:47",
-        10
+        8
       ],
       [
         "02:48",
-        11
+        7
       ],
       [
         "02:49",
@@ -2980,11 +2108,11 @@
       ],
       [
         "02:50",
-        15
+        10
       ],
       [
         "02:51",
-        13
+        9
       ],
       [
         "02:52",
@@ -2992,47 +2120,39 @@
       ],
       [
         "02:53",
-        8
+        7
       ],
       [
         "02:54",
-        12
+        7
       ],
       [
         "02:55",
-        14
-      ],
-      [
-        "02:56",
-        11
-      ],
-      [
-        "02:57",
         9
       ],
       [
+        "02:56",
+        8
+      ],
+      [
+        "02:57",
+        7
+      ],
+      [
         "02:58",
-        6
+        5
       ],
       [
         "02:59",
-        4
+        2
       ],
       [
         "03:00",
-        4
+        2
       ],
       [
         "03:01",
-        6
-      ],
-      [
-        "03:02",
-        4
-      ],
-      [
-        "03:03",
-        4
+        1
       ]
     ],
     "alarm_ids": [
@@ -3147,6 +2267,7 @@
       "ALM-00958",
       "ALM-00959",
       "ALM-00960",
+      "ALM-00961",
       "ALM-00962",
       "ALM-00963",
       "ALM-00976",
@@ -3168,17 +2289,12 @@
       "ALM-01003",
       "ALM-01004",
       "ALM-01005",
-      "ALM-01008",
       "ALM-01009",
-      "ALM-01010",
       "ALM-01011",
       "ALM-01012",
       "ALM-01013",
       "ALM-01014",
-      "ALM-01015",
       "ALM-01016",
-      "ALM-01017",
-      "ALM-01018",
       "ALM-01019",
       "ALM-01025",
       "ALM-01026",
@@ -3205,81 +2321,8 @@
       "ALM-01096",
       "ALM-01102",
       "ALM-01106",
-      "ALM-01277",
-      "ALM-01282",
-      "ALM-01283",
-      "ALM-01317",
-      "ALM-01402",
-      "ALM-01406",
-      "ALM-01449",
-      "ALM-01468",
-      "ALM-01529",
-      "ALM-01556",
-      "ALM-01589",
-      "ALM-01606",
-      "ALM-01621",
-      "ALM-01625",
-      "ALM-01643",
-      "ALM-01675",
-      "ALM-01676",
-      "ALM-01750",
-      "ALM-01780",
-      "ALM-01790",
-      "ALM-01823",
-      "ALM-01842",
-      "ALM-01881",
-      "ALM-01891",
-      "ALM-01896",
-      "ALM-01916",
-      "ALM-01922",
-      "ALM-01933",
-      "ALM-01942",
-      "ALM-01991",
-      "ALM-02002",
-      "ALM-02035",
-      "ALM-02068",
-      "ALM-02069",
-      "ALM-02079",
-      "ALM-02098",
-      "ALM-02116",
-      "ALM-02126",
-      "ALM-02148",
-      "ALM-02188",
-      "ALM-02196",
-      "ALM-02201",
-      "ALM-02255",
-      "ALM-02259",
-      "ALM-02331",
-      "ALM-02337",
-      "ALM-02354",
-      "ALM-02358",
-      "ALM-02388",
-      "ALM-02389",
-      "ALM-02392",
       "ALM-02395",
       "ALM-02409",
-      "ALM-02429",
-      "ALM-02515",
-      "ALM-02521",
-      "ALM-02522",
-      "ALM-02554",
-      "ALM-02557",
-      "ALM-02567",
-      "ALM-02607",
-      "ALM-02659",
-      "ALM-02708",
-      "ALM-02722",
-      "ALM-02726",
-      "ALM-02770",
-      "ALM-02786",
-      "ALM-02840",
-      "ALM-02850",
-      "ALM-02854",
-      "ALM-02905",
-      "ALM-02908",
-      "ALM-02932",
-      "ALM-02951",
-      "ALM-02956",
       "ALM-02977"
     ],
     "seed_alarm_ids": [
@@ -3317,89 +2360,82 @@
     "root_kind_label": "bağlantı havuzu",
     "severity": 4,
     "pattern": "ani patlama",
-    "start": "03:02:08",
-    "end": "03:30:20",
-    "alarm_count": 407,
+    "start": "03:04:41",
+    "end": "03:30:19",
+    "alarm_count": 164,
     "affected_services": [
-      "api-gateway",
-      "auth-service",
       "batch-scheduler",
       "billing-db",
       "billing-service",
       "cache-cluster",
-      "catalog-service",
       "charging-service",
-      "dns-resolver",
-      "invoice-batch",
-      "message-queue",
       "mobile-bff",
       "order-service",
       "payment-service",
       "reconciliation-batch",
       "report-batch",
-      "session-service",
       "subscriber-db",
       "subscriber-service"
     ],
     "affected_top": [
       [
         "subscriber-db",
-        67
+        50
       ],
       [
         "subscriber-service",
-        66
-      ],
-      [
-        "charging-service",
-        27
+        48
       ],
       [
         "reconciliation-batch",
-        24
-      ],
-      [
-        "payment-service",
-        24
+        17
       ],
       [
         "report-batch",
-        24
+        16
       ],
       [
-        "session-service",
-        23
+        "charging-service",
+        11
       ],
       [
-        "mobile-bff",
-        23
+        "payment-service",
+        6
       ],
       [
-        "api-gateway",
-        20
+        "batch-scheduler",
+        5
       ],
       [
         "billing-db",
-        18
+        3
+      ],
+      [
+        "mobile-bff",
+        3
+      ],
+      [
+        "cache-cluster",
+        2
       ]
     ],
     "root_cause": {
       "hypothesis": "Kök neden büyük olasılıkla subscriber-db üzerinde bağlantı havuzu tükenmesi. Gece toplu işlerinin DB yükü ile birleştiğinde havuz tükendi; hem batch işleri yavaşladı hem de servis tarafında gecikme/bağlantı hataları görüldü.",
       "evidence": [
         "Üzerinde 16 sert hata işaretçisi (disk_full, db_write_fail, gc/oom, ext_* gibi) var — kök neden adayları arasında en yüksek ağırlıklı sinyal yoğunluğu.",
-        "Etkilenen 19 servisten 8 tanesi bağımlılık grafiğinde 'subscriber-db' bozulduğunda etkilenir konumda — tek kök, tabloyu açıklıyor.",
+        "Etkilenen 12 servisten 8 tanesi bağımlılık grafiğinde 'subscriber-db' bozulduğunda etkilenir konumda — tek kök, tabloyu açıklıyor.",
         "İlk sert sinyal saat 03:11:11'te görüldü; olay ani patlama örüntüsünde."
       ],
       "counter_hypotheses": [
         {
-          "name": "batch-scheduler",
-          "score": 8.8,
-          "why_rejected": "üzerindeki sert hata sinyali daha az (4 < 16)"
+          "name": "subscriber-service",
+          "score": 8.5,
+          "why_rejected": "diğer etkilenen servisleri daha az açıklıyor (5 < 8)"
         },
         {
-          "name": "subscriber-service",
-          "score": 8.4,
-          "why_rejected": "diğer etkilenen servisleri daha az açıklıyor (5 < 8)"
+          "name": "batch-scheduler",
+          "score": 7.9,
+          "why_rejected": "üzerindeki sert hata sinyali daha az (4 < 16)"
         }
       ]
     },
@@ -3407,10 +2443,10 @@
       "owner": "Veritabanı Operasyonu",
       "action": "subscriber-db üzerinde bekleyen/uzun sorguları ve bağlantı havuzu metriklerini incele; gece toplu işlerinin penceresini DB yüküne göre kaydır.",
       "status": "açık",
-      "opened_at": "2026-09-16T15:04:48",
+      "opened_at": "2026-09-16T16:41:51",
       "history": [
         {
-          "at": "2026-09-16T15:04:48",
+          "at": "2026-09-16T16:41:51",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -3418,158 +2454,148 @@
       ]
     },
     "type_counts": {
-      "cpu_high": 69,
-      "latency_high": 62,
       "db_conn_pool": 48,
-      "mem_high": 39,
-      "cert_expiry": 38,
-      "disk_warn": 36,
-      "log_rotate": 28,
-      "ntp_drift": 24,
-      "backup_warn": 24,
-      "network_flap": 22,
+      "cpu_high": 39,
+      "latency_high": 31,
       "batch_slow": 12,
+      "mem_high": 9,
+      "disk_warn": 7,
+      "cert_expiry": 6,
       "batch_overlap": 4,
-      "timeout": 1
+      "log_rotate": 3,
+      "network_flap": 2,
+      "backup_warn": 2,
+      "ntp_drift": 1
     },
     "top_hosts": {
-      "ao-017-subscriber": 26,
-      "ao-032-subscriber": 25,
-      "ao-031-subscriber": 25,
-      "ao-050-reconciliation": 24,
-      "ao-051-report": 24,
-      "ao-015-subscriber": 23,
-      "ao-016-subscriber": 17,
-      "ao-033-subscriber": 17
+      "ao-031-subscriber": 19,
+      "ao-015-subscriber": 18,
+      "ao-050-reconciliation": 17,
+      "ao-017-subscriber": 17,
+      "ao-032-subscriber": 17,
+      "ao-051-report": 16,
+      "ao-033-subscriber": 14,
+      "ao-016-subscriber": 13
     },
     "top_racks": {
-      "dc1/rack-A": 95,
-      "dc2/rack-C": 82,
-      "dc1/rack-C": 65,
-      "dc1/rack-B": 62,
-      "dc2/rack-B": 56,
-      "dc2/rack-A": 47
+      "dc1/rack-A": 53,
+      "dc2/rack-C": 38,
+      "dc2/rack-B": 21,
+      "dc1/rack-B": 21,
+      "dc1/rack-C": 20,
+      "dc2/rack-A": 11
     },
     "timeline": [
       [
-        "03:02",
-        4
-      ],
-      [
-        "03:03",
-        14
-      ],
-      [
         "03:04",
-        15
+        1
       ],
       [
         "03:05",
-        12
+        5
       ],
       [
         "03:06",
-        9
+        4
       ],
       [
         "03:07",
-        11
+        3
       ],
       [
         "03:08",
-        14
+        5
       ],
       [
         "03:09",
-        17
+        9
       ],
       [
         "03:10",
-        14
+        5
       ],
       [
         "03:11",
-        18
+        7
       ],
       [
         "03:12",
-        19
+        11
       ],
       [
         "03:13",
-        19
+        7
       ],
       [
         "03:14",
-        13
+        7
       ],
       [
         "03:15",
-        19
-      ],
-      [
-        "03:16",
-        16
-      ],
-      [
-        "03:17",
-        21
-      ],
-      [
-        "03:18",
-        12
-      ],
-      [
-        "03:19",
-        19
-      ],
-      [
-        "03:20",
-        16
-      ],
-      [
-        "03:21",
-        17
-      ],
-      [
-        "03:22",
-        12
-      ],
-      [
-        "03:23",
-        13
-      ],
-      [
-        "03:24",
-        24
-      ],
-      [
-        "03:25",
-        11
-      ],
-      [
-        "03:26",
-        11
-      ],
-      [
-        "03:27",
         10
       ],
       [
-        "03:28",
+        "03:16",
+        8
+      ],
+      [
+        "03:17",
+        11
+      ],
+      [
+        "03:18",
+        6
+      ],
+      [
+        "03:19",
+        6
+      ],
+      [
+        "03:20",
         7
+      ],
+      [
+        "03:21",
+        9
+      ],
+      [
+        "03:22",
+        8
+      ],
+      [
+        "03:23",
+        7
+      ],
+      [
+        "03:24",
+        11
+      ],
+      [
+        "03:25",
+        3
+      ],
+      [
+        "03:26",
+        5
+      ],
+      [
+        "03:27",
+        3
+      ],
+      [
+        "03:28",
+        3
       ],
       [
         "03:29",
-        13
+        1
       ],
       [
         "03:30",
-        7
+        2
       ]
     ],
     "alarm_ids": [
-      "ALM-00804",
       "ALM-01107",
       "ALM-01108",
       "ALM-01109",
@@ -3585,7 +2611,6 @@
       "ALM-01119",
       "ALM-01120",
       "ALM-01121",
-      "ALM-01122",
       "ALM-01123",
       "ALM-01124",
       "ALM-01125",
@@ -3595,7 +2620,6 @@
       "ALM-01129",
       "ALM-01130",
       "ALM-01131",
-      "ALM-01132",
       "ALM-01133",
       "ALM-01134",
       "ALM-01135",
@@ -3629,19 +2653,15 @@
       "ALM-01163",
       "ALM-01164",
       "ALM-01165",
-      "ALM-01166",
       "ALM-01167",
       "ALM-01168",
-      "ALM-01169",
       "ALM-01170",
-      "ALM-01171",
       "ALM-01172",
       "ALM-01173",
       "ALM-01174",
       "ALM-01175",
       "ALM-01176",
       "ALM-01177",
-      "ALM-01178",
       "ALM-01179",
       "ALM-01180",
       "ALM-01181",
@@ -3703,279 +2723,43 @@
       "ALM-01237",
       "ALM-01238",
       "ALM-01247",
-      "ALM-01255",
-      "ALM-01265",
-      "ALM-01269",
-      "ALM-01276",
-      "ALM-01280",
       "ALM-01293",
-      "ALM-01311",
-      "ALM-01316",
-      "ALM-01319",
-      "ALM-01322",
       "ALM-01330",
-      "ALM-01345",
-      "ALM-01353",
-      "ALM-01354",
-      "ALM-01362",
-      "ALM-01365",
-      "ALM-01383",
-      "ALM-01395",
-      "ALM-01401",
       "ALM-01405",
-      "ALM-01409",
       "ALM-01410",
-      "ALM-01412",
-      "ALM-01424",
-      "ALM-01433",
-      "ALM-01442",
-      "ALM-01453",
-      "ALM-01456",
-      "ALM-01457",
-      "ALM-01461",
       "ALM-01462",
-      "ALM-01465",
-      "ALM-01473",
-      "ALM-01490",
-      "ALM-01498",
-      "ALM-01505",
-      "ALM-01516",
-      "ALM-01517",
-      "ALM-01522",
       "ALM-01530",
-      "ALM-01533",
-      "ALM-01544",
-      "ALM-01546",
-      "ALM-01548",
       "ALM-01549",
       "ALM-01550",
-      "ALM-01554",
-      "ALM-01573",
-      "ALM-01574",
-      "ALM-01580",
-      "ALM-01581",
-      "ALM-01583",
-      "ALM-01587",
-      "ALM-01591",
-      "ALM-01607",
-      "ALM-01614",
-      "ALM-01623",
       "ALM-01628",
       "ALM-01633",
-      "ALM-01634",
-      "ALM-01635",
-      "ALM-01646",
-      "ALM-01647",
       "ALM-01658",
-      "ALM-01661",
-      "ALM-01662",
-      "ALM-01665",
-      "ALM-01671",
-      "ALM-01685",
-      "ALM-01688",
-      "ALM-01693",
-      "ALM-01695",
-      "ALM-01702",
-      "ALM-01721",
-      "ALM-01722",
       "ALM-01723",
-      "ALM-01728",
-      "ALM-01730",
-      "ALM-01742",
       "ALM-01757",
-      "ALM-01760",
-      "ALM-01768",
-      "ALM-01771",
-      "ALM-01783",
-      "ALM-01784",
-      "ALM-01785",
-      "ALM-01791",
-      "ALM-01827",
-      "ALM-01834",
-      "ALM-01841",
-      "ALM-01850",
-      "ALM-01854",
       "ALM-01855",
-      "ALM-01858",
-      "ALM-01862",
       "ALM-01866",
-      "ALM-01868",
-      "ALM-01869",
-      "ALM-01875",
-      "ALM-01877",
-      "ALM-01912",
-      "ALM-01913",
       "ALM-01928",
-      "ALM-01931",
-      "ALM-01943",
-      "ALM-01944",
-      "ALM-01955",
       "ALM-01969",
-      "ALM-01972",
       "ALM-01974",
-      "ALM-01980",
-      "ALM-01990",
-      "ALM-01993",
-      "ALM-01994",
-      "ALM-01996",
-      "ALM-02003",
-      "ALM-02012",
-      "ALM-02018",
-      "ALM-02024",
-      "ALM-02025",
-      "ALM-02027",
-      "ALM-02029",
-      "ALM-02030",
-      "ALM-02045",
-      "ALM-02059",
-      "ALM-02061",
-      "ALM-02070",
-      "ALM-02084",
-      "ALM-02090",
-      "ALM-02092",
-      "ALM-02095",
-      "ALM-02097",
-      "ALM-02102",
-      "ALM-02103",
-      "ALM-02108",
-      "ALM-02112",
-      "ALM-02127",
-      "ALM-02138",
-      "ALM-02159",
       "ALM-02163",
-      "ALM-02168",
-      "ALM-02174",
-      "ALM-02180",
-      "ALM-02192",
-      "ALM-02197",
-      "ALM-02202",
-      "ALM-02211",
-      "ALM-02212",
       "ALM-02214",
-      "ALM-02217",
-      "ALM-02227",
-      "ALM-02233",
-      "ALM-02235",
-      "ALM-02278",
-      "ALM-02279",
-      "ALM-02286",
-      "ALM-02287",
-      "ALM-02291",
-      "ALM-02293",
-      "ALM-02306",
-      "ALM-02315",
-      "ALM-02321",
-      "ALM-02343",
-      "ALM-02353",
       "ALM-02357",
-      "ALM-02380",
-      "ALM-02381",
       "ALM-02382",
-      "ALM-02385",
-      "ALM-02386",
       "ALM-02405",
-      "ALM-02410",
-      "ALM-02425",
-      "ALM-02433",
-      "ALM-02435",
-      "ALM-02437",
-      "ALM-02449",
-      "ALM-02460",
-      "ALM-02468",
-      "ALM-02472",
-      "ALM-02475",
-      "ALM-02477",
-      "ALM-02478",
       "ALM-02487",
-      "ALM-02493",
-      "ALM-02500",
-      "ALM-02501",
-      "ALM-02537",
-      "ALM-02544",
-      "ALM-02546",
-      "ALM-02548",
-      "ALM-02549",
-      "ALM-02556",
-      "ALM-02559",
-      "ALM-02564",
-      "ALM-02569",
-      "ALM-02571",
-      "ALM-02576",
-      "ALM-02577",
       "ALM-02581",
       "ALM-02588",
-      "ALM-02592",
-      "ALM-02598",
-      "ALM-02602",
-      "ALM-02605",
-      "ALM-02624",
-      "ALM-02632",
-      "ALM-02633",
-      "ALM-02635",
-      "ALM-02640",
-      "ALM-02647",
-      "ALM-02650",
-      "ALM-02655",
-      "ALM-02657",
-      "ALM-02658",
-      "ALM-02668",
-      "ALM-02669",
-      "ALM-02671",
-      "ALM-02682",
-      "ALM-02683",
-      "ALM-02685",
-      "ALM-02690",
       "ALM-02697",
-      "ALM-02705",
-      "ALM-02715",
-      "ALM-02719",
-      "ALM-02721",
       "ALM-02734",
-      "ALM-02745",
-      "ALM-02757",
       "ALM-02759",
-      "ALM-02774",
-      "ALM-02782",
-      "ALM-02783",
-      "ALM-02788",
-      "ALM-02793",
       "ALM-02795",
-      "ALM-02798",
-      "ALM-02800",
-      "ALM-02809",
       "ALM-02819",
-      "ALM-02820",
-      "ALM-02827",
-      "ALM-02828",
-      "ALM-02829",
-      "ALM-02832",
-      "ALM-02841",
       "ALM-02846",
-      "ALM-02858",
-      "ALM-02859",
       "ALM-02861",
-      "ALM-02864",
       "ALM-02876",
-      "ALM-02881",
-      "ALM-02888",
-      "ALM-02892",
-      "ALM-02901",
-      "ALM-02903",
-      "ALM-02904",
-      "ALM-02910",
-      "ALM-02911",
       "ALM-02920",
       "ALM-02926",
-      "ALM-02937",
-      "ALM-02946",
-      "ALM-02947",
-      "ALM-02955",
-      "ALM-02976",
-      "ALM-02978",
-      "ALM-02990",
-      "ALM-02995",
-      "ALM-02996",
-      "ALM-02999"
+      "ALM-02946"
     ],
     "seed_alarm_ids": [
       "ALM-01107",
