@@ -73,10 +73,10 @@
       "owner": "Oturum Servisi Sahibi",
       "action": "session-service için heap dump al ve servisi yeniden başlat; bellek sızıntısı şüphesiyle son sürüm değişikliklerini incele.",
       "status": "açık",
-      "opened_at": "2026-09-16T14:56:06",
+      "opened_at": "2026-09-16T15:04:48",
       "history": [
         {
-          "at": "2026-09-16T14:56:06",
+          "at": "2026-09-16T15:04:48",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -1192,10 +1192,10 @@
       "owner": "Ağ Operasyon (NOC)",
       "action": "dc1/rack-A top-of-rack switch'i ve uplink portlarını kontrol et; rack içindeki hostların arayüz durumlarını doğrula, gerekirse trafiği yedek rack/DC'ye kaydır.",
       "status": "açık",
-      "opened_at": "2026-09-16T14:56:06",
+      "opened_at": "2026-09-16T15:04:48",
       "history": [
         {
-          "at": "2026-09-16T14:56:06",
+          "at": "2026-09-16T15:04:48",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -2184,10 +2184,10 @@
       "owner": "DBA Ekibi",
       "action": "billing-db üzerinde tablespace/disk genişletme başlat ve acil yer açma (arşiv/temp temizliği) uygula; yazma başarısızlıklarının tıkandığı kuyruğu izle.",
       "status": "açık",
-      "opened_at": "2026-09-16T14:56:06",
+      "opened_at": "2026-09-16T15:04:48",
       "history": [
         {
-          "at": "2026-09-16T14:56:06",
+          "at": "2026-09-16T15:04:48",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -2881,10 +2881,10 @@
       "owner": "Ödeme Platformu Nöbetçisi",
       "action": "payment-provider-gw için sağlayıcı durum sayfasını ve SLA bildirim kanalını kontrol et; payment-service üzerinde devre kesici (circuit breaker) / fallback politikasını gözden geçir.",
       "status": "açık",
-      "opened_at": "2026-09-16T14:56:06",
+      "opened_at": "2026-09-16T15:04:48",
       "history": [
         {
-          "at": "2026-09-16T14:56:06",
+          "at": "2026-09-16T15:04:48",
           "from": null,
           "to": "açık",
           "by": "system"
@@ -3407,10 +3407,10 @@
       "owner": "Veritabanı Operasyonu",
       "action": "subscriber-db üzerinde bekleyen/uzun sorguları ve bağlantı havuzu metriklerini incele; gece toplu işlerinin penceresini DB yüküne göre kaydır.",
       "status": "açık",
-      "opened_at": "2026-09-16T14:56:06",
+      "opened_at": "2026-09-16T15:04:48",
       "history": [
         {
-          "at": "2026-09-16T14:56:06",
+          "at": "2026-09-16T15:04:48",
           "from": null,
           "to": "açık",
           "by": "system"

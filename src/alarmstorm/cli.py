@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import sys
 import time
 from pathlib import Path
 
 from .cards import attach_similar_events, build_card, classify_root
+from .dashboard import generate_dashboard
 from .engine import CorrelationEngine, EngineConfig, EngineResult
 from .io import Dataset, load_dataset
 from .report import (event_chart, global_chart, noise_chart, terminal_summary,
@@ -93,6 +95,16 @@ def main(argv: list[str] | None = None) -> int:
     global_chart(cards, ds.alarms, out / "charts")
     noise_chart(result.noise, ds.alarms, out / "charts")
     write_summary_md(cards, result.totals, result.noise_reason_counts, out)
+
+    # action registry: keep human/demo decisions across regenerations
+    actions_file = out / "actions.json"
+    actions: dict = {}
+    if actions_file.exists():
+        actions = json.loads(actions_file.read_text(encoding="utf-8"))
+    actions = {c["id"]: actions.get(c["id"], {"status": "açık", "history": []}) for c in cards}
+    write_json(actions_file, actions)
+
+    generate_dashboard(out, cards, result.noise_reason_counts, result.totals)
     terminal_summary(cards, result.totals)
 
     dbg_log = out / "run_debug.log"
