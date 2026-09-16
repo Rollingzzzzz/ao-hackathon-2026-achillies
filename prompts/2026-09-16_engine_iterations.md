@@ -25,3 +25,16 @@
 ## İnsan rolü
 
 Kartlar ve kökler sohbette sunuldu; insan "5 olay hipotezinin motor tarafından bağımsız olarak yeniden üretilmiş olması"nın sunumda vurgulanmasını istedi (AI_JURI.md §1-2'ye işlendi).
+
+## 2. Tur — Öz-denetim geçişi (16:30–17:15, kullanıcı kararı: "bir yerlerde bize gol atılmış olabilir")
+
+Kullanıcı senaryo yazarından ("Selahattin abi") gelmiş olabilecek bilinçli bir tuzağa karşı belirleyici bir denetim istedi. Ajan `scripts/trap_audit/` iç denetim aracını kurdu (proxy yalnız denetimde; motor ve teslim dokümanları alarm_id'yi kullanmaz):
+
+| # | Bulgular | Kök neden | Düzeltme |
+|---|---|---|---|
+| A | Eski çalışma 1.762 uniform gürültü alarmının 1.157'sini kartlara emmişti (EVT-01 %65, EVT-05 %67 gürültü) | "aynı servis"/"graf yakınlığı" puanı her severity'de bağlanıyordu; geniş olay pencereleri gürültüyü yutuyordu | attach'e çekirdek-kanıt kapısı: blame hedefi, anomali, sert hata işareti veya sev≥4 olmayan alarm kartlara giremez (`not_core_evidence` gerekçesiyle elenir) |
+| B | 14 gerçek kaskad kuyruğu alarmı gürültü sanıldı (02:57–03:03 auth/web-bff/mobile-bff; dahil tek sev5 ALM-01048) | pencere 2 süpürmede geç büyüyor, timestamp-sıralı geçiş kuyruklara yeniden teklif yapamıyordu | süpürme 2→3; güçlü alarmlar komşu servislerde de çekirdek kanıt sayılır |
+| C | EVT-01/04 karşı-olasılıkları boş (tek servisli tohum) | aday havuzunda root'tan başka servis yoktu | etkilenen servislerden ölçümlü dolgu adayları |
+| D | EVT-05 kök yönü şüphesi | — | KANIT: subscriber-db sinyalleri 03:03:50'de, batch_overlap 03:05:28'de → kök subscriber-db doğru, değişiklik yok |
+
+**Sonuç (2. tur):** 5 kart ve kökler değişmedi; bağlı alarm 2.381→1.301 (1.124 olay bandı), gürültü 1.699 gerekçeli; iç proxy'ye göre gürültü eleme %34.3→%92.2, tüm 248 sev5 kartlarda; kalan 74 elenen gerçek dahil tümü sev3 tekil zayıf sinyal (54'ü blame'siz latency_high).
