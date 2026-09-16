@@ -124,10 +124,17 @@ def write_summary_md(cards: list[dict[str, Any]], totals: dict[str, Any],
     L.append("")
     L.append("## Gürültü denetimi")
     L.append("")
-    L.append("| Eleme gerekçesi | Alarm sayısı |")
-    L.append("|---|---|")
+    reason_tr = {
+        "below_anomaly_threshold": "servis×tip×zaman dilimi bazında anomali eşiğini geçmeyen arka plan",
+        "no_time_overlap": "hiçbir olay penceresine denk gelmeyen",
+        "no_topology_link": "pencereyle örtüşen ama bağımlılık topolojisinde olaya bağlanamayan",
+        "not_core_evidence": "pencere içinde ve topolojik olarak yakın, ancak nedensel kanıt (blame hedefi, anomali, sert hata işareti veya kritik seviye) taşımayan — kasıtlı bağlama politikası gereği elendi",
+        "outcompeted": "benzer kanıtı olan daha yakın bir olayın aldığı",
+    }
+    L.append("| Eleme gerekçesi | Açıklama | Alarm sayısı |")
+    L.append("|---|---|---|")
     for k, v in sorted(noise_reason_counts.items(), key=lambda kv: -kv[1]):
-        L.append(f"| {k} | {v} |")
+        L.append(f"| `{k}` | {reason_tr.get(k, '')} | {v} |")
     p = out_dir / "summary.md"
     atomic_write(p, "\n".join(L) + "\n")
     return p

@@ -68,6 +68,9 @@ class EngineConfig:
     max_seed_dist: int = 3          # graph distance linking two anomalous alarms
     attach_dist: int = 2            # graph distance for attaching normal alarms
     attach_margin_min: int = 2      # minutes of slack around an event window
+    attach_passes: int = 3          # attach sweeps; windows grow late, tails need a re-offer
+    require_core_attach: bool = True  # only blame/anomaly/marker evidence may attach
+    core_min_sev: int = 4           # same-service alarms at/above this severity are core evidence
     min_event_alarms: int = 10      # drop events that end up smaller than this
     max_events: int = 15            # acceptance criterion hard cap
     rack_net_concentration: float = 0.6  # share of net markers in one rack to call a rack event
@@ -315,7 +318,7 @@ class CorrelationEngine:
         for ev in events:
             sr = self.alarms[self.alarms["alarm_id"].isin(ev.seed_alarm_ids)]
             seed_type_profile[ev.idx] = Counter(sr["alarm_type"])
-        for _ in range(2):  # windows grow with absorbed alarms; 2 passes stabilise
+        for _ in range(self.cfg.attach_passes):  # windows grow with absorbed alarms; late tails need a re-offer
             for ev in events:
                 ev.alarm_ids = [aid for aid, i in assigned.items() if i == ev.idx]
             for _, row in self.alarms.iterrows():
@@ -337,12 +340,24 @@ class CorrelationEngine:
                                 score, core = max(score, 4.0), True
                             else:
                                 score = max(score, 3.0)
-                                if row["alarm_id"] in self.anomalous or row["alarm_type"] in MARKER_TYPES:
+                                if (row["alarm_id"] in self.anomalous
+                                        or row["alarm_type"] in MARKER_TYPES
+                                        or int(row["severity"]) >= self.cfg.core_min_sev):
+                                    # background noise never reaches sev5 in this
+                                    # dataset and rarely sev4: a high-severity alarm
+                                    # on an event service inside the window is signal
                                     core = True
                     if score < 0:
                         d = min(self.graph.min_distance(c, ev.services, self.cfg.attach_dist) for c in cand)
                         if d <= self.cfg.attach_dist:
                             score = 2.0 - 0.5 * d
+                            strong = (row["alarm_id"] in self.anomalous
+                                      or row["alarm_type"] in MARKER_TYPES
+                                      or int(row["severity"]) >= self.cfg.core_min_sev)
+                            if strong:
+                                # a strong alarm on a NEIGHBOUR service is the
+                                # cascade propagating; weak alarms need blame
+                                core = True
                     if score < 0:
                         continue
                     # symptom-type continuity: a card whose core exhibits this
@@ -353,7 +368,13 @@ class CorrelationEngine:
                     score += 0.25 * min(10, hotness[ev.idx][row["slice"]])
                     if score > best_score:
                         best_score, best_ev, best_core = score, ev, core
-                if best_ev is not None and best_score > 0:
+                if best_ev is not None and best_score > 0 and (
+                    best_core or not self.cfg.require_core_attach
+                ):
+                    # core-gated attach: an alarm joins a card only on causal
+                    # evidence (blame target, or same-service anomaly/marker).
+                    # Same-service or graph proximity alone is background
+                    # noise's favourite disguise inside a wide event window.
                     assigned[aid] = best_ev.idx
                     hotness[best_ev.idx][row["slice"]] += 1
                     # grow the window immediately, but only on core evidence;
@@ -482,14 +503,36 @@ class CorrelationEngine:
                         markers=int(top_n), explains=explains,
                         first_ts=net_seed["timestamp"].min().strftime("%H:%M:%S"),
                     )
+            # counter-hypotheses must exist on every card: single-service seeds
+            # (slow burns, external gateways) leave no runner-up candidates, so
+            # fill them from the affected services with measured evidence
+            def fill_counters(ranked: list[RootCandidate], root: RootCandidate | None) -> list[RootCandidate]:
+                out = list(ranked[:2])
+                if len(out) >= 2 or root is None:
+                    return out
+                pool = [s for s in affected if s not in candidates and s != root.name]
+                scored = []
+                for s in pool:
+                    srows = rows[rows["service"] == s]
+                    if srows.empty:
+                        continue
+                    b = int(blames.get(s, 0))
+                    expl = len(self.graph.transitive_dependents(s) & affected - {s})
+                    sc = 1.0 * b + 0.5 * len(srows) + 1.0 * min(expl, 15)
+                    scored.append(RootCandidate(
+                        kind="service", name=s, score=sc, blames=b, explains=expl,
+                        first_ts=srows["timestamp"].min().strftime("%H:%M:%S")))
+                scored.sort(key=lambda c: -c.score)
+                return out + scored[: 2 - len(out)]
+
             if rack_ev and (not candidates or rack_ev.score >= max(c.score for c in candidates.values()) * 0.8):
                 ev.root = rack_ev
                 ranked = sorted(candidates.values(), key=lambda c: -c.score)[:2]
-                ev.counters = ranked
+                ev.counters = fill_counters(ranked, rack_ev)
             else:
                 ranked = sorted(candidates.values(), key=lambda c: -c.score)
                 ev.root = ranked[0] if ranked else None
-                ev.counters = ranked[1:3]
+                ev.counters = fill_counters(ranked[1:3], ev.root)
             self._dbg(
                 "event %d root=%s (%.1f) counters=%s",
                 ev.idx, ev.root.name if ev.root else "?", ev.root.score if ev.root else -1,
@@ -524,7 +567,11 @@ class CorrelationEngine:
             if overlapping and not linked:
                 why.append("no_topology_link")
             if not why:
-                why.append("outcompeted")  # a nearer event claimed a similar alarm
+                # inside a window and topologically linked, yet not attached:
+                # either a sibling event claimed it, or the core-evidence gate
+                # (attach policy) deliberately left it out
+                why.append("not_core_evidence" if self.cfg.require_core_attach
+                           else "outcompeted")
             reasons.append("+".join(why))
         noise["noise_reason"] = reasons
         reason_counts = Counter(r for rs in reasons for r in rs.split("+"))

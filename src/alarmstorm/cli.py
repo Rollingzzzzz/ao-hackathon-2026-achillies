@@ -34,6 +34,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--max-seed-dist", type=int, default=EngineConfig.max_seed_dist)
     p.add_argument("--attach-dist", type=int, default=EngineConfig.attach_dist)
     p.add_argument("--attach-margin-min", type=int, default=EngineConfig.attach_margin_min)
+    p.add_argument("--attach-passes", type=int, default=EngineConfig.attach_passes)
+    p.add_argument("--allow-weak-attach", action="store_true",
+                   help="disable the core-evidence attach gate (legacy behaviour)")
     p.add_argument("--min-event-alarms", type=int, default=EngineConfig.min_event_alarms)
     p.add_argument("--max-events", type=int, default=EngineConfig.max_events)
     p.add_argument("--debug", action="store_true", help="verbose progress logging to console")
@@ -67,6 +70,8 @@ def main(argv: list[str] | None = None) -> int:
         slice_minutes=args.slice_min, min_cell=args.min_cell, k_cell=args.k_cell,
         min_seed_size=args.min_seed_size, max_seed_dist=args.max_seed_dist,
         attach_dist=args.attach_dist, attach_margin_min=args.attach_margin_min,
+        attach_passes=args.attach_passes,
+        require_core_attach=not args.allow_weak_attach,
         min_event_alarms=args.min_event_alarms, max_events=args.max_events,
     )
     result, cards = run_pipeline(ds, cfg)
