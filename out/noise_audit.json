@@ -1,0 +1,4983 @@
+{
+  "totals": {
+    "total_alarms": 3000,
+    "event_alarms": 2381,
+    "event_count": 5,
+    "noise_alarms": 619,
+    "anomalous_alarms": 1065,
+    "reduction": "3000 alarm -> 5 kart"
+  },
+  "reason_counts": {
+    "outcompeted": 22,
+    "below_anomaly_threshold": 596,
+    "no_topology_link": 59
+  },
+  "per_type": {
+    "mem_high": 76,
+    "cert_expiry": 74,
+    "log_rotate": 74,
+    "cpu_high": 68,
+    "ntp_drift": 67,
+    "backup_warn": 64,
+    "network_flap": 63,
+    "disk_warn": 63,
+    "latency_high": 61,
+    "txn_fail": 3,
+    "timeout": 3,
+    "http_5xx": 3
+  },
+  "alarms": [
+    {
+      "alarm_id": "ALM-01499",
+      "timestamp": "2026-09-10 01:30:20",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 4,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02839",
+      "timestamp": "2026-09-10 01:30:23",
+      "service": "session-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02927",
+      "timestamp": "2026-09-10 01:30:30",
+      "service": "payment-provider-gw",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02545",
+      "timestamp": "2026-09-10 01:30:32",
+      "service": "payment-provider-gw",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02229",
+      "timestamp": "2026-09-10 01:30:36",
+      "service": "mobile-bff",
+      "alarm_type": "network_flap",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01638",
+      "timestamp": "2026-09-10 01:30:37",
+      "service": "session-service",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02023",
+      "timestamp": "2026-09-10 01:30:38",
+      "service": "ntp-service",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01706",
+      "timestamp": "2026-09-10 01:30:53",
+      "service": "dns-resolver",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01698",
+      "timestamp": "2026-09-10 01:30:55",
+      "service": "session-service",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01738",
+      "timestamp": "2026-09-10 01:31:00",
+      "service": "subscriber-db",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02966",
+      "timestamp": "2026-09-10 01:31:05",
+      "service": "billing-service",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02076",
+      "timestamp": "2026-09-10 01:31:12",
+      "service": "dns-resolver",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01358",
+      "timestamp": "2026-09-10 01:31:13",
+      "service": "subscriber-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02387",
+      "timestamp": "2026-09-10 01:31:14",
+      "service": "session-service",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01582",
+      "timestamp": "2026-09-10 01:31:20",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01825",
+      "timestamp": "2026-09-10 01:31:30",
+      "service": "billing-db",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02469",
+      "timestamp": "2026-09-10 01:31:31",
+      "service": "subscriber-db",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02582",
+      "timestamp": "2026-09-10 01:31:53",
+      "service": "payment-provider-gw",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01558",
+      "timestamp": "2026-09-10 01:31:56",
+      "service": "report-batch",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02716",
+      "timestamp": "2026-09-10 01:31:56",
+      "service": "billing-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01660",
+      "timestamp": "2026-09-10 01:31:57",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01506",
+      "timestamp": "2026-09-10 01:31:59",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02691",
+      "timestamp": "2026-09-10 01:32:04",
+      "service": "payment-provider-gw",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01261",
+      "timestamp": "2026-09-10 01:32:06",
+      "service": "sms-gateway",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02418",
+      "timestamp": "2026-09-10 01:32:06",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02300",
+      "timestamp": "2026-09-10 01:32:22",
+      "service": "invoice-batch",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01681",
+      "timestamp": "2026-09-10 01:32:27",
+      "service": "billing-service",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02115",
+      "timestamp": "2026-09-10 01:32:27",
+      "service": "reconciliation-batch",
+      "alarm_type": "backup_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02001",
+      "timestamp": "2026-09-10 01:32:32",
+      "service": "reconciliation-batch",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01459",
+      "timestamp": "2026-09-10 01:32:35",
+      "service": "subscriber-db",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01426",
+      "timestamp": "2026-09-10 01:32:36",
+      "service": "billing-service",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01567",
+      "timestamp": "2026-09-10 01:32:36",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02165",
+      "timestamp": "2026-09-10 01:32:44",
+      "service": "charging-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02419",
+      "timestamp": "2026-09-10 01:32:58",
+      "service": "dns-resolver",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02038",
+      "timestamp": "2026-09-10 01:33:03",
+      "service": "subscriber-db",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02702",
+      "timestamp": "2026-09-10 01:33:07",
+      "service": "payment-provider-gw",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01836",
+      "timestamp": "2026-09-10 01:33:17",
+      "service": "charging-service",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02970",
+      "timestamp": "2026-09-10 01:33:18",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01861",
+      "timestamp": "2026-09-10 01:33:28",
+      "service": "dns-resolver",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02735",
+      "timestamp": "2026-09-10 01:33:29",
+      "service": "payment-provider-gw",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02766",
+      "timestamp": "2026-09-10 01:33:34",
+      "service": "dns-resolver",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02895",
+      "timestamp": "2026-09-10 01:33:37",
+      "service": "charging-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02740",
+      "timestamp": "2026-09-10 01:33:43",
+      "service": "charging-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02893",
+      "timestamp": "2026-09-10 01:33:44",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01915",
+      "timestamp": "2026-09-10 01:33:46",
+      "service": "notification-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02969",
+      "timestamp": "2026-09-10 01:34:00",
+      "service": "dns-resolver",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02634",
+      "timestamp": "2026-09-10 01:34:26",
+      "service": "ntp-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01622",
+      "timestamp": "2026-09-10 01:34:32",
+      "service": "dns-resolver",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01669",
+      "timestamp": "2026-09-10 01:34:32",
+      "service": "dns-resolver",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02151",
+      "timestamp": "2026-09-10 01:34:36",
+      "service": "invoice-batch",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01789",
+      "timestamp": "2026-09-10 01:34:39",
+      "service": "payment-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01918",
+      "timestamp": "2026-09-10 01:34:47",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 4,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02626",
+      "timestamp": "2026-09-10 01:34:51",
+      "service": "billing-db",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01543",
+      "timestamp": "2026-09-10 01:34:53",
+      "service": "charging-service",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02200",
+      "timestamp": "2026-09-10 01:34:57",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02113",
+      "timestamp": "2026-09-10 01:35:05",
+      "service": "billing-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02794",
+      "timestamp": "2026-09-10 01:35:10",
+      "service": "payment-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01639",
+      "timestamp": "2026-09-10 01:35:12",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02043",
+      "timestamp": "2026-09-10 01:35:16",
+      "service": "batch-scheduler",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01392",
+      "timestamp": "2026-09-10 01:35:22",
+      "service": "ntp-service",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01860",
+      "timestamp": "2026-09-10 01:35:23",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01400",
+      "timestamp": "2026-09-10 01:35:45",
+      "service": "load-balancer",
+      "alarm_type": "latency_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01795",
+      "timestamp": "2026-09-10 01:35:46",
+      "service": "charging-service",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02510",
+      "timestamp": "2026-09-10 01:35:56",
+      "service": "dns-resolver",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02377",
+      "timestamp": "2026-09-10 01:36:17",
+      "service": "billing-db",
+      "alarm_type": "cpu_high",
+      "severity": 4,
+      "noise_reason": "no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02646",
+      "timestamp": "2026-09-10 01:36:19",
+      "service": "batch-scheduler",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01769",
+      "timestamp": "2026-09-10 01:36:22",
+      "service": "billing-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02764",
+      "timestamp": "2026-09-10 01:36:25",
+      "service": "charging-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02958",
+      "timestamp": "2026-09-10 01:36:27",
+      "service": "billing-service",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01285",
+      "timestamp": "2026-09-10 01:36:35",
+      "service": "load-balancer",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01260",
+      "timestamp": "2026-09-10 01:36:43",
+      "service": "payment-service",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01393",
+      "timestamp": "2026-09-10 01:36:44",
+      "service": "object-store",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01376",
+      "timestamp": "2026-09-10 01:36:45",
+      "service": "billing-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02502",
+      "timestamp": "2026-09-10 01:37:07",
+      "service": "catalog-service",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02533",
+      "timestamp": "2026-09-10 01:37:09",
+      "service": "billing-db",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02899",
+      "timestamp": "2026-09-10 01:37:12",
+      "service": "reconciliation-batch",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01806",
+      "timestamp": "2026-09-10 01:37:13",
+      "service": "payment-provider-gw",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01518",
+      "timestamp": "2026-09-10 01:37:14",
+      "service": "charging-service",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02222",
+      "timestamp": "2026-09-10 01:37:24",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02612",
+      "timestamp": "2026-09-10 01:37:30",
+      "service": "object-store",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-01341",
+      "timestamp": "2026-09-10 01:37:33",
+      "service": "sms-gateway",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02444",
+      "timestamp": "2026-09-10 01:37:36",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01781",
+      "timestamp": "2026-09-10 01:37:47",
+      "service": "billing-db",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02761",
+      "timestamp": "2026-09-10 01:37:49",
+      "service": "billing-db",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01343",
+      "timestamp": "2026-09-10 01:37:52",
+      "service": "batch-scheduler",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02643",
+      "timestamp": "2026-09-10 01:37:54",
+      "service": "batch-scheduler",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02593",
+      "timestamp": "2026-09-10 01:37:58",
+      "service": "payment-service",
+      "alarm_type": "network_flap",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02263",
+      "timestamp": "2026-09-10 01:38:17",
+      "service": "message-queue",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01663",
+      "timestamp": "2026-09-10 01:38:19",
+      "service": "charging-service",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01929",
+      "timestamp": "2026-09-10 01:38:21",
+      "service": "catalog-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02474",
+      "timestamp": "2026-09-10 01:38:24",
+      "service": "payment-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01941",
+      "timestamp": "2026-09-10 01:38:24",
+      "service": "ntp-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02563",
+      "timestamp": "2026-09-10 01:53:06",
+      "service": "ntp-service",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02055",
+      "timestamp": "2026-09-10 01:58:46",
+      "service": "ntp-service",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02172",
+      "timestamp": "2026-09-10 02:00:51",
+      "service": "batch-scheduler",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01949",
+      "timestamp": "2026-09-10 02:00:52",
+      "service": "dns-resolver",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02695",
+      "timestamp": "2026-09-10 02:00:57",
+      "service": "billing-db",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02284",
+      "timestamp": "2026-09-10 02:01:00",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02860",
+      "timestamp": "2026-09-10 02:01:08",
+      "service": "batch-scheduler",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02216",
+      "timestamp": "2026-09-10 02:01:18",
+      "service": "message-queue",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01886",
+      "timestamp": "2026-09-10 02:01:20",
+      "service": "subscriber-db",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02512",
+      "timestamp": "2026-09-10 02:01:20",
+      "service": "invoice-batch",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01849",
+      "timestamp": "2026-09-10 02:01:23",
+      "service": "message-queue",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02483",
+      "timestamp": "2026-09-10 02:01:26",
+      "service": "object-store",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02519",
+      "timestamp": "2026-09-10 02:01:58",
+      "service": "message-queue",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01252",
+      "timestamp": "2026-09-10 02:02:05",
+      "service": "subscriber-db",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01374",
+      "timestamp": "2026-09-10 02:02:18",
+      "service": "dns-resolver",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01992",
+      "timestamp": "2026-09-10 02:02:30",
+      "service": "subscriber-db",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02868",
+      "timestamp": "2026-09-10 02:02:43",
+      "service": "message-queue",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01851",
+      "timestamp": "2026-09-10 02:02:46",
+      "service": "catalog-service",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02749",
+      "timestamp": "2026-09-10 02:02:52",
+      "service": "notification-service",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02062",
+      "timestamp": "2026-09-10 02:02:59",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02050",
+      "timestamp": "2026-09-10 02:03:00",
+      "service": "message-queue",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01419",
+      "timestamp": "2026-09-10 02:03:06",
+      "service": "subscriber-db",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01510",
+      "timestamp": "2026-09-10 02:03:10",
+      "service": "sms-gateway",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02897",
+      "timestamp": "2026-09-10 02:03:10",
+      "service": "message-queue",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02145",
+      "timestamp": "2026-09-10 02:03:58",
+      "service": "subscriber-db",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01253",
+      "timestamp": "2026-09-10 02:04:14",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02349",
+      "timestamp": "2026-09-10 02:04:27",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02450",
+      "timestamp": "2026-09-10 02:04:30",
+      "service": "dns-resolver",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01835",
+      "timestamp": "2026-09-10 02:04:46",
+      "service": "sms-gateway",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02980",
+      "timestamp": "2026-09-10 02:04:46",
+      "service": "ntp-service",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01664",
+      "timestamp": "2026-09-10 02:05:00",
+      "service": "message-queue",
+      "alarm_type": "cert_expiry",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02979",
+      "timestamp": "2026-09-10 02:05:13",
+      "service": "catalog-service",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02680",
+      "timestamp": "2026-09-10 02:05:25",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02215",
+      "timestamp": "2026-09-10 02:05:36",
+      "service": "ntp-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02562",
+      "timestamp": "2026-09-10 02:05:38",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02234",
+      "timestamp": "2026-09-10 02:05:50",
+      "service": "notification-service",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01528",
+      "timestamp": "2026-09-10 02:06:49",
+      "service": "notification-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01613",
+      "timestamp": "2026-09-10 02:07:13",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02414",
+      "timestamp": "2026-09-10 02:07:33",
+      "service": "dns-resolver",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02280",
+      "timestamp": "2026-09-10 02:07:58",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02272",
+      "timestamp": "2026-09-10 02:08:00",
+      "service": "subscriber-db",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02461",
+      "timestamp": "2026-09-10 02:08:02",
+      "service": "catalog-service",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02743",
+      "timestamp": "2026-09-10 02:08:21",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01361",
+      "timestamp": "2026-09-10 02:08:23",
+      "service": "subscriber-db",
+      "alarm_type": "cert_expiry",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02445",
+      "timestamp": "2026-09-10 02:08:48",
+      "service": "dns-resolver",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02276",
+      "timestamp": "2026-09-10 02:09:26",
+      "service": "dns-resolver",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01531",
+      "timestamp": "2026-09-10 02:09:27",
+      "service": "sms-gateway",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02252",
+      "timestamp": "2026-09-10 02:09:43",
+      "service": "object-store",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02543",
+      "timestamp": "2026-09-10 02:10:37",
+      "service": "ntp-service",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02656",
+      "timestamp": "2026-09-10 02:10:39",
+      "service": "message-queue",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02954",
+      "timestamp": "2026-09-10 02:10:59",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02701",
+      "timestamp": "2026-09-10 02:11:15",
+      "service": "message-queue",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01504",
+      "timestamp": "2026-09-10 02:11:30",
+      "service": "subscriber-db",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01640",
+      "timestamp": "2026-09-10 02:11:49",
+      "service": "subscriber-db",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02400",
+      "timestamp": "2026-09-10 02:11:55",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02123",
+      "timestamp": "2026-09-10 02:12:14",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02455",
+      "timestamp": "2026-09-10 02:12:42",
+      "service": "sms-gateway",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02072",
+      "timestamp": "2026-09-10 02:12:47",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02815",
+      "timestamp": "2026-09-10 02:13:02",
+      "service": "dns-resolver",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02762",
+      "timestamp": "2026-09-10 02:13:10",
+      "service": "ntp-service",
+      "alarm_type": "cpu_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01820",
+      "timestamp": "2026-09-10 02:13:26",
+      "service": "sms-gateway",
+      "alarm_type": "network_flap",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01652",
+      "timestamp": "2026-09-10 02:13:44",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01799",
+      "timestamp": "2026-09-10 02:13:44",
+      "service": "sms-gateway",
+      "alarm_type": "backup_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01947",
+      "timestamp": "2026-09-10 02:13:49",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02909",
+      "timestamp": "2026-09-10 02:13:50",
+      "service": "ntp-service",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02454",
+      "timestamp": "2026-09-10 02:14:02",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02797",
+      "timestamp": "2026-09-10 02:14:20",
+      "service": "object-store",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01592",
+      "timestamp": "2026-09-10 02:14:20",
+      "service": "dns-resolver",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02689",
+      "timestamp": "2026-09-10 02:15:18",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02843",
+      "timestamp": "2026-09-10 02:15:34",
+      "service": "dns-resolver",
+      "alarm_type": "latency_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01496",
+      "timestamp": "2026-09-10 02:16:16",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01479",
+      "timestamp": "2026-09-10 02:16:20",
+      "service": "subscriber-db",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01347",
+      "timestamp": "2026-09-10 02:16:54",
+      "service": "ntp-service",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01741",
+      "timestamp": "2026-09-10 02:16:58",
+      "service": "ntp-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01925",
+      "timestamp": "2026-09-10 02:17:01",
+      "service": "message-queue",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02619",
+      "timestamp": "2026-09-10 02:17:08",
+      "service": "message-queue",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02498",
+      "timestamp": "2026-09-10 02:17:17",
+      "service": "message-queue",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02747",
+      "timestamp": "2026-09-10 02:17:28",
+      "service": "dns-resolver",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02063",
+      "timestamp": "2026-09-10 02:17:37",
+      "service": "ntp-service",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01273",
+      "timestamp": "2026-09-10 02:17:40",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01335",
+      "timestamp": "2026-09-10 02:17:57",
+      "service": "object-store",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01271",
+      "timestamp": "2026-09-10 02:18:13",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01696",
+      "timestamp": "2026-09-10 02:18:28",
+      "service": "notification-service",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02056",
+      "timestamp": "2026-09-10 02:18:35",
+      "service": "notification-service",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02269",
+      "timestamp": "2026-09-10 02:18:36",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01394",
+      "timestamp": "2026-09-10 02:18:44",
+      "service": "dns-resolver",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01859",
+      "timestamp": "2026-09-10 02:18:59",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02448",
+      "timestamp": "2026-09-10 02:19:15",
+      "service": "sms-gateway",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02275",
+      "timestamp": "2026-09-10 02:19:20",
+      "service": "load-balancer",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01364",
+      "timestamp": "2026-09-10 02:19:21",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02368",
+      "timestamp": "2026-09-10 02:19:23",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02105",
+      "timestamp": "2026-09-10 02:19:43",
+      "service": "subscriber-db",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02525",
+      "timestamp": "2026-09-10 02:19:49",
+      "service": "object-store",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01254",
+      "timestamp": "2026-09-10 02:20:34",
+      "service": "sms-gateway",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02223",
+      "timestamp": "2026-09-10 02:20:52",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02473",
+      "timestamp": "2026-09-10 02:20:56",
+      "service": "message-queue",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01602",
+      "timestamp": "2026-09-10 02:20:59",
+      "service": "dns-resolver",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02207",
+      "timestamp": "2026-09-10 02:21:01",
+      "service": "message-queue",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02010",
+      "timestamp": "2026-09-10 02:21:04",
+      "service": "object-store",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02162",
+      "timestamp": "2026-09-10 02:21:23",
+      "service": "subscriber-db",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02536",
+      "timestamp": "2026-09-10 02:21:29",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02585",
+      "timestamp": "2026-09-10 02:21:33",
+      "service": "dns-resolver",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02746",
+      "timestamp": "2026-09-10 02:21:47",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02968",
+      "timestamp": "2026-09-10 02:21:50",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01325",
+      "timestamp": "2026-09-10 02:22:47",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02402",
+      "timestamp": "2026-09-10 02:23:09",
+      "service": "subscriber-db",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02578",
+      "timestamp": "2026-09-10 02:23:19",
+      "service": "notification-service",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02823",
+      "timestamp": "2026-09-10 02:23:36",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02464",
+      "timestamp": "2026-09-10 02:23:57",
+      "service": "catalog-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02264",
+      "timestamp": "2026-09-10 02:24:10",
+      "service": "catalog-service",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02333",
+      "timestamp": "2026-09-10 02:24:30",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01705",
+      "timestamp": "2026-09-10 02:24:51",
+      "service": "catalog-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01745",
+      "timestamp": "2026-09-10 02:25:17",
+      "service": "object-store",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01566",
+      "timestamp": "2026-09-10 02:25:32",
+      "service": "message-queue",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02408",
+      "timestamp": "2026-09-10 02:25:32",
+      "service": "message-queue",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02780",
+      "timestamp": "2026-09-10 02:25:34",
+      "service": "message-queue",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01539",
+      "timestamp": "2026-09-10 02:25:49",
+      "service": "sms-gateway",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02366",
+      "timestamp": "2026-09-10 02:25:57",
+      "service": "notification-service",
+      "alarm_type": "latency_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01883",
+      "timestamp": "2026-09-10 02:26:04",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02771",
+      "timestamp": "2026-09-10 02:26:09",
+      "service": "subscriber-db",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02432",
+      "timestamp": "2026-09-10 02:26:39",
+      "service": "dns-resolver",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02415",
+      "timestamp": "2026-09-10 02:26:46",
+      "service": "dns-resolver",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01266",
+      "timestamp": "2026-09-10 02:27:04",
+      "service": "subscriber-db",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01959",
+      "timestamp": "2026-09-10 02:27:11",
+      "service": "object-store",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01856",
+      "timestamp": "2026-09-10 02:27:22",
+      "service": "object-store",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01752",
+      "timestamp": "2026-09-10 02:27:54",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02044",
+      "timestamp": "2026-09-10 02:28:23",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01559",
+      "timestamp": "2026-09-10 02:28:35",
+      "service": "message-queue",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01863",
+      "timestamp": "2026-09-10 02:28:38",
+      "service": "subscriber-db",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01318",
+      "timestamp": "2026-09-10 02:28:39",
+      "service": "message-queue",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01636",
+      "timestamp": "2026-09-10 02:28:55",
+      "service": "notification-service",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01348",
+      "timestamp": "2026-09-10 02:28:57",
+      "service": "message-queue",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02167",
+      "timestamp": "2026-09-10 02:29:38",
+      "service": "dns-resolver",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02614",
+      "timestamp": "2026-09-10 02:29:45",
+      "service": "dns-resolver",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01403",
+      "timestamp": "2026-09-10 02:30:07",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02731",
+      "timestamp": "2026-09-10 02:30:19",
+      "service": "notification-service",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01782",
+      "timestamp": "2026-09-10 02:30:21",
+      "service": "ntp-service",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02042",
+      "timestamp": "2026-09-10 02:30:23",
+      "service": "ntp-service",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01979",
+      "timestamp": "2026-09-10 02:30:24",
+      "service": "sms-gateway",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01535",
+      "timestamp": "2026-09-10 02:30:52",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01882",
+      "timestamp": "2026-09-10 02:31:03",
+      "service": "subscriber-db",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01950",
+      "timestamp": "2026-09-10 02:31:19",
+      "service": "reconciliation-batch",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02394",
+      "timestamp": "2026-09-10 02:31:40",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01759",
+      "timestamp": "2026-09-10 02:31:59",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01756",
+      "timestamp": "2026-09-10 02:32:05",
+      "service": "payment-service",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01492",
+      "timestamp": "2026-09-10 02:32:06",
+      "service": "payment-provider-gw",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01363",
+      "timestamp": "2026-09-10 02:32:07",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02853",
+      "timestamp": "2026-09-10 02:32:17",
+      "service": "payment-provider-gw",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02142",
+      "timestamp": "2026-09-10 02:32:18",
+      "service": "message-queue",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02993",
+      "timestamp": "2026-09-10 02:32:24",
+      "service": "billing-db",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01612",
+      "timestamp": "2026-09-10 02:32:30",
+      "service": "subscriber-db",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01962",
+      "timestamp": "2026-09-10 02:32:36",
+      "service": "payment-provider-gw",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01421",
+      "timestamp": "2026-09-10 02:32:39",
+      "service": "payment-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02243",
+      "timestamp": "2026-09-10 02:32:46",
+      "service": "payment-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02268",
+      "timestamp": "2026-09-10 02:32:49",
+      "service": "payment-provider-gw",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02613",
+      "timestamp": "2026-09-10 02:32:49",
+      "service": "payment-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02169",
+      "timestamp": "2026-09-10 02:32:50",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01328",
+      "timestamp": "2026-09-10 02:32:52",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01788",
+      "timestamp": "2026-09-10 02:32:54",
+      "service": "payment-service",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02849",
+      "timestamp": "2026-09-10 02:32:59",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02236",
+      "timestamp": "2026-09-10 02:33:04",
+      "service": "dns-resolver",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02088",
+      "timestamp": "2026-09-10 02:33:24",
+      "service": "charging-service",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02277",
+      "timestamp": "2026-09-10 02:33:26",
+      "service": "charging-service",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02075",
+      "timestamp": "2026-09-10 02:33:30",
+      "service": "report-batch",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01659",
+      "timestamp": "2026-09-10 02:33:32",
+      "service": "invoice-batch",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01644",
+      "timestamp": "2026-09-10 02:33:45",
+      "service": "invoice-batch",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02520",
+      "timestamp": "2026-09-10 02:33:46",
+      "service": "message-queue",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01302",
+      "timestamp": "2026-09-10 02:33:46",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01701",
+      "timestamp": "2026-09-10 02:33:52",
+      "service": "charging-service",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02407",
+      "timestamp": "2026-09-10 02:33:55",
+      "service": "load-balancer",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02750",
+      "timestamp": "2026-09-10 02:33:56",
+      "service": "load-balancer",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01436",
+      "timestamp": "2026-09-10 02:34:15",
+      "service": "charging-service",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02975",
+      "timestamp": "2026-09-10 02:34:22",
+      "service": "payment-service",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02078",
+      "timestamp": "2026-09-10 02:34:31",
+      "service": "report-batch",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01821",
+      "timestamp": "2026-09-10 02:34:34",
+      "service": "notification-service",
+      "alarm_type": "backup_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01970",
+      "timestamp": "2026-09-10 02:34:37",
+      "service": "message-queue",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01997",
+      "timestamp": "2026-09-10 02:34:37",
+      "service": "invoice-batch",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01717",
+      "timestamp": "2026-09-10 02:34:40",
+      "service": "charging-service",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01534",
+      "timestamp": "2026-09-10 02:34:42",
+      "service": "catalog-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01326",
+      "timestamp": "2026-09-10 02:34:46",
+      "service": "payment-service",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02777",
+      "timestamp": "2026-09-10 02:34:47",
+      "service": "message-queue",
+      "alarm_type": "disk_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02572",
+      "timestamp": "2026-09-10 02:34:53",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01525",
+      "timestamp": "2026-09-10 02:34:54",
+      "service": "dns-resolver",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02465",
+      "timestamp": "2026-09-10 02:34:58",
+      "service": "dns-resolver",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02670",
+      "timestamp": "2026-09-10 02:35:14",
+      "service": "dns-resolver",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02949",
+      "timestamp": "2026-09-10 02:35:23",
+      "service": "payment-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02374",
+      "timestamp": "2026-09-10 02:35:24",
+      "service": "notification-service",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02879",
+      "timestamp": "2026-09-10 02:35:26",
+      "service": "dns-resolver",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01484",
+      "timestamp": "2026-09-10 02:35:33",
+      "service": "payment-provider-gw",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02806",
+      "timestamp": "2026-09-10 02:35:46",
+      "service": "reconciliation-batch",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01603",
+      "timestamp": "2026-09-10 02:35:47",
+      "service": "billing-db",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01470",
+      "timestamp": "2026-09-10 02:35:50",
+      "service": "payment-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02752",
+      "timestamp": "2026-09-10 02:35:55",
+      "service": "billing-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01733",
+      "timestamp": "2026-09-10 02:36:00",
+      "service": "charging-service",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02479",
+      "timestamp": "2026-09-10 02:36:12",
+      "service": "sms-gateway",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02918",
+      "timestamp": "2026-09-10 02:36:16",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02527",
+      "timestamp": "2026-09-10 02:36:20",
+      "service": "billing-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01907",
+      "timestamp": "2026-09-10 02:36:26",
+      "service": "subscriber-db",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02015",
+      "timestamp": "2026-09-10 02:36:42",
+      "service": "invoice-batch",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02811",
+      "timestamp": "2026-09-10 02:36:46",
+      "service": "message-queue",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01444",
+      "timestamp": "2026-09-10 02:37:06",
+      "service": "report-batch",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01447",
+      "timestamp": "2026-09-10 02:37:11",
+      "service": "dns-resolver",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01541",
+      "timestamp": "2026-09-10 02:37:38",
+      "service": "message-queue",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01764",
+      "timestamp": "2026-09-10 02:37:39",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01495",
+      "timestamp": "2026-09-10 02:37:44",
+      "service": "subscriber-db",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01666",
+      "timestamp": "2026-09-10 02:37:46",
+      "service": "dns-resolver",
+      "alarm_type": "backup_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01536",
+      "timestamp": "2026-09-10 02:38:04",
+      "service": "dns-resolver",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02755",
+      "timestamp": "2026-09-10 02:38:15",
+      "service": "charging-service",
+      "alarm_type": "cpu_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01398",
+      "timestamp": "2026-09-10 02:38:23",
+      "service": "catalog-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01588",
+      "timestamp": "2026-09-10 02:38:26",
+      "service": "subscriber-db",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02412",
+      "timestamp": "2026-09-10 02:38:32",
+      "service": "message-queue",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02887",
+      "timestamp": "2026-09-10 02:38:40",
+      "service": "billing-db",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02890",
+      "timestamp": "2026-09-10 02:38:48",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02579",
+      "timestamp": "2026-09-10 02:39:02",
+      "service": "billing-db",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02053",
+      "timestamp": "2026-09-10 02:39:16",
+      "service": "charging-service",
+      "alarm_type": "latency_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01594",
+      "timestamp": "2026-09-10 02:39:23",
+      "service": "batch-scheduler",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02314",
+      "timestamp": "2026-09-10 02:39:54",
+      "service": "reconciliation-batch",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02378",
+      "timestamp": "2026-09-10 02:40:17",
+      "service": "load-balancer",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01837",
+      "timestamp": "2026-09-10 02:40:32",
+      "service": "load-balancer",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01331",
+      "timestamp": "2026-09-10 02:40:34",
+      "service": "dns-resolver",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01478",
+      "timestamp": "2026-09-10 02:40:34",
+      "service": "message-queue",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02517",
+      "timestamp": "2026-09-10 02:40:51",
+      "service": "subscriber-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02914",
+      "timestamp": "2026-09-10 02:40:58",
+      "service": "charging-service",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02131",
+      "timestamp": "2026-09-10 02:41:05",
+      "service": "reconciliation-batch",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01691",
+      "timestamp": "2026-09-10 02:41:09",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01724",
+      "timestamp": "2026-09-10 02:41:15",
+      "service": "invoice-batch",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02963",
+      "timestamp": "2026-09-10 02:41:16",
+      "service": "sms-gateway",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02144",
+      "timestamp": "2026-09-10 02:41:18",
+      "service": "report-batch",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02463",
+      "timestamp": "2026-09-10 02:41:18",
+      "service": "message-queue",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02230",
+      "timestamp": "2026-09-10 02:41:21",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02787",
+      "timestamp": "2026-09-10 02:41:29",
+      "service": "billing-db",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02957",
+      "timestamp": "2026-09-10 02:41:29",
+      "service": "billing-db",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01751",
+      "timestamp": "2026-09-10 02:41:37",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02213",
+      "timestamp": "2026-09-10 02:41:49",
+      "service": "dns-resolver",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01477",
+      "timestamp": "2026-09-10 02:42:04",
+      "service": "message-queue",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01852",
+      "timestamp": "2026-09-10 02:42:05",
+      "service": "sms-gateway",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01822",
+      "timestamp": "2026-09-10 02:42:23",
+      "service": "sms-gateway",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02310",
+      "timestamp": "2026-09-10 02:42:24",
+      "service": "billing-db",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01264",
+      "timestamp": "2026-09-10 02:42:36",
+      "service": "charging-service",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01292",
+      "timestamp": "2026-09-10 02:42:45",
+      "service": "batch-scheduler",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01337",
+      "timestamp": "2026-09-10 02:42:47",
+      "service": "message-queue",
+      "alarm_type": "disk_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02589",
+      "timestamp": "2026-09-10 02:42:48",
+      "service": "object-store",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02135",
+      "timestamp": "2026-09-10 02:42:49",
+      "service": "charging-service",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02133",
+      "timestamp": "2026-09-10 02:42:56",
+      "service": "dns-resolver",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01413",
+      "timestamp": "2026-09-10 02:43:09",
+      "service": "dns-resolver",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01295",
+      "timestamp": "2026-09-10 02:43:09",
+      "service": "subscriber-db",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02173",
+      "timestamp": "2026-09-10 02:43:10",
+      "service": "sms-gateway",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02972",
+      "timestamp": "2026-09-10 02:43:12",
+      "service": "catalog-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01281",
+      "timestamp": "2026-09-10 02:43:13",
+      "service": "report-batch",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01961",
+      "timestamp": "2026-09-10 02:43:14",
+      "service": "report-batch",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02164",
+      "timestamp": "2026-09-10 02:43:19",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02645",
+      "timestamp": "2026-09-10 02:43:22",
+      "service": "billing-db",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02944",
+      "timestamp": "2026-09-10 02:43:37",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02636",
+      "timestamp": "2026-09-10 02:43:40",
+      "service": "subscriber-db",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02725",
+      "timestamp": "2026-09-10 02:43:47",
+      "service": "ntp-service",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01387",
+      "timestamp": "2026-09-10 02:43:48",
+      "service": "object-store",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02644",
+      "timestamp": "2026-09-10 02:43:51",
+      "service": "load-balancer",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02338",
+      "timestamp": "2026-09-10 02:44:17",
+      "service": "charging-service",
+      "alarm_type": "mem_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01601",
+      "timestamp": "2026-09-10 02:44:57",
+      "service": "ntp-service",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01829",
+      "timestamp": "2026-09-10 02:45:02",
+      "service": "dns-resolver",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02900",
+      "timestamp": "2026-09-10 02:45:07",
+      "service": "dns-resolver",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02292",
+      "timestamp": "2026-09-10 02:45:15",
+      "service": "notification-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02036",
+      "timestamp": "2026-09-10 02:45:19",
+      "service": "object-store",
+      "alarm_type": "mem_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01978",
+      "timestamp": "2026-09-10 02:45:29",
+      "service": "subscriber-db",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02330",
+      "timestamp": "2026-09-10 02:45:31",
+      "service": "charging-service",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02790",
+      "timestamp": "2026-09-10 02:45:31",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02810",
+      "timestamp": "2026-09-10 02:45:31",
+      "service": "subscriber-db",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02178",
+      "timestamp": "2026-09-10 02:45:34",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02013",
+      "timestamp": "2026-09-10 02:45:35",
+      "service": "subscriber-db",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02489",
+      "timestamp": "2026-09-10 02:45:39",
+      "service": "dns-resolver",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01619",
+      "timestamp": "2026-09-10 02:45:45",
+      "service": "billing-db",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02768",
+      "timestamp": "2026-09-10 02:45:54",
+      "service": "billing-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01775",
+      "timestamp": "2026-09-10 02:45:57",
+      "service": "subscriber-db",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02166",
+      "timestamp": "2026-09-10 02:46:15",
+      "service": "load-balancer",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02205",
+      "timestamp": "2026-09-10 02:46:38",
+      "service": "load-balancer",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02781",
+      "timestamp": "2026-09-10 02:47:01",
+      "service": "dns-resolver",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01731",
+      "timestamp": "2026-09-10 02:47:09",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01716",
+      "timestamp": "2026-09-10 02:47:15",
+      "service": "object-store",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01683",
+      "timestamp": "2026-09-10 02:47:36",
+      "service": "invoice-batch",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01610",
+      "timestamp": "2026-09-10 02:47:37",
+      "service": "billing-db",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02609",
+      "timestamp": "2026-09-10 02:47:59",
+      "service": "charging-service",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01555",
+      "timestamp": "2026-09-10 02:48:11",
+      "service": "subscriber-db",
+      "alarm_type": "disk_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02471",
+      "timestamp": "2026-09-10 02:48:22",
+      "service": "notification-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02039",
+      "timestamp": "2026-09-10 02:49:10",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01482",
+      "timestamp": "2026-09-10 02:49:18",
+      "service": "dns-resolver",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02728",
+      "timestamp": "2026-09-10 02:49:27",
+      "service": "charging-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01818",
+      "timestamp": "2026-09-10 02:49:30",
+      "service": "object-store",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02711",
+      "timestamp": "2026-09-10 02:49:37",
+      "service": "sms-gateway",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02684",
+      "timestamp": "2026-09-10 02:49:42",
+      "service": "charging-service",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01493",
+      "timestamp": "2026-09-10 02:50:00",
+      "service": "reconciliation-batch",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02049",
+      "timestamp": "2026-09-10 02:50:00",
+      "service": "billing-db",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01650",
+      "timestamp": "2026-09-10 02:50:10",
+      "service": "reconciliation-batch",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01593",
+      "timestamp": "2026-09-10 02:50:31",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02808",
+      "timestamp": "2026-09-10 02:50:55",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01460",
+      "timestamp": "2026-09-10 02:51:33",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02203",
+      "timestamp": "2026-09-10 02:51:35",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02538",
+      "timestamp": "2026-09-10 02:51:37",
+      "service": "reconciliation-batch",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01327",
+      "timestamp": "2026-09-10 02:51:55",
+      "service": "billing-db",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01500",
+      "timestamp": "2026-09-10 02:51:56",
+      "service": "notification-service",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02089",
+      "timestamp": "2026-09-10 02:52:31",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01668",
+      "timestamp": "2026-09-10 02:52:48",
+      "service": "subscriber-db",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02220",
+      "timestamp": "2026-09-10 02:53:07",
+      "service": "invoice-batch",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01388",
+      "timestamp": "2026-09-10 02:53:17",
+      "service": "catalog-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02760",
+      "timestamp": "2026-09-10 02:53:28",
+      "service": "charging-service",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02129",
+      "timestamp": "2026-09-10 02:53:48",
+      "service": "charging-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02066",
+      "timestamp": "2026-09-10 02:54:01",
+      "service": "message-queue",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02960",
+      "timestamp": "2026-09-10 02:54:06",
+      "service": "dns-resolver",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01805",
+      "timestamp": "2026-09-10 02:54:12",
+      "service": "notification-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02778",
+      "timestamp": "2026-09-10 02:54:28",
+      "service": "subscriber-db",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02935",
+      "timestamp": "2026-09-10 02:54:32",
+      "service": "subscriber-db",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01948",
+      "timestamp": "2026-09-10 02:54:49",
+      "service": "charging-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02071",
+      "timestamp": "2026-09-10 02:54:52",
+      "service": "batch-scheduler",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02147",
+      "timestamp": "2026-09-10 02:54:53",
+      "service": "notification-service",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01910",
+      "timestamp": "2026-09-10 02:54:53",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01520",
+      "timestamp": "2026-09-10 02:54:54",
+      "service": "dns-resolver",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02718",
+      "timestamp": "2026-09-10 02:54:56",
+      "service": "ntp-service",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01967",
+      "timestamp": "2026-09-10 02:55:24",
+      "service": "sms-gateway",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02620",
+      "timestamp": "2026-09-10 02:55:24",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01243",
+      "timestamp": "2026-09-10 02:55:43",
+      "service": "load-balancer",
+      "alarm_type": "disk_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02104",
+      "timestamp": "2026-09-10 02:55:48",
+      "service": "billing-db",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02874",
+      "timestamp": "2026-09-10 02:55:50",
+      "service": "notification-service",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02238",
+      "timestamp": "2026-09-10 02:55:51",
+      "service": "subscriber-db",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02717",
+      "timestamp": "2026-09-10 02:55:51",
+      "service": "subscriber-db",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02824",
+      "timestamp": "2026-09-10 02:55:52",
+      "service": "billing-db",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02742",
+      "timestamp": "2026-09-10 02:55:58",
+      "service": "catalog-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02570",
+      "timestamp": "2026-09-10 02:56:37",
+      "service": "dns-resolver",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01615",
+      "timestamp": "2026-09-10 02:56:38",
+      "service": "catalog-service",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02907",
+      "timestamp": "2026-09-10 02:56:43",
+      "service": "sms-gateway",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01272",
+      "timestamp": "2026-09-10 02:56:49",
+      "service": "billing-db",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02020",
+      "timestamp": "2026-09-10 02:56:49",
+      "service": "report-batch",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02086",
+      "timestamp": "2026-09-10 02:57:01",
+      "service": "mobile-bff",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-00847",
+      "timestamp": "2026-09-10 02:57:02",
+      "service": "web-bff",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02617",
+      "timestamp": "2026-09-10 02:57:06",
+      "service": "load-balancer",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02847",
+      "timestamp": "2026-09-10 02:57:11",
+      "service": "charging-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01077",
+      "timestamp": "2026-09-10 02:57:12",
+      "service": "mobile-bff",
+      "alarm_type": "txn_fail",
+      "severity": 4,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-01483",
+      "timestamp": "2026-09-10 02:57:13",
+      "service": "mobile-bff",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02297",
+      "timestamp": "2026-09-10 02:57:15",
+      "service": "billing-db",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02239",
+      "timestamp": "2026-09-10 02:57:16",
+      "service": "charging-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02836",
+      "timestamp": "2026-09-10 02:57:16",
+      "service": "subscriber-service",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02193",
+      "timestamp": "2026-09-10 02:57:20",
+      "service": "subscriber-service",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01448",
+      "timestamp": "2026-09-10 02:57:24",
+      "service": "session-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01857",
+      "timestamp": "2026-09-10 02:57:29",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-00802",
+      "timestamp": "2026-09-10 02:57:37",
+      "service": "auth-service",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02155",
+      "timestamp": "2026-09-10 02:57:40",
+      "service": "session-service",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-00782",
+      "timestamp": "2026-09-10 02:57:42",
+      "service": "auth-service",
+      "alarm_type": "timeout",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02157",
+      "timestamp": "2026-09-10 02:57:44",
+      "service": "auth-service",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02565",
+      "timestamp": "2026-09-10 02:57:44",
+      "service": "batch-scheduler",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02346",
+      "timestamp": "2026-09-10 02:57:52",
+      "service": "session-service",
+      "alarm_type": "cpu_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02091",
+      "timestamp": "2026-09-10 02:57:57",
+      "service": "subscriber-service",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02060",
+      "timestamp": "2026-09-10 02:57:58",
+      "service": "cache-cluster",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01435",
+      "timestamp": "2026-09-10 02:57:59",
+      "service": "kyc-provider-gw",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02673",
+      "timestamp": "2026-09-10 02:58:07",
+      "service": "charging-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01793",
+      "timestamp": "2026-09-10 02:58:10",
+      "service": "charging-service",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01079",
+      "timestamp": "2026-09-10 02:58:16",
+      "service": "mobile-bff",
+      "alarm_type": "txn_fail",
+      "severity": 4,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02028",
+      "timestamp": "2026-09-10 02:58:24",
+      "service": "subscriber-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01278",
+      "timestamp": "2026-09-10 02:58:37",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02594",
+      "timestamp": "2026-09-10 02:58:51",
+      "service": "auth-service",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01497",
+      "timestamp": "2026-09-10 02:58:54",
+      "service": "cache-cluster",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01080",
+      "timestamp": "2026-09-10 02:58:59",
+      "service": "mobile-bff",
+      "alarm_type": "http_5xx",
+      "severity": 4,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02017",
+      "timestamp": "2026-09-10 02:59:00",
+      "service": "dns-resolver",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01081",
+      "timestamp": "2026-09-10 02:59:02",
+      "service": "mobile-bff",
+      "alarm_type": "http_5xx",
+      "severity": 4,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02359",
+      "timestamp": "2026-09-10 02:59:04",
+      "service": "dns-resolver",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01359",
+      "timestamp": "2026-09-10 02:59:05",
+      "service": "auth-service",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01391",
+      "timestamp": "2026-09-10 02:59:06",
+      "service": "api-gateway",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02100",
+      "timestamp": "2026-09-10 02:59:08",
+      "service": "api-gateway",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02486",
+      "timestamp": "2026-09-10 02:59:12",
+      "service": "web-bff",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02496",
+      "timestamp": "2026-09-10 02:59:14",
+      "service": "catalog-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01824",
+      "timestamp": "2026-09-10 02:59:14",
+      "service": "report-batch",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01048",
+      "timestamp": "2026-09-10 02:59:14",
+      "service": "mobile-bff",
+      "alarm_type": "txn_fail",
+      "severity": 5,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02989",
+      "timestamp": "2026-09-10 02:59:16",
+      "service": "ntp-service",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01804",
+      "timestamp": "2026-09-10 02:59:23",
+      "service": "cache-cluster",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02688",
+      "timestamp": "2026-09-10 02:59:28",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-01451",
+      "timestamp": "2026-09-10 02:59:29",
+      "service": "message-queue",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01507",
+      "timestamp": "2026-09-10 02:59:48",
+      "service": "subscriber-db",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02710",
+      "timestamp": "2026-09-10 02:59:52",
+      "service": "notification-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01458",
+      "timestamp": "2026-09-10 02:59:56",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-01323",
+      "timestamp": "2026-09-10 02:59:57",
+      "service": "mobile-bff",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-00803",
+      "timestamp": "2026-09-10 03:00:01",
+      "service": "auth-service",
+      "alarm_type": "timeout",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01515",
+      "timestamp": "2026-09-10 03:00:01",
+      "service": "subscriber-service",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02011",
+      "timestamp": "2026-09-10 03:00:01",
+      "service": "api-gateway",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02497",
+      "timestamp": "2026-09-10 03:00:04",
+      "service": "dns-resolver",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01050",
+      "timestamp": "2026-09-10 03:00:06",
+      "service": "mobile-bff",
+      "alarm_type": "http_5xx",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-00848",
+      "timestamp": "2026-09-10 03:00:10",
+      "service": "web-bff",
+      "alarm_type": "timeout",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01579",
+      "timestamp": "2026-09-10 03:00:10",
+      "service": "billing-db",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02896",
+      "timestamp": "2026-09-10 03:00:18",
+      "service": "mobile-bff",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02885",
+      "timestamp": "2026-09-10 03:00:22",
+      "service": "mobile-bff",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01712",
+      "timestamp": "2026-09-10 03:00:22",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02413",
+      "timestamp": "2026-09-10 03:00:23",
+      "service": "dns-resolver",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01270",
+      "timestamp": "2026-09-10 03:00:27",
+      "service": "sms-gateway",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-00783",
+      "timestamp": "2026-09-10 03:00:29",
+      "service": "auth-service",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02397",
+      "timestamp": "2026-09-10 03:00:32",
+      "service": "api-gateway",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01828",
+      "timestamp": "2026-09-10 03:00:40",
+      "service": "billing-db",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02555",
+      "timestamp": "2026-09-10 03:00:46",
+      "service": "invoice-batch",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02637",
+      "timestamp": "2026-09-10 03:00:47",
+      "service": "cache-cluster",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02106",
+      "timestamp": "2026-09-10 03:00:54",
+      "service": "session-service",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02992",
+      "timestamp": "2026-09-10 03:00:55",
+      "service": "dns-resolver",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01377",
+      "timestamp": "2026-09-10 03:00:57",
+      "service": "message-queue",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02982",
+      "timestamp": "2026-09-10 03:01:00",
+      "service": "auth-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02863",
+      "timestamp": "2026-09-10 03:01:11",
+      "service": "subscriber-db",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02336",
+      "timestamp": "2026-09-10 03:01:18",
+      "service": "subscriber-service",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01290",
+      "timestamp": "2026-09-10 03:01:25",
+      "service": "subscriber-service",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02894",
+      "timestamp": "2026-09-10 03:01:47",
+      "service": "auth-service",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02891",
+      "timestamp": "2026-09-10 03:01:58",
+      "service": "notification-service",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01537",
+      "timestamp": "2026-09-10 03:02:09",
+      "service": "object-store",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02540",
+      "timestamp": "2026-09-10 03:02:22",
+      "service": "ntp-service",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01934",
+      "timestamp": "2026-09-10 03:02:38",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02417",
+      "timestamp": "2026-09-10 03:02:38",
+      "service": "notification-service",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01509",
+      "timestamp": "2026-09-10 03:02:59",
+      "service": "object-store",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-00784",
+      "timestamp": "2026-09-10 03:03:22",
+      "service": "auth-service",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01642",
+      "timestamp": "2026-09-10 03:03:28",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-00849",
+      "timestamp": "2026-09-10 03:03:30",
+      "service": "web-bff",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02821",
+      "timestamp": "2026-09-10 03:03:30",
+      "service": "auth-service",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02698",
+      "timestamp": "2026-09-10 03:04:02",
+      "service": "load-balancer",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01608",
+      "timestamp": "2026-09-10 03:04:08",
+      "service": "auth-service",
+      "alarm_type": "backup_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02206",
+      "timestamp": "2026-09-10 03:04:42",
+      "service": "load-balancer",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01552",
+      "timestamp": "2026-09-10 03:05:26",
+      "service": "auth-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01872",
+      "timestamp": "2026-09-10 03:05:42",
+      "service": "payment-provider-gw",
+      "alarm_type": "cpu_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02101",
+      "timestamp": "2026-09-10 03:05:48",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01382",
+      "timestamp": "2026-09-10 03:05:50",
+      "service": "sms-gateway",
+      "alarm_type": "cpu_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02959",
+      "timestamp": "2026-09-10 03:06:09",
+      "service": "sms-gateway",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02866",
+      "timestamp": "2026-09-10 03:06:13",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02324",
+      "timestamp": "2026-09-10 03:06:24",
+      "service": "auth-service",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01245",
+      "timestamp": "2026-09-10 03:06:38",
+      "service": "payment-provider-gw",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01743",
+      "timestamp": "2026-09-10 03:06:41",
+      "service": "notification-service",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02209",
+      "timestamp": "2026-09-10 03:06:41",
+      "service": "payment-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02005",
+      "timestamp": "2026-09-10 03:06:57",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02376",
+      "timestamp": "2026-09-10 03:07:12",
+      "service": "auth-service",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01455",
+      "timestamp": "2026-09-10 03:07:20",
+      "service": "object-store",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02139",
+      "timestamp": "2026-09-10 03:07:28",
+      "service": "notification-service",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02190",
+      "timestamp": "2026-09-10 03:08:11",
+      "service": "payment-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02601",
+      "timestamp": "2026-09-10 03:08:19",
+      "service": "object-store",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02906",
+      "timestamp": "2026-09-10 03:09:32",
+      "service": "web-bff",
+      "alarm_type": "network_flap",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01719",
+      "timestamp": "2026-09-10 03:10:01",
+      "service": "web-bff",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02503",
+      "timestamp": "2026-09-10 03:10:01",
+      "service": "notification-service",
+      "alarm_type": "log_rotate",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01585",
+      "timestamp": "2026-09-10 03:10:49",
+      "service": "auth-service",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02156",
+      "timestamp": "2026-09-10 03:10:50",
+      "service": "kyc-provider-gw",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01779",
+      "timestamp": "2026-09-10 03:11:03",
+      "service": "web-bff",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02014",
+      "timestamp": "2026-09-10 03:11:11",
+      "service": "load-balancer",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02318",
+      "timestamp": "2026-09-10 03:11:12",
+      "service": "object-store",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01853",
+      "timestamp": "2026-09-10 03:11:13",
+      "service": "payment-provider-gw",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02453",
+      "timestamp": "2026-09-10 03:11:25",
+      "service": "payment-provider-gw",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02309",
+      "timestamp": "2026-09-10 03:11:28",
+      "service": "auth-service",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02925",
+      "timestamp": "2026-09-10 03:11:40",
+      "service": "payment-provider-gw",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01870",
+      "timestamp": "2026-09-10 03:11:43",
+      "service": "load-balancer",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01921",
+      "timestamp": "2026-09-10 03:11:48",
+      "service": "notification-service",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02019",
+      "timestamp": "2026-09-10 03:12:02",
+      "service": "payment-provider-gw",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01926",
+      "timestamp": "2026-09-10 03:12:07",
+      "service": "web-bff",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01901",
+      "timestamp": "2026-09-10 03:12:10",
+      "service": "kyc-provider-gw",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01540",
+      "timestamp": "2026-09-10 03:12:28",
+      "service": "auth-service",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02490",
+      "timestamp": "2026-09-10 03:12:31",
+      "service": "object-store",
+      "alarm_type": "log_rotate",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02630",
+      "timestamp": "2026-09-10 03:12:37",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01434",
+      "timestamp": "2026-09-10 03:12:45",
+      "service": "auth-service",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02423",
+      "timestamp": "2026-09-10 03:12:45",
+      "service": "kyc-provider-gw",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02628",
+      "timestamp": "2026-09-10 03:12:52",
+      "service": "sms-gateway",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01454",
+      "timestamp": "2026-09-10 03:12:53",
+      "service": "web-bff",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02128",
+      "timestamp": "2026-09-10 03:13:02",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01920",
+      "timestamp": "2026-09-10 03:13:06",
+      "service": "object-store",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01975",
+      "timestamp": "2026-09-10 03:13:12",
+      "service": "sms-gateway",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01778",
+      "timestamp": "2026-09-10 03:13:16",
+      "service": "payment-provider-gw",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01501",
+      "timestamp": "2026-09-10 03:13:24",
+      "service": "kyc-provider-gw",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01511",
+      "timestamp": "2026-09-10 03:13:32",
+      "service": "notification-service",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02779",
+      "timestamp": "2026-09-10 03:13:38",
+      "service": "load-balancer",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01903",
+      "timestamp": "2026-09-10 03:13:46",
+      "service": "notification-service",
+      "alarm_type": "backup_warn",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01586",
+      "timestamp": "2026-09-10 03:14:56",
+      "service": "kyc-provider-gw",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02494",
+      "timestamp": "2026-09-10 03:14:58",
+      "service": "kyc-provider-gw",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02845",
+      "timestamp": "2026-09-10 03:15:02",
+      "service": "object-store",
+      "alarm_type": "network_flap",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01957",
+      "timestamp": "2026-09-10 03:15:03",
+      "service": "ntp-service",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02580",
+      "timestamp": "2026-09-10 03:15:03",
+      "service": "load-balancer",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01349",
+      "timestamp": "2026-09-10 03:15:18",
+      "service": "sms-gateway",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02714",
+      "timestamp": "2026-09-10 03:15:20",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02687",
+      "timestamp": "2026-09-10 03:15:34",
+      "service": "kyc-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01267",
+      "timestamp": "2026-09-10 03:16:19",
+      "service": "sms-gateway",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01407",
+      "timestamp": "2026-09-10 03:16:33",
+      "service": "web-bff",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02022",
+      "timestamp": "2026-09-10 03:17:08",
+      "service": "auth-service",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02240",
+      "timestamp": "2026-09-10 03:17:09",
+      "service": "auth-service",
+      "alarm_type": "cpu_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01355",
+      "timestamp": "2026-09-10 03:17:26",
+      "service": "kyc-provider-gw",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02442",
+      "timestamp": "2026-09-10 03:17:37",
+      "service": "object-store",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01939",
+      "timestamp": "2026-09-10 03:17:50",
+      "service": "notification-service",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02313",
+      "timestamp": "2026-09-10 03:18:13",
+      "service": "kyc-provider-gw",
+      "alarm_type": "cpu_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02484",
+      "timestamp": "2026-09-10 03:18:18",
+      "service": "sms-gateway",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01703",
+      "timestamp": "2026-09-10 03:18:23",
+      "service": "load-balancer",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02082",
+      "timestamp": "2026-09-10 03:18:45",
+      "service": "auth-service",
+      "alarm_type": "latency_high",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01385",
+      "timestamp": "2026-09-10 03:18:46",
+      "service": "notification-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01547",
+      "timestamp": "2026-09-10 03:18:46",
+      "service": "object-store",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01577",
+      "timestamp": "2026-09-10 03:18:48",
+      "service": "load-balancer",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01794",
+      "timestamp": "2026-09-10 03:18:48",
+      "service": "ntp-service",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01725",
+      "timestamp": "2026-09-10 03:19:35",
+      "service": "auth-service",
+      "alarm_type": "log_rotate",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01545",
+      "timestamp": "2026-09-10 03:19:50",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02140",
+      "timestamp": "2026-09-10 03:20:15",
+      "service": "web-bff",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01397",
+      "timestamp": "2026-09-10 03:20:36",
+      "service": "load-balancer",
+      "alarm_type": "latency_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02973",
+      "timestamp": "2026-09-10 03:20:45",
+      "service": "payment-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02856",
+      "timestamp": "2026-09-10 03:20:55",
+      "service": "load-balancer",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02508",
+      "timestamp": "2026-09-10 03:21:02",
+      "service": "auth-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02051",
+      "timestamp": "2026-09-10 03:21:10",
+      "service": "payment-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02256",
+      "timestamp": "2026-09-10 03:21:22",
+      "service": "auth-service",
+      "alarm_type": "ntp_drift",
+      "severity": 4,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02470",
+      "timestamp": "2026-09-10 03:22:20",
+      "service": "web-bff",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02835",
+      "timestamp": "2026-09-10 03:22:29",
+      "service": "payment-provider-gw",
+      "alarm_type": "ntp_drift",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01418",
+      "timestamp": "2026-09-10 03:23:21",
+      "service": "load-balancer",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01305",
+      "timestamp": "2026-09-10 03:23:25",
+      "service": "payment-provider-gw",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01443",
+      "timestamp": "2026-09-10 03:23:39",
+      "service": "object-store",
+      "alarm_type": "disk_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02679",
+      "timestamp": "2026-09-10 03:23:47",
+      "service": "kyc-provider-gw",
+      "alarm_type": "cert_expiry",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01667",
+      "timestamp": "2026-09-10 03:23:48",
+      "service": "kyc-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02674",
+      "timestamp": "2026-09-10 03:23:59",
+      "service": "web-bff",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02983",
+      "timestamp": "2026-09-10 03:23:59",
+      "service": "notification-service",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02403",
+      "timestamp": "2026-09-10 03:24:29",
+      "service": "auth-service",
+      "alarm_type": "log_rotate",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01754",
+      "timestamp": "2026-09-10 03:25:18",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01564",
+      "timestamp": "2026-09-10 03:25:39",
+      "service": "load-balancer",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01258",
+      "timestamp": "2026-09-10 03:25:45",
+      "service": "ntp-service",
+      "alarm_type": "latency_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-01898",
+      "timestamp": "2026-09-10 03:25:47",
+      "service": "web-bff",
+      "alarm_type": "cert_expiry",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02083",
+      "timestamp": "2026-09-10 03:25:58",
+      "service": "payment-provider-gw",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02404",
+      "timestamp": "2026-09-10 03:26:13",
+      "service": "payment-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01508",
+      "timestamp": "2026-09-10 03:26:22",
+      "service": "load-balancer",
+      "alarm_type": "network_flap",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02008",
+      "timestamp": "2026-09-10 03:26:28",
+      "service": "kyc-provider-gw",
+      "alarm_type": "ntp_drift",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01631",
+      "timestamp": "2026-09-10 03:26:49",
+      "service": "sms-gateway",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01880",
+      "timestamp": "2026-09-10 03:26:51",
+      "service": "ntp-service",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold+no_topology_link"
+    },
+    {
+      "alarm_id": "ALM-02204",
+      "timestamp": "2026-09-10 03:27:21",
+      "service": "web-bff",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-01467",
+      "timestamp": "2026-09-10 03:27:28",
+      "service": "payment-provider-gw",
+      "alarm_type": "network_flap",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02852",
+      "timestamp": "2026-09-10 03:27:31",
+      "service": "web-bff",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02009",
+      "timestamp": "2026-09-10 03:27:45",
+      "service": "auth-service",
+      "alarm_type": "latency_high",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02923",
+      "timestamp": "2026-09-10 03:28:18",
+      "service": "load-balancer",
+      "alarm_type": "mem_high",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01734",
+      "timestamp": "2026-09-10 03:28:19",
+      "service": "web-bff",
+      "alarm_type": "mem_high",
+      "severity": 3,
+      "noise_reason": "outcompeted"
+    },
+    {
+      "alarm_id": "ALM-02303",
+      "timestamp": "2026-09-10 03:28:54",
+      "service": "web-bff",
+      "alarm_type": "ntp_drift",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-01338",
+      "timestamp": "2026-09-10 03:29:20",
+      "service": "load-balancer",
+      "alarm_type": "backup_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02320",
+      "timestamp": "2026-09-10 03:29:29",
+      "service": "auth-service",
+      "alarm_type": "disk_warn",
+      "severity": 3,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02208",
+      "timestamp": "2026-09-10 03:29:39",
+      "service": "auth-service",
+      "alarm_type": "disk_warn",
+      "severity": 1,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02218",
+      "timestamp": "2026-09-10 03:29:49",
+      "service": "sms-gateway",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    },
+    {
+      "alarm_id": "ALM-02488",
+      "timestamp": "2026-09-10 03:30:07",
+      "service": "kyc-provider-gw",
+      "alarm_type": "mem_high",
+      "severity": 2,
+      "noise_reason": "below_anomaly_threshold"
+    }
+  ]
+}

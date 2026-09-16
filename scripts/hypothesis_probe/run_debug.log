@@ -1,0 +1,30 @@
+[debug   0.1s] infra types done
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\hypothesis_probe.py:97: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  rows.append((f"{dc}/{rk}", int((g[m]).shape[0]), int((g[~m]).shape[0])))
+[debug   0.1s] network locality done
+[debug   0.1s] blame parsing done
+[debug   0.1s] slow-burn timelines done
+[debug   0.3s] burstiness done
+OK: D:\projeler\ao-hackathon-2026-achillies\scripts\hypothesis_probe\probe_report.md elapsed=0.3s

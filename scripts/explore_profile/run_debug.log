@@ -1,0 +1,11 @@
+[debug    0.0s] loaded alarms=3000 deps=32 inventory=56
+[debug    0.0s] basic sanity done
+[debug    0.0s] distributions done
+[debug    0.1s] time histogram done
+[debug    0.1s] per-service done
+[debug    0.1s] message templates done
+[debug    0.1s] dependency summary done
+[debug    0.1s] inventory done
+[debug    0.1s] locality done
+[debug    0.1s] outputs written: D:\projeler\ao-hackathon-2026-achillies\scripts\explore_profile\profile_report.md, D:\projeler\ao-hackathon-2026-achillies\scripts\explore_profile\profile_stats.json
+OK: report=D:\projeler\ao-hackathon-2026-achillies\scripts\explore_profile\profile_report.md stats=D:\projeler\ao-hackathon-2026-achillies\scripts\explore_profile\profile_stats.json elapsed=0.1s
