@@ -1,0 +1,682 @@
+{
+ "generated_at": "2026-09-16T16:56:25",
+ "repo_root": "D:\\projeler\\ao-hackathon-2026-achillies",
+ "steps": [
+  {
+   "id": "s1",
+   "order": 1,
+   "phase": "Faz 1 · Keşif",
+   "time_hint": "14:35–14:45",
+   "title": "explore_profile — ham verinin keşif profili",
+   "summary": "Broad one-pass exploration profiler for the S-A1 alarm data package.",
+   "run_cmd": "D:\\projeler\\ao-hackathon-2026-achillies\\.venv\\Scripts\\python.exe D:\\projeler\\ao-hackathon-2026-achillies\\scripts\\explore_profile\\explore_profile.py --debug",
+   "note": "Paket iner inmez: dağılımlar, dakikalık histogram, burst adayları, mesaj şablonları. Buradan rack patlaması, slow-burn'ler ve blame madeni bulundu.",
+   "last_run": "2026-09-16T16:50:49",
+   "file_count": 5,
+   "groups": [
+    {
+     "label": "scripts/explore_profile",
+     "dir": "scripts/explore_profile",
+     "files": [
+      {
+       "path": "scripts/explore_profile/explore_profile.py",
+       "name": "explore_profile.py",
+       "size": 11262,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "scripts/explore_profile/profile_report.md",
+       "name": "profile_report.md",
+       "size": 29824,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "scripts/explore_profile/profile_stats.json",
+       "name": "profile_stats.json",
+       "size": 29553,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "data"
+      },
+      {
+       "path": "scripts/explore_profile/README.md",
+       "name": "README.md",
+       "size": 1798,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "doc"
+      },
+      {
+       "path": "scripts/explore_profile/run_debug.log",
+       "name": "run_debug.log",
+       "size": 728,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "log"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "order": 2,
+   "phase": "Faz 2 · Hipotez",
+   "time_hint": "14:45–14:50",
+   "title": "hypothesis_probe — 5 olay hipotezinin odaklı doğrulaması",
+   "summary": "Focused hypothesis probes spawned by the exploration profile findings.",
+   "run_cmd": "D:\\projeler\\ao-hackathon-2026-achillies\\.venv\\Scripts\\python.exe D:\\projeler\\ao-hackathon-2026-achillies\\scripts\\hypothesis_probe\\hypothesis_probe.py --debug",
+   "note": "Profile dayalı 5 hipotez odaklı sorgularla doğrulandı. 'Yakalaması zor' olan slow-burn (session leak) burada netleşti.",
+   "last_run": "2026-09-16T16:50:49",
+   "file_count": 5,
+   "groups": [
+    {
+     "label": "scripts/hypothesis_probe",
+     "dir": "scripts/hypothesis_probe",
+     "files": [
+      {
+       "path": "scripts/hypothesis_probe/hypothesis_probe.py",
+       "name": "hypothesis_probe.py",
+       "size": 9638,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "scripts/hypothesis_probe/probe_report.md",
+       "name": "probe_report.md",
+       "size": 15064,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "scripts/hypothesis_probe/probe_stats.json",
+       "name": "probe_stats.json",
+       "size": 23914,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "data"
+      },
+      {
+       "path": "scripts/hypothesis_probe/README.md",
+       "name": "README.md",
+       "size": 1895,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "doc"
+      },
+      {
+       "path": "scripts/hypothesis_probe/run_debug.log",
+       "name": "run_debug.log",
+       "size": 3152,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "log"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "order": 3,
+   "phase": "Faz 3 · Çekirdek motor",
+   "time_hint": "14:50–15:05",
+   "title": "src/alarmstorm — genel korelasyon motoru (5 aşama) + run.py",
+   "summary": "",
+   "run_cmd": "D:\\projeler\\ao-hackathon-2026-achillies\\.venv\\Scripts\\python.exe D:\\projeler\\ao-hackathon-2026-achillies\\run.py --debug",
+   "note": "Hipotezler elle kodlanmadı; anomali hücre → tohum → attach → kök skorlama → gürültü denetimi boru hattı aynı 5 olaya kendi başına ulaştı. Iterasyon geçmişi: prompts/2026-09-16_engine_iterations.md.",
+   "last_run": "2026-09-16T16:56:18",
+   "file_count": 25,
+   "groups": [
+    {
+     "label": "src/alarmstorm",
+     "dir": "src/alarmstorm",
+     "files": [
+      {
+       "path": "src/alarmstorm/__init__.py",
+       "name": "__init__.py",
+       "size": 415,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "src/alarmstorm/cards.py",
+       "name": "cards.py",
+       "size": 10337,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "src/alarmstorm/cli.py",
+       "name": "cli.py",
+       "size": 5572,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "src/alarmstorm/dashboard.py",
+       "name": "dashboard.py",
+       "size": 11326,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "src/alarmstorm/engine.py",
+       "name": "engine.py",
+       "size": 31337,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "src/alarmstorm/graph.py",
+       "name": "graph.py",
+       "size": 2852,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "src/alarmstorm/io.py",
+       "name": "io.py",
+       "size": 2712,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      },
+      {
+       "path": "src/alarmstorm/report.py",
+       "name": "report.py",
+       "size": 6989,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      }
+     ]
+    },
+    {
+     "label": "out",
+     "dir": "out",
+     "files": [
+      {
+       "path": "out/actions.json",
+       "name": "actions.json",
+       "size": 1204,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "data"
+      },
+      {
+       "path": "out/cards.json",
+       "name": "cards.json",
+       "size": 53901,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "data"
+      },
+      {
+       "path": "out/dashboard.html",
+       "name": "dashboard.html",
+       "size": 546187,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "other"
+      },
+      {
+       "path": "out/events_full.json",
+       "name": "events_full.json",
+       "size": 33371,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "data"
+      },
+      {
+       "path": "out/explorer.html",
+       "name": "explorer.html",
+       "size": 10189,
+       "mtime": "2026-09-16T16:56:18",
+       "kind": "other"
+      },
+      {
+       "path": "out/noise_audit.json",
+       "name": "noise_audit.json",
+       "size": 382178,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "data"
+      },
+      {
+       "path": "out/run_debug.log",
+       "name": "run_debug.log",
+       "size": 607,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "log"
+      },
+      {
+       "path": "out/serve_debug.log",
+       "name": "serve_debug.log",
+       "size": 0,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "log"
+      },
+      {
+       "path": "out/summary.md",
+       "name": "summary.md",
+       "size": 1630,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "report"
+      }
+     ]
+    },
+    {
+     "label": "out/charts",
+     "dir": "out/charts",
+     "files": [
+      {
+       "path": "out/charts/EVT-01_timeline.png",
+       "name": "EVT-01_timeline.png",
+       "size": 42557,
+       "mtime": "2026-09-16T16:51:02",
+       "kind": "image"
+      },
+      {
+       "path": "out/charts/EVT-02_timeline.png",
+       "name": "EVT-02_timeline.png",
+       "size": 32792,
+       "mtime": "2026-09-16T16:51:02",
+       "kind": "image"
+      },
+      {
+       "path": "out/charts/EVT-03_timeline.png",
+       "name": "EVT-03_timeline.png",
+       "size": 34941,
+       "mtime": "2026-09-16T16:51:02",
+       "kind": "image"
+      },
+      {
+       "path": "out/charts/EVT-04_timeline.png",
+       "name": "EVT-04_timeline.png",
+       "size": 33044,
+       "mtime": "2026-09-16T16:51:02",
+       "kind": "image"
+      },
+      {
+       "path": "out/charts/EVT-05_timeline.png",
+       "name": "EVT-05_timeline.png",
+       "size": 38231,
+       "mtime": "2026-09-16T16:51:02",
+       "kind": "image"
+      },
+      {
+       "path": "out/charts/global_timeline.png",
+       "name": "global_timeline.png",
+       "size": 109878,
+       "mtime": "2026-09-16T16:51:02",
+       "kind": "image"
+      },
+      {
+       "path": "out/charts/noise_audit.png",
+       "name": "noise_audit.png",
+       "size": 83665,
+       "mtime": "2026-09-16T16:51:02",
+       "kind": "image"
+      }
+     ]
+    },
+    {
+     "label": "run.py",
+     "dir": ".",
+     "files": [
+      {
+       "path": "run.py",
+       "name": "run.py",
+       "size": 407,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "order": 4,
+   "phase": "Faz 4 · Ürünleştirme",
+   "time_hint": "15:05–15:15",
+   "title": "Nöbetçi konsolu — dashboard + canlı aksiyon sunucusu",
+   "summary": "Çalışan ürüne ait ekran görüntüleri ve varsa video bağlantısı bu klasörde yer alacaktır.",
+   "run_cmd": "D:\\projeler\\ao-hackathon-2026-achillies\\.venv\\Scripts\\python.exe D:\\projeler\\ao-hackathon-2026-achillies\\serve.py",
+   "note": "Tek dosya dashboard (out/dashboard.html), aksiyon yaşam döngüsü API'si (açık→işlemde→kapalı, kalıcı), ekran görüntüleri demo/ altında.",
+   "last_run": "2026-09-16T16:55:39",
+   "file_count": 6,
+   "groups": [
+    {
+     "label": "demo",
+     "dir": "demo",
+     "files": [
+      {
+       "path": "demo/dashboard_full.png",
+       "name": "dashboard_full.png",
+       "size": 1510374,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "image"
+      },
+      {
+       "path": "demo/dashboard_top.png",
+       "name": "dashboard_top.png",
+       "size": 345076,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "image"
+      },
+      {
+       "path": "demo/README.md",
+       "name": "README.md",
+       "size": 110,
+       "mtime": "2026-09-15T17:38:13",
+       "kind": "doc"
+      }
+     ]
+    },
+    {
+     "label": "serve.py",
+     "dir": ".",
+     "files": [
+      {
+       "path": "serve.py",
+       "name": "serve.py",
+       "size": 7093,
+       "mtime": "2026-09-16T16:55:39",
+       "kind": "code"
+      }
+     ]
+    },
+    {
+     "label": "out/dashboard.html",
+     "dir": "out",
+     "files": [
+      {
+       "path": "out/dashboard.html",
+       "name": "dashboard.html",
+       "size": 546187,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "other"
+      }
+     ]
+    },
+    {
+     "label": "out/actions.json",
+     "dir": "out",
+     "files": [
+      {
+       "path": "out/actions.json",
+       "name": "actions.json",
+       "size": 1204,
+       "mtime": "2026-09-16T16:51:24",
+       "kind": "data"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "order": 5,
+   "phase": "Faz 5 · Teslim",
+   "time_hint": "15:15–16:30",
+   "title": "Teslim paketi — README, AI_JURI, submission, docs üçlüsü",
+   "summary": "",
+   "run_cmd": null,
+   "note": "Her iddia dosya yoluyla kanıtlı; pip freeze requirements.txt'de; istem kayıtları prompts/ altında.",
+   "last_run": "2026-09-16T16:50:49",
+   "file_count": 16,
+   "groups": [
+    {
+     "label": "docs",
+     "dir": "docs",
+     "files": [
+      {
+       "path": "docs/fazlar.md",
+       "name": "fazlar.md",
+       "size": 2806,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "docs/mimari.md",
+       "name": "mimari.md",
+       "size": 3327,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "docs/plan.md",
+       "name": "plan.md",
+       "size": 2448,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      }
+     ]
+    },
+    {
+     "label": "prompts",
+     "dir": "prompts",
+     "files": [
+      {
+       "path": "prompts/2026-09-16_cards_dashboard_delivery.md",
+       "name": "2026-09-16_cards_dashboard_delivery.md",
+       "size": 1965,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "prompts/2026-09-16_engine_iterations.md",
+       "name": "2026-09-16_engine_iterations.md",
+       "size": 4373,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "prompts/2026-09-16_exploration_and_hypothesis.md",
+       "name": "2026-09-16_exploration_and_hypothesis.md",
+       "size": 2232,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "prompts/2026-09-16_scenario_receipt_and_plan.md",
+       "name": "2026-09-16_scenario_receipt_and_plan.md",
+       "size": 1385,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "prompts/README.md",
+       "name": "README.md",
+       "size": 188,
+       "mtime": "2026-09-15T17:38:13",
+       "kind": "doc"
+      }
+     ]
+    },
+    {
+     "label": "README.md",
+     "dir": ".",
+     "files": [
+      {
+       "path": "README.md",
+       "name": "README.md",
+       "size": 8197,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "doc"
+      }
+     ]
+    },
+    {
+     "label": "AI_JURI.md",
+     "dir": ".",
+     "files": [
+      {
+       "path": "AI_JURI.md",
+       "name": "AI_JURI.md",
+       "size": 6934,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      }
+     ]
+    },
+    {
+     "label": "submission.json",
+     "dir": ".",
+     "files": [
+      {
+       "path": "submission.json",
+       "name": "submission.json",
+       "size": 4106,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "data"
+      }
+     ]
+    },
+    {
+     "label": "CLAUDE.md",
+     "dir": ".",
+     "files": [
+      {
+       "path": "CLAUDE.md",
+       "name": "CLAUDE.md",
+       "size": 941,
+       "mtime": "2026-09-15T22:49:53",
+       "kind": "report"
+      }
+     ]
+    },
+    {
+     "label": "CONVENTIONS.md",
+     "dir": ".",
+     "files": [
+      {
+       "path": "CONVENTIONS.md",
+       "name": "CONVENTIONS.md",
+       "size": 7665,
+       "mtime": "2026-09-15T22:07:20",
+       "kind": "report"
+      }
+     ]
+    },
+    {
+     "label": ".env.example",
+     "dir": ".",
+     "files": [
+      {
+       "path": ".env.example",
+       "name": ".env.example",
+       "size": 135,
+       "mtime": "2026-09-15T17:38:12",
+       "kind": "doc"
+      }
+     ]
+    },
+    {
+     "label": "requirements.txt",
+     "dir": ".",
+     "files": [
+      {
+       "path": "requirements.txt",
+       "name": "requirements.txt",
+       "size": 218,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "doc"
+      }
+     ]
+    },
+    {
+     "label": "memory.md",
+     "dir": ".",
+     "files": [
+      {
+       "path": "memory.md",
+       "name": "memory.md",
+       "size": 12791,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "order": 6,
+   "phase": "Faz 6 · Öz-denetim",
+   "time_hint": "16:30–17:15",
+   "title": "trap_audit — 'gol var mı?' denetimi + çekirdek-kanıt kapısı düzeltmesi",
+   "summary": "Internal ground-truth proxy audit. NOT part of the jury delivery: it uses the",
+   "run_cmd": "D:\\projeler\\ao-hackathon-2026-achillies\\.venv\\Scripts\\python.exe D:\\projeler\\ao-hackathon-2026-achillies\\scripts\\trap_audit\\trap_audit.py --scan-lo 1100 --scan-hi 1400",
+   "note": "İç proxy alarm_id emisyon sırasından üretildi (yalnız denetimde). Bulgular: 1.157 gürültü kartlara emilmişti, 14 gerçek kuyruk alarmı elenmişti. Düzeltme: attach'e çekirdek-kanıt kapısı → gürültü eleme %34→%92, tüm sev5 kartlarda, 5 kart/kök değişmedi.",
+   "last_run": "2026-09-16T16:50:49",
+   "file_count": 7,
+   "groups": [
+    {
+     "label": "scripts/trap_audit",
+     "dir": "scripts/trap_audit",
+     "files": [
+      {
+       "path": "scripts/trap_audit/audit_report.md",
+       "name": "audit_report.md",
+       "size": 9041,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      },
+      {
+       "path": "scripts/trap_audit/audit_stats.json",
+       "name": "audit_stats.json",
+       "size": 19045,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "data"
+      },
+      {
+       "path": "scripts/trap_audit/README.md",
+       "name": "README.md",
+       "size": 2966,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "doc"
+      },
+      {
+       "path": "scripts/trap_audit/trap_audit.py",
+       "name": "trap_audit.py",
+       "size": 14274,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      }
+     ]
+    },
+    {
+     "label": "src/alarmstorm/engine.py",
+     "dir": "src\\alarmstorm",
+     "files": [
+      {
+       "path": "src/alarmstorm/engine.py",
+       "name": "engine.py",
+       "size": 31337,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "code"
+      }
+     ]
+    },
+    {
+     "label": "docs/fazlar.md",
+     "dir": "docs",
+     "files": [
+      {
+       "path": "docs/fazlar.md",
+       "name": "fazlar.md",
+       "size": 2806,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      }
+     ]
+    },
+    {
+     "label": "prompts/2026-09-16_engine_iterations.md",
+     "dir": "prompts",
+     "files": [
+      {
+       "path": "prompts/2026-09-16_engine_iterations.md",
+       "name": "2026-09-16_engine_iterations.md",
+       "size": 4373,
+       "mtime": "2026-09-16T16:50:49",
+       "kind": "report"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlarmStorm — Pipeline Explorer (debug)</title>
+<style>
+  :root{
+    --bg:#0d1117;--panel:#161b22;--panel2:#1c2129;--line:#2d333b;
+    --fg:#e6edf3;--dim:#8b949e;--acc:#f0883e;--acc2:#58a6ff;--ok:#3fb950;
+    --log:#d29922;--data:#bc8cff;--code:#7ee787;--rep:#79c0ff;--doc:#a5d6ff;--img:#ffa657;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:14px/1.5 -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  header{display:flex;align-items:center;gap:14px;padding:12px 20px;
+         border-bottom:1px solid var(--line);background:var(--panel);
+         position:sticky;top:0;z-index:5}
+  header h1{font-size:16px;margin:0}
+  header .sub{color:var(--dim);font-size:12px}
+  header a{margin-left:auto;color:var(--acc2);text-decoration:none;font-size:13px}
+  header button{background:var(--panel2);color:var(--fg);border:1px solid var(--line);
+                border-radius:6px;padding:5px 12px;cursor:pointer;font-size:12px}
+  header button:hover{border-color:var(--acc)}
+  .wrap{display:grid;grid-template-columns:330px 1fr;gap:0;min-height:calc(100vh - 55px)}
+  nav{border-right:1px solid var(--line);background:var(--panel);padding:14px 10px}
+  .step{display:flex;gap:10px;padding:10px 10px;border-radius:8px;cursor:pointer;
+        border:1px solid transparent;margin-bottom:6px}
+  .step:hover{background:var(--panel2)}
+  .step.on{background:var(--panel2);border-color:var(--acc)}
+  .step .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--panel2);
+           border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+           font-size:12px;color:var(--acc);font-weight:600;margin-top:2px}
+  .step.on .n{background:var(--acc);color:#0d1117;border-color:var(--acc)}
+  .step .t{min-width:0}
+  .step .ph{font-size:11px;color:var(--dim)}
+  .step .tt{font-weight:600;font-size:13px}
+  .step .mt{font-size:11px;color:var(--dim)}
+  main{padding:20px 26px;min-width:0}
+  .crumb{color:var(--dim);font-size:12px;margin-bottom:4px}
+  h2{margin:0 0 2px;font-size:20px}
+  .phase{color:var(--acc);font-weight:600;font-size:13px;margin-bottom:10px}
+  .meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--dim);font-size:12px;margin:6px 0 14px}
+  .meta b{color:var(--fg)}
+  .note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc2);
+        border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13px}
+  .runcmd{display:flex;gap:8px;align-items:flex-start;background:#010409;border:1px solid var(--line);
+          border-radius:8px;padding:9px 12px;font-family:Consolas,monospace;font-size:12px;
+          color:var(--code);margin:10px 0}
+  .runcmd span{flex:1;min-width:0;overflow-wrap:anywhere}
+  .runcmd button{background:none;border:1px solid var(--line);color:var(--dim);border-radius:5px;
+                 cursor:pointer;font-size:11px;padding:2px 8px;flex:0 0 auto}
+  .runcmd button:hover{color:var(--fg);border-color:var(--acc)}
+  .grp{margin:18px 0 8px;font-size:12px;color:var(--dim);font-weight:600;letter-spacing:.4px}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);
+        border-radius:8px;overflow:hidden;font-size:13px}
+  th{ text-align:left;padding:7px 12px;color:var(--dim);font-weight:600;font-size:11px;
+      border-bottom:1px solid var(--line);background:var(--panel2)}
+  td{padding:6px 12px;border-bottom:1px solid var(--line)}
+  tr:last-child td{border-bottom:none}
+  tr.f{cursor:pointer}
+  tr.f:hover{background:var(--panel2)}
+  tr.f.on{background:var(--panel2)}
+  .k{display:inline-block;padding:1px 8px;border-radius:10px;font-size:10.5px;font-weight:600}
+  .k-log{background:#3d2e00;color:var(--log)} .k-code{background:#0f2e1b;color:var(--code)}
+  .k-data{background:#26174d;color:var(--data)} .k-report{background:#0c2d57;color:var(--rep)}
+  .k-doc{background:#0d2d3d;color:var(--doc)} .k-image{background:#3d2200;color:var(--img)}
+  .k-other{background:var(--panel2);color:var(--dim)}
+  .path{font-family:Consolas,monospace;font-size:12px;color:var(--doc)}
+  .dimt{color:var(--dim);font-size:12px}
+  #viewer{position:fixed;inset:0;background:rgba(1,4,9,.82);display:none;z-index:20;
+          align-items:center;justify-content:center;padding:26px}
+  #viewer.on{display:flex}
+  .vbox{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+        width:min(1100px,96vw);height:min(80vh,760px);display:flex;flex-direction:column}
+  .vhead{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line)}
+  .vhead .p{font-family:Consolas,monospace;font-size:13px;color:var(--acc2);
+            overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .vhead button{margin-left:auto;background:var(--panel2);border:1px solid var(--line);
+                color:var(--fg);border-radius:6px;cursor:pointer;padding:4px 12px;font-size:12px}
+  .vbox pre{margin:0;padding:16px;overflow:auto;flex:1;font:12px/1.55 Consolas,"Courier New",monospace;
+            color:var(--fg);white-space:pre-wrap;word-break:break-word}
+  .trunc{color:var(--log);font-size:12px;padding:0 16px 10px}
+  .navbtns{display:flex;gap:8px;margin-top:22px}
+  .navbtns button{background:var(--panel2);border:1px solid var(--line);color:var(--fg);
+                  border-radius:8px;padding:8px 16px;cursor:pointer;font-size:13px}
+  .navbtns button:hover{border-color:var(--acc)}
+  .navbtns button:disabled{opacity:.35;cursor:default}
+  @media(max-width:900px){.wrap{grid-template-columns:1fr}nav{border-right:none;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>⌨ Pipeline Explorer</h1>
+  <span class="sub">çalıştırma sırasına göre adım adım · klasörler · dosyalar · loglar — <b>debug görünümü</b></span>
+  <button onclick="load(true)">↻ yenile</button>
+  <a href="/">← olay kartları konsolu</a>
+</header>
+<div class="wrap">
+  <nav id="nav"></nav>
+  <main id="main"><p class="dimt">yükleniyor…</p></main>
+</div>
+<div id="viewer"><div class="vbox">
+  <div class="vhead"><span class="p" id="vpath"></span><button onclick="closeV()">✕ kapat (Esc)</button></div>
+  <div class="trunc" id="vtrunc" style="display:none">⚠ dosya 200 KB üzeri — ilk 200 KB gösteriliyor</div>
+  <pre id="vbody"></pre>
+</div></div>
+<script>
+let steps=[], cur=-1, openFile=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const fmtB=n=>n>=1048576?(n/1048576).toFixed(1)+' MB':n>=1024?(n/1024).toFixed(1)+' KB':n+' B';
+const fmtT=s=>s? s.replace('T',' ').slice(0,16):'';
+const KLBL={log:'LOG',code:'CODE',data:'DATA',report:'RAPOR',doc:'DOC',image:'PNG',other:'DOSYA'};
+
+async function load(refresh){
+  const r=await fetch('/api/explorer'); const m=await r.json();
+  steps=m.steps;
+  $('nav').innerHTML=steps.map((s,i)=>
+    `<div class="step" id="nav-${s.id}" onclick="go(${i})">
+       <div class="n">${s.order}</div>
+       <div class="t"><div class="ph">${esc(s.phase)} · ${esc(s.time_hint)}</div>
+       <div class="tt">${esc(s.title)}</div>
+       <div class="mt">${s.file_count} dosya · son: ${fmtT(s.last_run)}</div></div>
+     </div>`).join('');
+  if(cur<0) go(0); else go(cur);
+}
+
+function go(i){
+  if(i<0||i>=steps.length) return;
+  cur=i; const s=steps[i];
+  document.querySelectorAll('.step').forEach(e=>e.classList.remove('on'));
+  $('nav-'+s.id).classList.add('on');
+  let h=`<div class="crumb">adım ${s.order} / ${steps.length}</div>
+    <h2>${esc(s.title)}</h2>
+    <div class="phase">${esc(s.phase)} · saat ${esc(s.time_hint)}</div>
+    <div class="meta"><span>dosya sayısı: <b>${s.file_count}</b></span>
+      <span>en son çalışma kanıtı (en yeni dosya): <b>${fmtT(s.last_run)}</b></span></div>`;
+  if(s.summary) h+=`<div class="note">📖 README: ${esc(s.summary)}</div>`;
+  if(s.note) h+=`<div class="note">🧭 ${esc(s.note)}</div>`;
+  if(s.run_cmd) h+=`<div class="runcmd"><span>$ ${esc(s.run_cmd)}</span>
+      <button onclick="copyCmd(this)">kopyala</button></div>`;
+  for(const g of s.groups){
+    h+=`<div class="grp">📁 ${esc(g.dir===g.label?g.label:g.label)} (${g.files.length})</div>
+    <table><tr><th style="width:34%">dosya</th><th>etiket</th><th>boyut</th><th>değiştirilme</th><th></th></tr>`;
+    for(const f of g.files){
+      const clickable=['log','code','data','report','doc'].includes(f.kind);
+      h+=`<tr class="f" id="row-${btoa(unescape(encodeURIComponent(f.path))).replace(/=/g,'')}"
+        ${clickable?`onclick="showFile('${esc(f.path)}',this)"`:''}>
+        <td class="path">${esc(f.name)}</td>
+        <td><span class="k k-${f.kind}">${KLBL[f.kind]||'DOSYA'}</span></td>
+        <td class="dimt">${fmtB(f.size)}</td>
+        <td class="dimt">${fmtT(f.mtime)}</td>
+        <td class="dimt">${clickable?'gör ▸':''}</td></tr>`;
+    }
+    h+=`</table>`;
+  }
+  h+=`<div class="navbtns">
+      <button ${i===0?'disabled':''} onclick="go(${i-1})">← önceki adım</button>
+      <button ${i===steps.length-1?'disabled':''} onclick="go(${i+1})">sonraki adım →</button></div>`;
+  $('main').innerHTML=h;
+}
+
+function copyCmd(btn){
+  const t=btn.parentElement.innerText.replace(/^\$ /,'').replace('kopyala','').trim();
+  navigator.clipboard.writeText(t).then(()=>{btn.textContent='kopyalandı ✓';
+    setTimeout(()=>btn.textContent='kopyala',1200);});
+}
+
+async function showFile(path,row){
+  document.querySelectorAll('tr.f').forEach(e=>e.classList.remove('on'));
+  if(row) row.classList.add('on');
+  const r=await fetch('/api/file?path='+encodeURIComponent(path));
+  const d=await r.json();
+  if(d.error){alert(d.error);return;}
+  $('vpath').textContent=d.path;
+  $('vbody').textContent=d.content;
+  $('vtrunc').style.display=d.truncated?'block':'none';
+  $('viewer').classList.add('on');
+  openFile=path;
+}
+function closeV(){$('viewer').classList.remove('on');openFile=null;}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeV();
+  if(openFile) return;
+  if(e.key==='ArrowRight') go(cur+1);
+  if(e.key==='ArrowLeft') go(cur-1);
+});
+load();
+</script>
+</body>
+</html>

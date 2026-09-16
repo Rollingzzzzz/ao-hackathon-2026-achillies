@@ -7,6 +7,9 @@ actions live:
 
     GET  /api/actions        -> current actions map (JSON)
     POST /api/actions        -> body {"id": "EVT-01", "status": "işlemde"|"kapalı"|"açık"}
+    GET  /explorer           -> pipeline execution-history GUI (debug)
+    GET  /api/explorer       -> execution-history manifest (auto-generated)
+    GET  /api/file?path=rel  -> whitelisted file content for the explorer
 
 Actions persist to out/actions.json (survive restarts; regenerated cards
 keep existing statuses).
@@ -19,6 +22,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
+import sys
 import threading
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -29,6 +34,9 @@ VALID = {"açık", "işlemde", "kapalı"}
 ALIASES = {"acik": "açık", "islemde": "işlemde", "kapali": "kapalı",
            "open": "açık", "in_progress": "işlemde", "closed": "kapalı"}
 lock = threading.Lock()
+
+FILE_TEXT_SUFFIXES = {".md", ".py", ".json", ".log", ".txt", ".html", ".example", ""}
+MAX_FILE_BYTES = 200_000  # larger files are truncated for the viewer
 
 
 def actions_path(out_dir: Path) -> Path:
@@ -59,6 +67,19 @@ def save_action(out_dir: Path, card_id: str, status: str) -> dict:
         return data
 
 
+def explorer_manifest(out_dir: Path) -> dict:
+    """Load out/explorer_manifest.json, generating it on first use."""
+    p = out_dir / "explorer_manifest.json"
+    if not p.exists():
+        subprocess.run([sys.executable, str(REPO / "scripts" / "explorer" / "explorer.py")],
+                       check=False, capture_output=True)
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def whitelisted_paths(manifest: dict) -> set[str]:
+    return {f["path"] for step in manifest["steps"] for g in step["groups"] for f in g["files"]}
+
+
 class Handler(BaseHTTPRequestHandler):
     out_dir: Path = REPO / "out"
 
@@ -76,8 +97,29 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         if self.path.startswith("/api/actions"):
             return self._json(load_actions(self.out_dir))
-        # static out/ serving; / -> dashboard.html
-        rel = "dashboard.html" if self.path in ("/", "/index.html") else self.path.lstrip("/")
+        if self.path.startswith("/explorer"):
+            rel = "explorer.html"
+        elif self.path.startswith("/api/explorer"):
+            return self._json(explorer_manifest(self.out_dir))
+        elif self.path.startswith("/api/file"):
+            from urllib.parse import parse_qs, urlparse
+            q = parse_qs(urlparse(self.path).query)
+            rel_path = (q.get("path", [""])[0]).replace("\\", "/").lstrip("/")
+            manifest = explorer_manifest(self.out_dir)
+            f = (REPO / rel_path).resolve()
+            inside = str(f).lower().startswith(str(REPO.resolve()).lower())
+            viewable = f.suffix.lower() in FILE_TEXT_SUFFIXES or f.name.startswith(".env")
+            if (not rel_path or rel_path not in whitelisted_paths(manifest)
+                    or not inside or not f.is_file() or not viewable):
+                return self._json({"error": "dosya manifest beyaz listesinde değil"}, 404)
+            raw = f.read_bytes()
+            truncated = len(raw) > MAX_FILE_BYTES
+            return self._json({
+                "path": rel_path, "truncated": truncated,
+                "content": raw[:MAX_FILE_BYTES].decode("utf-8", errors="replace"),
+            })
+        else:
+            rel = "dashboard.html" if self.path in ("/", "/index.html") else self.path.lstrip("/")
         f = (self.out_dir / rel).resolve()
         if not str(f).startswith(str(self.out_dir.resolve())) or not f.is_file():
             self.send_error(404)
